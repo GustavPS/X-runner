@@ -1,0 +1,29 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Revisionshistorik}{2}{section.1}
+\contentsline {section}{\numberline {2}Spelide}{2}{section.2}
+\contentsline {section}{\numberline {3}Målgrupp}{2}{section.3}
+\contentsline {section}{\numberline {4}Spelupplevelse}{2}{section.4}
+\contentsline {section}{\numberline {5}Spelmekanik}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}In-game}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Meny}{3}{subsection.5.2}
+\contentsline {section}{\numberline {6}Regler}{3}{section.6}
+\contentsline {subsection}{\numberline {6.1}Allmänt}{3}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Spelarregler}{3}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}NPC:er}{4}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Slow bird}{4}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Boost bird}{4}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Net from boost bird}{4}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}Block}{4}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Icke solida block}{4}{subsection.6.5}
+\contentsline {subsubsection}{\numberline {6.5.1}Air block}{4}{subsubsection.6.5.1}
+\contentsline {subsection}{\numberline {6.6}Solida block}{4}{subsection.6.6}
+\contentsline {subsubsection}{\numberline {6.6.1}Goalblock}{4}{subsubsection.6.6.1}
+\contentsline {subsubsection}{\numberline {6.6.2}Quicksand}{5}{subsubsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.3}Terrain}{5}{subsubsection.6.6.3}
+\contentsline {section}{\numberline {7}Visualisering}{5}{section.7}
+\contentsline {subsection}{\numberline {7.1}Meny}{5}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Spelplan}{6}{subsection.7.2}
+\contentsline {section}{\numberline {8}Kravformulering}{7}{section.8}
+\contentsline {subsection}{\numberline {8.1}Ska-krav}{7}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Bör-krav}{7}{subsection.8.2}
+\contentsline {section}{\numberline {9}Kravuppfyllelse}{7}{section.9}
