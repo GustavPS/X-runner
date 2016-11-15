@@ -1,4 +1,4 @@
-PWD /home/gustav/Skrivbord/Kurser/TDP005/x_runner/doc/Systemspecifikation
+PWD /home/lovba497/Dokument/tdp004/lab1/x_runner/doc/Systemspecifikation
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -258,6 +258,5 @@ INPUT TDP003-mall.toc
 OUTPUT TDP003-mall.toc
 INPUT bilder/startmeny.png
 INPUT bilder/levelmeny.png
-INPUT bilder/success.png
-INPUT bilder/fail.png
+INPUT bilder/spelplan.png
 INPUT TDP003-mall.aux
