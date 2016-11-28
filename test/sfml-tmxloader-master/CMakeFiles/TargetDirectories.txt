@@ -1,0 +1,13 @@
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/install.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/DrawWithDebug.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/Isometric.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/tmx-loader.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/BenchMark.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/rebuild_cache.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/pugi.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/edit_cache.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/QuadTree.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/ShaderEffects.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/list_install_components.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/install/strip.dir
+/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/install/local.dir

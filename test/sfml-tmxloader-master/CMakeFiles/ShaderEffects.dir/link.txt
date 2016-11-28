@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/ShaderEffects.dir/examples/ShaderEffects.cpp.o  -o ShaderEffects -rdynamic libtmx-loader.so libpugi.so -lsfml-graphics -lsfml-window -lsfml-system -lz -Wl,-rpath,/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master: 
