@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/examples/ShaderEffects.cpp" "/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/ShaderEffects.dir/examples/ShaderEffects.cpp.o"
+  "/home/lovba497/x_runner/test/sfml-tmxloader-master/examples/ShaderEffects.cpp" "/home/lovba497/x_runner/test/sfml-tmxloader-master/CMakeFiles/ShaderEffects.dir/examples/ShaderEffects.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,8 +15,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/tmx-loader.dir/DependInfo.cmake"
-  "/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/CMakeFiles/pugi.dir/DependInfo.cmake"
+  "/home/lovba497/x_runner/test/sfml-tmxloader-master/CMakeFiles/tmx-loader.dir/DependInfo.cmake"
+  "/home/lovba497/x_runner/test/sfml-tmxloader-master/CMakeFiles/pugi.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

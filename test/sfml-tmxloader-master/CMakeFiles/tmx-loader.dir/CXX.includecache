@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/DebugShape.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/DebugShape.cpp
 tmx/DebugShape.h
 -
 SFML/Graphics/RenderTarget.hpp
 -
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/MapLayer.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/MapLayer.cpp
 tmx/MapLayer.h
 -
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/MapLoaderPrivate.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/MapLoaderPrivate.cpp
 tmx/MapLoader.h
 -
 tmx/Log.h
@@ -30,7 +30,7 @@ sstream
 functional
 -
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/MapLoaderPublic.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/MapLoaderPublic.cpp
 tmx/MapLoader.h
 -
 tmx/Log.h
@@ -38,7 +38,7 @@ tmx/Log.h
 cassert
 -
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/MapObject.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/MapObject.cpp
 tmx/MapObject.h
 -
 tmx/MapLayer.h
@@ -46,7 +46,7 @@ tmx/MapLayer.h
 tmx/Log.h
 -
 
-/home/abcde/TDP005/x_runner/test/sfml-tmxloader-master/src/QuadTreeNode.cpp
+/home/lovba497/x_runner/test/sfml-tmxloader-master/src/QuadTreeNode.cpp
 tmx/QuadTreeNode.h
 -
 

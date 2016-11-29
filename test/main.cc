@@ -2,6 +2,20 @@
 #include <tmx/MapLoader.h>
 #include <iostream>
 
+sf::RectangleShape to_rec(tmx::MapObject &obj)
+{
+  auto frec { obj.GetAABB() };
+  sf::RectangleShape rec;
+  if (obj.GetName() == "Player") {
+    rec.setSize(sf::Vector2f{frec.width,frec.height-34});
+  }
+  else {
+    rec.setSize(sf::Vector2f{frec.width,frec.height});
+  }
+  rec.setPosition(obj.GetPosition());
+  return rec;
+}
+
 int main()
 {
 
@@ -12,7 +26,7 @@ int main()
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, -10.0f);
     b2Body* groundBody = world.CreateBody(groundBodyDef);
-    
+
     tmx::MapLoader ml("");
     ml.Load("new.tmx");
     b2Body* body { tmx::BodyCreator::Add(ml, world) };
@@ -36,6 +50,8 @@ int main()
                 for(auto object = layer->objects.begin(); object != layer->objects.end(); ++object)
                 {
                     if (object->GetName() == "Player") {
+                        auto frec { object->GetAABB() };
+                        std::cerr << frec.height << " ";
                         player = *object;
                     }
                //     std::cerr << "\t" << object->GetName() << "\n";
@@ -87,28 +103,34 @@ int main()
                 {
                     if (object->GetName() == "top" || object->GetName() == "bottom")
                     {
-                        if (object->Intersects(player))
+                        if (to_rec(*object).getGlobalBounds().intersects(
+                              to_rec(player).getGlobalBounds()))
                         {
                             std::cerr << object->GetName();
                             collision = true;
                             break;
-                        }
-                    }
+                          }
+                  }
+
                 }
                 if (collision)
                 {
                     break;
                 }
-            }
 
-            if (collision)
+            }
+          }
+
+            /*if (collision)
             {
                 //player.SetPosition(ppos);
-            }
-        }
+            }*/
+
 
         window.clear();
         window.draw(ml);
         window.display();
-    }
+
+      }
+
 }
