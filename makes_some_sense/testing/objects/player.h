@@ -4,6 +4,7 @@
 #include "object.h"
 
 #include <vector>
+#include <unordered_set>
 
 class Player : public Object
 {
@@ -12,8 +13,9 @@ class Player : public Object
         //Player(const Player *rhs);
         sf::Sprite get_sprite() const;
         void draw(sf::RenderWindow &window) const;
-        bool try_move(const sf::Vector2f &to, const std::vector<Object*> &objects);
+        bool try_move(const sf::Vector2f &to, const std::vector<Object*> &objects, std::unordered_set<std::string> &colliders);
         void iamnull() {}
+        bool can_jump = false;
     
     private:
         sf::Texture texture;

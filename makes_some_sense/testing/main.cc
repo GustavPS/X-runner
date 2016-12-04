@@ -23,8 +23,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1440, 960), "Hello World!");
     window.setVerticalSyncEnabled(true);
 
-    float speed {250};
-    float gravity {0.25};
+    float speed {100};
+    float gravity {1};
     
 
     sf::Texture bgTexture;
@@ -37,6 +37,7 @@ int main()
     Player player { level_parser.get_player() };
     //Player *player { new Player { level_parser.get_player() } };
 
+    int up = 0;
     while(window.isOpen())
     {
         sf::Event event;
@@ -50,36 +51,50 @@ int main()
             }
         }
 
-        int xsteps {};
-        int ysteps {};
+        float xsteps {};
+        float ysteps {};
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             xsteps -= 1;
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             xsteps += 1;
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            ysteps -= 1;
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player.can_jump)
+        {
+            up = 15;
+            player.can_jump = false;
+        }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             ysteps += 1;
 
         sf::Time delta { clock.restart() };
         {
             float distance { speed * (delta.asMilliseconds() / 1000.0f) };
-            xsteps *= distance;
-            ysteps *= distance;
 
-            sf::Vector2f target { player.position.x + xsteps, player.position.y + ysteps };
             //sf::Vector2f where;
             //Object collider;
 
-            if (!player.try_move(target, blocks))
+            std::unordered_set<std::string> colliders;
+            //player.try_move(target, blocks, colliders);
+
+            if (up)
             {
-                if (!ysteps)
-                {
+                colliders.clear();
+                ysteps -= 4;
+                //player.try_move(target, blocks, colliders);
+                --up;
+            }
+
+            sf::Vector2f target { xsteps * distance, ysteps * distance };
+
+            player.try_move(target, blocks, colliders);
+            if (colliders.find("bottom") == colliders.end())
+            {
+                colliders.clear();
+                if (up)
                     ysteps = gravity * distance;
-                    target.y = player.position.y + ysteps;
-                    player.try_move(target, blocks);
-                    //return 0;
-                }
+                else
+                    ysteps = gravity * distance;
+                target.y = ysteps;
+                player.try_move(target, blocks, colliders);
             }
             //if (player.collidesAt(target, where, collider)
             //std::cerr << (player->try_move(target, blocks) ? "A" : "B");

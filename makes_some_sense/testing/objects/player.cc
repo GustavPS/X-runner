@@ -9,6 +9,7 @@ Player::Player(const sf::Vector2f &position, const sf::Vector2f &dimensions, int
     texture.loadFromFile("player.png");
     sprite.setTexture(texture);
     sprite.setPosition(position);
+    //sprite.setScale(0.9, 0.9);
 }
 
 /*Player::Player(const Player *rhs)
@@ -26,38 +27,67 @@ void Player::draw(sf::RenderWindow &window) const
 {
     window.draw(sprite);
 }
-
-bool Player::try_move(const sf::Vector2f &to, const std::vector<Object*> &objects)
+#include <iostream>
+bool Player::try_move(const sf::Vector2f &to, const std::vector<Object*> &objects, std::unordered_set<std::string> &colliders)
 {
-    // perform an inexpensive computation with <will_not_collide()> before making these more expensive computations
-    /*if (will_not_collide(from, to)) {
-        return false;
-    }*/
+    //std::cerr << to.x << " " << to.y << "\n";
+    position.y += to.y;
+    //position.y += to.y;
+    sprite.setPosition(position);
 
-    // calculate the difference between <to> and <this> x-wise and y-wise
-    const float x_diff { to.x - position.x };
-    const float y_diff { to.y - position.y };
-
-    // link <longest> to the longest axis
-    const float& longest { std::abs(x_diff) > std::abs(y_diff) ? x_diff : y_diff };
-
-    while (position.x != to.x || position.y != to.y)
+    bool top = false;
+    //bool side = false;
+    for (const auto object : objects)
     {
-        position.x += x_diff / std::abs(longest);
-        position.y += y_diff / std::abs(longest);
-        sprite.setPosition(position);
-
-        for (const auto object : objects)
+        if (sprite.getGlobalBounds().intersects(
+                object->shape.getGlobalBounds()))
         {
-            if (sprite.getGlobalBounds().intersects(object->shape.getGlobalBounds()))
+            if (object->name == "top" || object->name == "bottom")
             {
-                if (object->name == "top" || object->name == "bottom")
-                    position.y -= y_diff / std::abs(longest);
-                if (object->name == "side")
-                    position.x -= x_diff / std::abs(longest);
-                sprite.setPosition(position);
-                return true;
+                if (object->name == "top" &&
+                    to.y > 0)
+                    {
+                        if (!top)
+                            position.y -= to.y;
+                        colliders.insert(object->name);
+                        top = true;
+                        can_jump = true;
+                    }
+                if (object->name == "bottom" &&
+                    to.y < 0)
+                    {
+                        if (!top)
+                            position.y -= to.y;
+                        colliders.insert(object->name);
+                        top = true;
+                    }
+                
             }
+            sprite.setPosition(position);
+            //return true;
+        }
+
+    }
+    position.x += to.x;
+    sprite.setPosition(position);
+
+    //bool top = false;
+    bool side = false;
+    for (const auto object : objects)
+    {
+        if (sprite.getGlobalBounds().intersects(
+                object->shape.getGlobalBounds()))
+        {
+            colliders.insert(object->name);
+            if (object->name == "side" && to.x != 0)
+            {
+                if (!side)
+                    position.x -= to.x;
+                colliders.insert(object->name);
+                side = true;   
+            }
+            sprite.setPosition(position);
+            //return true;
         }
     }
     return false;
