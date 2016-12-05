@@ -27,6 +27,7 @@ Gustav P Svensson}
 Ver. & Revisionsbeskrivning & Datum \\\hline
 0.1 & Ett första utkast & 161110 \\\hline
 1.0 & Komplettering & 161127 \\\hline
+1.1 & Uppflyttning av krav & 161205 \\\hline
 \end{tabularx}
 \end{table}
 
@@ -223,13 +224,16 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
 \item[1] Det ska finnas minst ett spelarobjekt på den aktiva banan.
 \item[2] Spelaren ska kunna förflytta sig i sidled samt hoppa med tangentbordet enligt specificerade restriktioner (\textbf{Spelmekanik(2.1)}, \textbf{Regler(4)[3,4]})
 \item[3] Aktiv bana ska renderas tvådimensionellt på skärmen centrerat runt spelaren (\textbf{Spelmekanik(2.3)}, \textbf{Visualisering(Figur 4)})
+\item[4] Objekt ska påverkas av gravitation om det specificerats för objektet (\textbf{Regler(3)[1]})
+\item[5] Kollision mellan objekt ska påverkas av soliditet (\textbf{Regler(2)[1]})
+\item[14] Menyn ska renderas tvådimensionellt på skärmen (\textbf{Visualisering(Figur 2)}, \textbf{Visualisering(Figur 3)})
+\item[15] Spelaren ska kunna interagera med menyn (\textbf{Spelmekanik(1)})
 \end{description}
 
 \subsection{Bör-krav}
 \begin{itemize}
-\item[4] Objekt ska påverkas av gravitation om det specificerats för objektet (\textbf{Regler(3)[1]})
-\item[5] Kollision mellan objekt ska påverkas av soliditet (\textbf{Regler(2)[1]})
 \item[6] Det ska kunna finnas flera NPC's och specialblock på den aktiva banan.
+\item[17] Det ska finnas minst en bana med flera NPC's och specialblock.
 \item[7] NPC's och specialblock ska kunna spawnas dynamiskt (\textbf{Regler(5.1)[5]}, \textbf{Regler(5.2)[5,6]})
 \item[8] NPC's ska röra sig enligt specificerade restriktioner (\textbf{Regler(5.1)[3]}, \textbf{Regler(5.2)[3]})
 \item[9] Rekordtiden för varje bana ska sparas (\textbf{Regler(1)[2]})
@@ -237,8 +241,6 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
 \item[11] Spelaren ska kunna walljumpa (\textbf{Regler(4)[6]})
 \item[12] Spelarens ska kunna hoppa för hastighet (\textbf{Regler(4)[6]})
 \item[13] När spelaren kolliderar med en NPC eller ett specialblock utförs de specificerade kollisionshändelserna (\textbf{Spelmekanik(2.2)})
-\item[14] Menyn ska renderas tvådimensionellt på skärmen (\textbf{Visualisering(Figur 2)}, \textbf{Visualisering(Figur 3)})
-\item[15] Spelaren ska kunna interagera med menyn (\textbf{Spelmekanik(1)})
 \item[16] Det ska vara möjligt att spela online multiplayer (\textbf{Spelmekanik(2.1)}, \textbf{Spelmekanik(2.3)}, \textbf{Regler(1)[1]})
 \end{itemize}
 
@@ -253,7 +255,7 @@ sig i världen och agera på olika sätt när de möter andra objekt.}
 \noindent\textit{Det måste finnas minst tre olika typer av objekt och det ska finnas flera instanser av minst två av dessa.
 T.ex ett spelarobjekt och många instanser av två olika slags fiendeobjekt.}
 \begin{itemize}
-\item Det kommer finnas flera olika yper av block och NPC's samt minst en spelarkaraktär på varje bana (\textbf{Krav(1,6)})
+\item Det kommer finnas flera olika typer av block och NPC's samt minst en spelarkaraktär på varje bana (\textbf{Krav(1,6,17)})
 \end{itemize}
 
 \noindent\textit{Ett beteende som måste finnas med är att figurerna ska röra sig över skärmen. Rörelsen kan följa ett
