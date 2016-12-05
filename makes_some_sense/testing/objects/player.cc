@@ -9,7 +9,6 @@ Player::Player(const sf::Vector2f &position, const sf::Vector2f &dimensions, int
     texture.loadFromFile("player.png");
     sprite.setTexture(texture);
     sprite.setPosition(position);
-    //sprite.setScale(0.9, 0.9);
 }
 
 /*Player::Player(const Player *rhs)
@@ -47,6 +46,7 @@ bool Player::try_move(const sf::Vector2f &to, const std::vector<Object*> &object
                 if (object->name == "top" &&
                     to.y > 0)
                     {
+                        std::cerr << "top";
                         if (!top)
                             position.y -= to.y;
                         colliders.insert(object->name);
@@ -56,6 +56,7 @@ bool Player::try_move(const sf::Vector2f &to, const std::vector<Object*> &object
                 if (object->name == "bottom" &&
                     to.y < 0)
                     {
+                        std::cerr << "bottom";
                         if (!top)
                             position.y -= to.y;
                         colliders.insert(object->name);
@@ -78,9 +79,9 @@ bool Player::try_move(const sf::Vector2f &to, const std::vector<Object*> &object
         if (sprite.getGlobalBounds().intersects(
                 object->shape.getGlobalBounds()))
         {
-            colliders.insert(object->name);
             if (object->name == "side" && to.x != 0)
             {
+                std::cerr << "side";
                 if (!side)
                     position.x -= to.x;
                 colliders.insert(object->name);

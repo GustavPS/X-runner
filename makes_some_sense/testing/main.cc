@@ -17,19 +17,17 @@ void delete_ptrs(std::vector<Object*> &objects)
 int main()
 {
 
-    sf::Clock clock;
-    sf::Time delta;
-
     sf::RenderWindow window(sf::VideoMode(1440, 960), "Hello World!");
     window.setVerticalSyncEnabled(true);
 
-    float speed {100};
-    float gravity {1};
+    float speed {125};
+    float gravity {1.25};
     
 
     sf::Texture bgTexture;
     bgTexture.loadFromFile("new.png");
     sf::Sprite background { bgTexture };
+    background.setScale(2, 2);
 
     Level_Parser level_parser { "new.tmx" };
 
@@ -38,6 +36,7 @@ int main()
     //Player *player { new Player { level_parser.get_player() } };
 
     int up = 0;
+    sf::Clock clock;
     while(window.isOpen())
     {
         sf::Event event;
@@ -59,11 +58,9 @@ int main()
             xsteps += 1;
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player.can_jump)
         {
-            up = 15;
+            up = 24;
             player.can_jump = false;
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            ysteps += 1;
 
         sf::Time delta { clock.restart() };
         {
@@ -72,38 +69,51 @@ int main()
             //sf::Vector2f where;
             //Object collider;
 
-            std::unordered_set<std::string> colliders;
+            
             //player.try_move(target, blocks, colliders);
+            std::unordered_set<std::string> colliders;
 
             if (up)
             {
-                colliders.clear();
-                ysteps -= 4;
+                ysteps -= up >= 16 ? 3.5 : up >= 8 ? 3 : 2.5;
                 //player.try_move(target, blocks, colliders);
                 --up;
             }
 
             sf::Vector2f target { xsteps * distance, ysteps * distance };
 
+            //std::cerr << "ysteps: " << ysteps * distance << "\n";
             player.try_move(target, blocks, colliders);
-            if (colliders.find("bottom") == colliders.end())
+
+            if(colliders.find("bottom") != colliders.end())
             {
-                colliders.clear();
-                if (up)
-                    ysteps = gravity * distance;
-                else
-                    ysteps = gravity * distance;
+                up = 0;
+            }
+
+            if (colliders.find("top") == colliders.end())
+            {
+                player.can_jump = false;
+                ysteps = gravity * distance;
+                target.x = 0;
                 target.y = ysteps;
+                //std::cerr << "ysteps: " << ysteps << "\n";
                 player.try_move(target, blocks, colliders);
             }
+            else {
+                std::cerr << "bbq";
+            }
+
+            colliders.clear();
             //if (player.collidesAt(target, where, collider)
             //std::cerr << (player->try_move(target, blocks) ? "A" : "B");
         }
 
         window.clear();
         window.draw(background);
-        //player->draw(window);
-        window.draw(player.get_sprite());
+        auto s { player.get_sprite() };
+        s.setPosition(player.position.x*2, player.position.y*2);
+        s.setScale(2,2);
+        window.draw(s);
         window.display();
     }
 
