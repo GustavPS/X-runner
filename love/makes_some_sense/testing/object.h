@@ -21,7 +21,6 @@ class Object
         void set_position(const sf::Vector2f&);
     
     private:
-        std::string name;
         sf::Vector2f position;
         sf::Vector2f dimensions;
         sf::RectangleShape shape;
