@@ -1,0 +1,12 @@
+#ifndef SLOW_BIRD_H
+#def SLOW_BIRD_H
+#include "NPC.h"
+
+class Slow_Bird : public NPC
+{
+public:
+    Slow_Bird(const sf::Vector2f&, const sf::Vector2f&, const std::string&);
+    void move() override;
+}
+
+#endif

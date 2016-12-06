@@ -1,0 +1,15 @@
+#ifndef NPC_H
+#def NPC_H
+
+#include "object.h"
+
+class NPC : public Object
+{
+private:
+    std::string name;
+    
+public:
+    virtual void move();
+}
+
+#endif
