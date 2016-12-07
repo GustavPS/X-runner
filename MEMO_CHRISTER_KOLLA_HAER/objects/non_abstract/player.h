@@ -30,6 +30,7 @@ class Player : public Gravitable
 
         // Collision handling
         void handle_collision(const std::string &type) override;
+        void handle_null_collision() override;
 };
 
 #endif

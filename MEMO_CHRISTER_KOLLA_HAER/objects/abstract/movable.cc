@@ -36,7 +36,7 @@ void Moveable::check_collision(const sf::Vector2f &steps)
             objects.erase(it);
         }
         else if (shape.getGlobalBounds().intersects(
-            (*it)->get_shape().getGlobalBounds()))
+            (*it)->shape.getGlobalBounds()))
         {
             handle_collision(*it, steps);
         }
