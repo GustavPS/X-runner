@@ -3,6 +3,8 @@
 
 #include "simulatable.h"
 
+#include <unordered_set>
+
 class Movable : public Simulatable
 {
     public:

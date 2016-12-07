@@ -7,15 +7,17 @@ Player::Player(const sf::Vector2f &position,
                float weight)
     : Gravitable { position, dimensions, type, speed, weight }
 {
-
+    // do some stuff, like texture of shape.
 }
 
 void Player::simulate(float distance_modifier,
               float gravity_modifier,
               const std::vector<Object*> &objects)
 {
+    // Gravitate me!
     gravitate(distance_modifier, gravity_modifier, objects);
 
+    // Where do I move?
     sf::Vector2f distance;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         distance.x = -1;
@@ -23,20 +25,48 @@ void Player::simulate(float distance_modifier,
         distance.x = 1;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
         && on_ground && !on_quicksand)
+    {
         //do jump stuff here
+    }
 
+    // Speed modifying debuffs
     float speed_modifier {1};
+
     if (on_quicksand)
         speed_modifier *= 0.75;
-    if (decrease_speed_clock.getElapsedTime().asSeconds() < 5)
-        speed_modifier *= 0.75;
-    if (increase_speed_clock.getElapsedTime().asSeconds() < 5)
-        speed_modifier *= 1.25;
-    if (nullify_speed_clock.getElapsedTime().asSeconds() < 2)
-        speed_modifier = 0;
 
+    if (slow_bird_count > 0)
+    {
+        if (slow_bird_clock.getElapsedTime().asSeconds() < 5)
+        {
+            speed_modifier *= 0.75 * speed_bord_count;
+        }
+        else
+        {
+            speed_bird_count = 0;
+        }
+    }
+
+    if (boost_bird_count > 0)
+    {
+        if (boost_bird_clock.getElapsedTime().asSeconds() < 5)
+        {
+            speed_modifier *= 1.25 * boost_bird_count;
+        }
+        else
+        {
+            boord_bird_count = 0;
+        }
+    }
+
+    if (nfbb_clock.getElapsedTime().asSeconds() < 2)
+        speed_modifier = 0;
+    
+
+    // Execute move
     distance.x *= speed * speed_modifier * distance_modifier;
     distance.y *= speed * speed_modifier * distance_modifier;
+    //distance *= speed * speed_modifier * distance_modifier;
     move(distance, objects);
 }
 
@@ -68,19 +98,21 @@ void handle_collision(Object &object, const sf::Vector2f &steps)
     }
     else if (_type == "slow_bird")
     {
-        decrease_speed_clock.restart();
+        ++slow_bird_count;
+        slow_bird_clock.restart();
         collided_object_types.insert(_type);
     }
     else if (_type == "boost_bird")
     {
-        increase_speed_clock.restart();
+        ++boost_bird_count;
+        boost_bird_clock.restart();
         collided_object_types.insert(_type);
     }
     else if (_type == "nfbb")
     {
         delete object;
         object = nullptr;
-        nullify_speed_clock.restart();
+        nfbb_clock.restart();
         collided_object_types.insert(_type);
     }
 

@@ -3,6 +3,8 @@
 
 #include "object.h"
 
+#include <vector>
+
 class Simulate : public Object
 {
     public:

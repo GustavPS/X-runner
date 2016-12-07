@@ -12,7 +12,7 @@ class Player : public Gravitable
                const std::string&,
                float,
                float);
-               
+
         // Simulation
         void simulate(float,
                       float,
@@ -20,11 +20,13 @@ class Player : public Gravitable
 
     private:
         // State
-        bool on_ground;
-        bool on_quicksand;
-        sf::Clock increase_speed_clock;
-        sf::Clock decrease_speed_clock;
-        sf::Clock nullify_speed_clock;
+        bool on_ground {};
+        bool on_quicksand {};
+        int slow_bird_count {};
+        int boost_bird_count {};
+        sf::Clock slow_bird_clock;
+        sf::Clock boost_bird_clock;
+        sf::Clock nfbb_clock;
 
         // Collision handling
         void handle_collision(const std::string &type) override;
