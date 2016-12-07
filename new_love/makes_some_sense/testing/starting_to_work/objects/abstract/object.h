@@ -12,13 +12,12 @@ class Object
         // Constructors & destructors
         Object(const sf::Vector2f&,
                const sf::Vector2f&,
-               const std::string&);
+               const std::string&,
+               const std::string& = "");
         virtual ~Object() noexcept = default;
         // ^ NOTE: Should probably be implemented in a more meaningful way
 
         // Getters
-        sf::Vector2f get_position() const;
-        sf::Vector2f get_dimensions() const;
         sf::RectangleShape get_shape() const;
 
         // Pure virtual functions
@@ -27,9 +26,16 @@ class Object
     protected:
         // Attributes
         sf::Vector2f position;
-        std::string type;
-        sf::Vector2f dimensions;
         sf::RectangleShape shape;
+
+        // Getters
+        std::string get_type() const;
+        std::string get_subtype() const;
+
+    private:
+        // Attributes
+        std::string type;
+        std::string subtype;
         
 };
 

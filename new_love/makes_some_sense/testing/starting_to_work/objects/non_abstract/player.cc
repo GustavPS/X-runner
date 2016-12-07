@@ -70,7 +70,7 @@ void Player::simulate(float distance_modifier,
     move(distance, objects);
 }
 
-void handle_collision(Object &object, const sf::Vector2f &steps)
+void Player::handle_collision(Object &object, const sf::Vector2f &steps)
 {
     const std::string _type { object->get_type() };
 
