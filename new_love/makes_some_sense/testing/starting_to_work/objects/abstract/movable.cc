@@ -38,18 +38,23 @@ void Moveable::check_collision(const sf::Vector2f &steps)
         else if (shape.getGlobalBounds().intersects(
             (*it)->get_shape().getGlobalBounds()))
         {
-            handle_collision(*it, steps)
+            handle_collision(*it, steps);
         }
     }
+    if (collided_object_types.size() == 0)
+        handle_null_collision();
+    collided_object_types.clear();
 }
 
 void set_position(const sf::Float2f &_position)
 {
     position = _position;
+    shape.setPosition(_position);
 }
 
-void set_position(float x, float, y)
+void Moveable::set_position(float x, float, y)
 {
     position.x = x;
     position.y = y;
+    shape.setPosition(x, y);
 }

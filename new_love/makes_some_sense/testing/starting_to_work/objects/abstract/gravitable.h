@@ -6,13 +6,18 @@
 class Gravitable : public Movable
 {
     public:
-        //constructors & destructors
+        // Constructors & destructors
         Gravitable(const sf::Vector2f&,
                    const sf::Vector2f&,
                    const std::string&,
+                   float,
                    float);
 
     protected:
+        // Attributes
+        float weight;
+        
+        // Gravitation
         void gravitate(float,
                        float,
                        const std::vector<Object*>&);

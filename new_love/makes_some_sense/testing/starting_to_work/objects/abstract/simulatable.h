@@ -6,11 +6,11 @@
 class Simulate : public Object
 {
     public:
-        //constructors & destructors
+        // Constructors & destructors
         Simulate(const sf::Vector2f&,
                  const sf::Vector2f&,
                  const std::string&);
-        //pure virtual functions
+        // Pure virtual functions
         virtual void simulate(float,
                               float,
                               const std::vector<Object*>&) = 0;

@@ -3,8 +3,9 @@
 Player::Player(const sf::Vector2f &position,
                const sf::Vector2f &dimensions,
                const std::string &type,
-               float speed)
-    : Gravitable { position, dimensions, type, speed }
+               float speed,
+               float weight)
+    : Gravitable { position, dimensions, type, speed, weight }
 {
 
 }
@@ -20,49 +21,90 @@ void Player::simulate(float distance_modifier,
         distance.x = -1;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         distance.x = 1;
-    // jumping goes here
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
+        && on_ground && !on_quicksand)
+        //do jump stuff here
 
-    distance.x *= speed * distance_modifier;
-    distance.y *= speed * distance_modifier;
+    float speed_modifier {1};
+    if (on_quicksand)
+        speed_modifier *= 0.75;
+    if (decrease_speed_clock.getElapsedTime().asSeconds() < 5)
+        speed_modifier *= 0.75;
+    if (increase_speed_clock.getElapsedTime().asSeconds() < 5)
+        speed_modifier *= 1.25;
+    if (nullify_speed_clock.getElapsedTime().asSeconds() < 2)
+        speed_modifier = 0;
+
+    distance.x *= speed * speed_modifier * distance_modifier;
+    distance.y *= speed * speed_modifier * distance_modifier;
     move(distance, objects);
 }
 
 void handle_collision(Object &object, const sf::Vector2f &steps)
 {
-    if (object->get_type() == "ground" && steps.y > 0)
+    const std::string _type { object->get_type() };
+
+    const std::string _subtype { object->get_subtype() };
+
+    /*Collision with types*/
+    if (_type == "ground" && steps.y > 0
+     && collided_object_types.find(_type) == collided_object_types.end())
+    {
+        on_ground = true;
+        set_position(position.x, position.y - steps.y);
+        collided_object_types.insert(_type);
+    }
+    else if (_type == "roof" && steps.y < 0
+          && collided_object_types.find(_type) == collided_object_types.end())
     {
         set_position(position.x, position.y - steps.y);
-        can_jump = true;
+        collided_object_types.insert(_type);
     }
-    else if (object->get_type() == "roof" && steps.y < 0)
-    {
-        set_position(position.x, position.y - steps.y);
-    }
-    else if (object->get_type() == "wall" && steps.x != 0)
+    else if (_type == "wall" && steps.x != 0
+          && collided_object_types.find(_type) == collided_object_types.end())
     {
         set_position(position.x - steps.x, position.y);
+        collided_object_types.insert(_type);
     }
-    else if (object->get_type() == "slow_bird")
+    else if (_type == "slow_bird")
     {
-        speed *= 0.75;
-        //decrease player speed for 5s
+        decrease_speed_clock.restart();
+        collided_object_types.insert(_type);
     }
-    else if (object->get_type() == "boost_bird")
+    else if (_type == "boost_bird")
     {
-        speed *= 1.25;
-        //increase player speed for 5s
+        increase_speed_clock.restart();
+        collided_object_types.insert(_type);
     }
-    else if (object->get_type() == "nfbb")
+    else if (_type == "nfbb")
     {
-        speed = 0;
         delete object;
         object = nullptr;
-        //stun player for 2s
+        nullify_speed_clock.restart();
+        collided_object_types.insert(_type);
     }
-    else if (object->get_type() == "quicksand" && steps.y > 0)
+
+    /*Collision with subtypes*/
+    if (_subtype == "quicksand" && steps.y > 0)
     {
-        set_position(position.x, position.y - steps.y);
-        can_jump = false;
+        on_quicksand = true;
+        collided_object_types.insert(_subtype);
     }
+
+    /*Collision has not occured with <x>*/
+    if (collided_object_types.find("ground") == collided_object_types.end())
+    {
+        on_ground = false;
+    }
+    if (collided_object_types.find("quicksand") == collided_object_types.end())
+    {
+        on_quicksand = false;
+    }
+}
+
+void Player::handle_null_collision()
+{
+    on_ground = false;
+    on_quicksand = false;
 }
 

@@ -7,24 +7,24 @@
 class Object
 {
     public:
-        //constructors & destructors
+        // Constructors & destructors
         Object(const sf::Vector2f&,
                const sf::Vector2f&,
                const std::string&);
-
         virtual ~Object() noexcept = default;
 
-        //getters
+        // Getters
         sf::Vector2f get_position() const;
         sf::Vector2f get_dimensions() const;
-
-        virtual sf::RectangleShape get_shape() const;
+        sf::RectangleShape get_shape() const;
     
     private:
-        std::string type;
+        // Attributes
         sf::Vector2f position;
+        std::string type;
         sf::Vector2f dimensions;
         sf::RectangleShape shape;
+        
 };
 
 #endif

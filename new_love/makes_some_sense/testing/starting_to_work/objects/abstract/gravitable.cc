@@ -3,8 +3,10 @@
 Gravitable::Gravitable(const sf::Vector2f &position,
                        const sf::Vector2f &dimensions,
                        const std::string &type,
-                       float speed)
+                       float speed
+                       float weight)
     : Movable { position, dimensions, type, speed }
+    , weight { weight }
 {}
 
 Gravitable::gravitate(float distance_modifier,
