@@ -11,7 +11,7 @@ class Simulate : public Object
         // Constructors & destructors
         Simulate(const sf::Vector2f&,
                  const sf::Vector2f&,
-                 const std::string&);
+                 const std::vector<std::string>&);
         // Pure virtual functions
         virtual void simulate(float,
                               float,

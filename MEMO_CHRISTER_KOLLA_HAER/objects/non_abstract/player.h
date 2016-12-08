@@ -9,7 +9,7 @@ class Player : public Gravitable
         // Constructors & destructors
         Player(const sf::Vector2f&,
                const sf::Vector2f&,
-               const std::string&,
+               const std::vector<std::string> &types,
                float,
                float);
 
@@ -30,6 +30,7 @@ class Player : public Gravitable
 
         // Collision handling
         void handle_collision(const std::string &type) override;
+        void handle_end_collision() override;
         void handle_null_collision() override;
 };
 

@@ -2,9 +2,9 @@
 
 Player::Player(const sf::Vector2f& position,
                const sf::Vector2f& dimensions,
-               const std::string &type,
+               const std::vector<std::string> &types,
                float speed)
-    : Simulatable { position, dimensions, type }
+    : Simulatable { position, dimensions, types }
     , speed { speed }
 {}
 
@@ -39,6 +39,7 @@ void Moveable::check_collision(const sf::Vector2f &steps)
             (*it)->shape.getGlobalBounds()))
         {
             handle_collision(*it, steps);
+            handle_end_collision();
         }
     }
     if (collided_object_types.size() == 0)

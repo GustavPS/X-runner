@@ -2,12 +2,10 @@
 
 Object::Object(const sf::Vector2f &position,
                const sf::Vector2f &dimensions,
-               const std::string &type,
-               const std::string &subtype)
+               const std::vector<std::string> &types)
     : position { position }
     , shape { dimensions }
-    , type { type }
-    , subtype { subtype }
+    , types {types}
 {
     shape.setPosition(position);
 }
@@ -15,8 +13,5 @@ Object::Object(const sf::Vector2f &position,
 sf::RectangleShape get_shape() const
     { return shape; }
 
-std::string get_type() const
-    { return type; }
-
-std::string get_subtype() const
-    { return subtype; }
+std::vector<std::string> get_types() const
+    { return types; }

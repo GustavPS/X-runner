@@ -11,7 +11,7 @@ class Movable : public Simulatable
         // Constructors & destructors
         Movable(const sf::Vector2f&,
                 const sf::Vector2f&,
-                const std::string&,
+                const std::vector<std::string>&,
                 float);
 
     protected:
@@ -35,6 +35,7 @@ class Movable : public Simulatable
         // Pure virtual functions
         virtual void handle_collision(Object&,
                                       const sf::Vector2f&) = 0;
+        virtual void handle_end_collision() = 0;
         virtual void handle_null_collision() = 0;
         // ^ NOTE: kanske kan default implementeras som { /* do nothing */ } ist för pure virtual
 };

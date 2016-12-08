@@ -12,8 +12,7 @@ class Object
         // Constructors & destructors
         Object(const sf::Vector2f&,
                const sf::Vector2f&,
-               const std::string&,
-               const std::string& = ""); // NOTE: Type+Subtype kanske ska vara ett pair ist
+               const std::vector<std::string>&); // NOTE: Type+Subtype kanske ska vara ett pair ist
         virtual ~Object() noexcept = default;
         // ^ NOTE: Should probably be implemented in a more meaningful way
 
@@ -29,13 +28,11 @@ class Object
         sf::RectangleShape shape;
 
         // Getters
-        std::string get_type() const;
-        std::string get_subtype() const;
+        std::vector<std::string> get_types() const;
 
     private:
         // Attributes
-        std::string type;
-        std::string subtype;
+        std::vector<std::string> types;
         
 };
 

@@ -9,7 +9,7 @@ class Gravitable : public Movable
         // Constructors & destructors
         Gravitable(const sf::Vector2f&,
                    const sf::Vector2f&,
-                   const std::string&,
+                   const std::vector<std::string> &types,
                    float,
                    float);
 

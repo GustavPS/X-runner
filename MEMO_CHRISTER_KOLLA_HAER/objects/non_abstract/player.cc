@@ -2,10 +2,10 @@
 
 Player::Player(const sf::Vector2f &position,
                const sf::Vector2f &dimensions,
-               const std::string &type,
+               const std::vector<std::string> &types,
                float speed,
                float weight)
-    : Gravitable { position, dimensions, type, speed, weight }
+    : Gravitable { position, dimensions, types, speed, weight }
 {
     // do some stuff, like texture of shape.
 }
@@ -39,7 +39,7 @@ void Player::simulate(float distance_modifier,
     {
         if (slow_bird_clock.getElapsedTime().asSeconds() < 5)
         {
-            speed_modifier *= 0.75 * speed_bord_count;
+            speed_modifier *= 0.75 * speed_bird_count;
         }
         else
         {
@@ -72,9 +72,13 @@ void Player::simulate(float distance_modifier,
 
 void Player::handle_collision(Object &object, const sf::Vector2f &steps)
 {
-    const std::string _type { object->get_type() };
+    auto _types { object->get_types() };
 
-    const std::string _subtype { object->get_subtype() };
+    std::string _type { _types.at(0) };
+
+    std::string _subtype;
+    if (_types.size() > 1)
+        _subtype = _types.at(1); 
 
     /*Collision with types*/
     if (_type == "ground" && steps.y > 0
@@ -122,7 +126,10 @@ void Player::handle_collision(Object &object, const sf::Vector2f &steps)
         on_quicksand = true;
         collided_object_types.insert(_subtype);
     }
+}
 
+void Player::handle_end_collision()
+{
     /*Collision has not occured with <x>*/
     if (collided_object_types.find("ground") == collided_object_types.end())
     {
@@ -139,4 +146,3 @@ void Player::handle_null_collision()
     on_ground = false;
     on_quicksand = false;
 }
-
