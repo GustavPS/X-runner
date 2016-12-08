@@ -1,6 +1,8 @@
 #include "movable.h"
 
-Player::Player(const sf::Vector2f& position,
+#include <cmath>
+
+Movable::Movable(const sf::Vector2f& position,
                const sf::Vector2f& dimensions,
                const std::vector<std::string> &types,
                float speed)
@@ -8,10 +10,10 @@ Player::Player(const sf::Vector2f& position,
     , speed { speed }
 {}
 
-void Movable::move(const sf::Vector2f &distance,
-                   const std::vector<Object*> &objects)
+void Movable::move(sf::Vector2f &distance,
+                   std::vector<Object*> &objects)
 {
-    float longest& { distance.x > distance.y ? distance.x : distance.y };
+    float &longest { std::abs(distance.x) > std::abs(distance.y) ? distance.x : distance.y };
 
     sf::Vector2f steps { distance.x / longest, distance.y / longest };
 
@@ -23,11 +25,13 @@ void Movable::move(const sf::Vector2f &distance,
         check_collision(steps, objects);
     }
     set_position(position.x + distance.x, position.y + distance.y);
-    check_collision(steps, objects);
+    //check_collision(distance, objects);
+    check_collision(distance, objects);
 }
 
-void Moveable::check_collision(const sf::Vector2f &steps)
-                               const std::vector<Object*> &objects)
+#include <iostream>
+void Movable::check_collision(const sf::Vector2f &steps,
+                              std::vector<Object*> &objects)
 {
     for (auto it { objects.begin() }; it != objects.end(); ++it)
     {
@@ -36,7 +40,7 @@ void Moveable::check_collision(const sf::Vector2f &steps)
             objects.erase(it);
         }
         else if (shape.getGlobalBounds().intersects(
-            (*it)->shape.getGlobalBounds()))
+            (*it)->get_shape().getGlobalBounds()))
         {
             handle_collision(*it, steps);
             handle_end_collision();
@@ -47,13 +51,13 @@ void Moveable::check_collision(const sf::Vector2f &steps)
     collided_object_types.clear();
 }
 
-void set_position(const sf::Float2f &_position)
+void Movable::set_position(const sf::Vector2f &_position)
 {
     position = _position;
     shape.setPosition(_position);
 }
 
-void Moveable::set_position(float x, float, y)
+void Movable::set_position(float x, float y)
 {
     position.x = x;
     position.y = y;

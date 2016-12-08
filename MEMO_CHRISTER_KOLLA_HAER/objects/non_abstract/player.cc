@@ -7,15 +7,35 @@ Player::Player(const sf::Vector2f &position,
                float weight)
     : Gravitable { position, dimensions, types, speed, weight }
 {
+    sf::Texture txt;
+    txt.loadFromFile("player.png");
+    shape.setTexture( new sf::Texture { txt } );
     // do some stuff, like texture of shape.
+}
+
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+void Player::accelerate_jump()
+{
+    if (jump_steps != -24)
+    {
+        std::cerr << std::fixed << std::setprecision(20) << jump_steps << " " << (jump_steps != -2.4 ? "!= -2.4" : "== 2.4") << "\n";
+        //std::cerr << jump_steps << " ";
+        jump_steps -= 3;
+    }
+    else
+    {
+        should_accelerate_jump = false;
+    }
 }
 
 void Player::simulate(float distance_modifier,
               float gravity_modifier,
-              const std::vector<Object*> &objects)
+              std::vector<Object*> &objects)
 {
     // Gravitate me!
-    gravitate(distance_modifier, gravity_modifier, objects);
+    Gravitable::simulate(distance_modifier, gravity_modifier, objects);
 
     // Where do I move?
     sf::Vector2f distance;
@@ -23,10 +43,20 @@ void Player::simulate(float distance_modifier,
         distance.x = -1;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         distance.x = 1;
+    
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
-        && on_ground && !on_quicksand)
+     && on_ground && !on_quicksand)
     {
-        //do jump stuff here
+        should_accelerate_jump = true;
+    }
+    if(should_accelerate_jump)
+    {
+        accelerate_jump();
+    }
+    else if (jump_steps != 0)
+    {
+       // std::cerr << jump_steps;
+        jump_steps += 3;
     }
 
     // Speed modifying debuffs
@@ -39,11 +69,11 @@ void Player::simulate(float distance_modifier,
     {
         if (slow_bird_clock.getElapsedTime().asSeconds() < 5)
         {
-            speed_modifier *= 0.75 * speed_bird_count;
+            speed_modifier *= 0.75 * slow_bird_count;
         }
         else
         {
-            speed_bird_count = 0;
+            slow_bird_count = 0;
         }
     }
 
@@ -55,7 +85,7 @@ void Player::simulate(float distance_modifier,
         }
         else
         {
-            boord_bird_count = 0;
+            boost_bird_count = 0;
         }
     }
 
@@ -65,12 +95,11 @@ void Player::simulate(float distance_modifier,
 
     // Execute move
     distance.x *= speed * speed_modifier * distance_modifier;
-    distance.y *= speed * speed_modifier * distance_modifier;
-    //distance *= speed * speed_modifier * distance_modifier;
+    distance.y = (jump_steps / 10) * speed * speed_modifier * distance_modifier;
     move(distance, objects);
 }
 
-void Player::handle_collision(Object &object, const sf::Vector2f &steps)
+void Player::handle_collision(Object *&object, const sf::Vector2f &steps)
 {
     auto _types { object->get_types() };
 
@@ -84,6 +113,7 @@ void Player::handle_collision(Object &object, const sf::Vector2f &steps)
     if (_type == "ground" && steps.y > 0
      && collided_object_types.find(_type) == collided_object_types.end())
     {
+        count = 1;
         on_ground = true;
         set_position(position.x, position.y - steps.y);
         collided_object_types.insert(_type);

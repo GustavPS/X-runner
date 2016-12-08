@@ -10,8 +10,11 @@ Object::Object(const sf::Vector2f &position,
     shape.setPosition(position);
 }
 
-sf::RectangleShape get_shape() const
+sf::Vector2f Object::get_position() const
+    { return position; }
+
+sf::RectangleShape Object::get_shape() const
     { return shape; }
 
-std::vector<std::string> get_types() const
+std::vector<std::string> Object::get_types() const
     { return types; }

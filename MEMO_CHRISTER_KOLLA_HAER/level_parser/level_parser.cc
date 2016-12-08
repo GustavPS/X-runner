@@ -10,6 +10,36 @@ Level_Parser::Level_Parser(const std::string &path)
     }
 }
 
+std::vector<Object*> Level_Parser::get_objects() const
+{
+    std::vector<Object*> objects { get_player() };
+
+    auto block { get_blocks() };
+
+    objects.insert(objects.end(), block.begin(), block.end());
+    
+    return objects;
+}
+
+Player* Level_Parser::get_player() const
+{
+    auto xml_player { get_objects_as_xml("player").at(0) };
+
+    sf::Vector2f position { xml_player->attribute("x").as_float(),
+                            xml_player->attribute("y").as_float() };
+
+    sf::Vector2f dimensions { xml_player->attribute("width").as_float(),
+                              xml_player->attribute("height").as_float() };
+
+    // int gid { xml_player->attribute("gid").as_int() };
+
+    std::vector<std::string> types { xml_player->attribute("name").as_string() };
+
+    delete xml_player; //note possible memleak if > 1 players in level_parser
+
+    return new Player { position, dimensions, types, 250, 10 };
+}
+
 std::vector<Object*> Level_Parser::get_blocks() const
 {
     auto xml_blocks { get_objects_as_xml("blocks") };
@@ -24,33 +54,14 @@ std::vector<Object*> Level_Parser::get_blocks() const
         sf::Vector2f dimensions { xml_block->attribute("width").as_float(),
                                   xml_block->attribute("height").as_float() };
         
-        std::string name { xml_block->attribute("name").as_string() };
+        std::vector<std::string> types { xml_block->attribute("name").as_string() };
 
         delete xml_block;
 
-        blocks.push_back( new Block { position, dimensions, name } );
+        blocks.push_back( new Object { position, dimensions, types } );
     }
 
     return blocks;
-}
-
-Player Level_Parser::get_player() const
-{
-    auto xml_player { get_objects_as_xml("player").at(0) };
-
-    sf::Vector2f position { xml_player->attribute("x").as_float(),
-                            xml_player->attribute("y").as_float() };
-
-    sf::Vector2f dimensions { xml_player->attribute("width").as_float(),
-                              xml_player->attribute("height").as_float() };
-
-    int gid { xml_player->attribute("gid").as_int() };
-
-    std::string name { xml_player->attribute("name").as_string() };
-
-    delete xml_player; //note possible memleak if > 1 players in level
-
-    return { position, dimensions, gid, name };
 }
 
 std::vector<pugi::xml_node*> Level_Parser::get_objects_as_xml(

@@ -16,11 +16,11 @@ class Gravitable : public Movable
     protected:
         // Attributes
         float weight;
-        
+        int count {};
         // Gravitation
-        void gravitate(float,
+        void simulate(float,
                        float,
-                       const std::vector<Object*>&);
+                       std::vector<Object*>&) override;
 };
 
 #endif

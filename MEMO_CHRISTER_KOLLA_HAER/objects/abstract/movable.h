@@ -19,8 +19,8 @@ class Movable : public Simulatable
         float speed;
 
         // Moving
-        void Movable::move(const sf::Vector2f&,
-                           const std::vector<Object*>&);
+        void move(sf::Vector2f&,
+                  std::vector<Object*>&);
         void set_position(const sf::Vector2f&);
         void set_position(float, float);
 
@@ -29,11 +29,11 @@ class Movable : public Simulatable
 
     private:
         // Helper functions
-        void check_collision(const sf::Vector2f&)
-                             const std::vector<Object*>&);
+        void check_collision(const sf::Vector2f&,
+                             std::vector<Object*>&);
 
         // Pure virtual functions
-        virtual void handle_collision(Object&,
+        virtual void handle_collision(Object*&,
                                       const sf::Vector2f&) = 0;
         virtual void handle_end_collision() = 0;
         virtual void handle_null_collision() = 0;

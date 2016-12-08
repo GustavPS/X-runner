@@ -1,12 +1,16 @@
 #include <SFML/Graphics.hpp>
 
-#include "engine.h"
+#include "tmp_engine.h"
 
 int main()
 {    
+    /*sf::RenderWindow window(
+        sf::VideoMode(1920, 1080), "X Runner", sf::Style::Fullscreen);*/
+
     sf::RenderWindow window(
-        sf::VideoMode(1920, 1080), "X Runner", sf::Style::Fullscreen);
-    
+        sf::VideoMode(1920, 1080), "X Runner");
+
+    window.setVerticalSyncEnabled(true);
 
     Engine engine;
 

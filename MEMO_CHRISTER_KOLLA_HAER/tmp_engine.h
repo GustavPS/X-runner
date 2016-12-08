@@ -12,7 +12,7 @@ class Engine
         void render(sf::RenderWindow&);
 
     private:
-        State* menu_state;
+        //State* menu_state;
         State* game_state;
         State* active_state;
         sf::View view;

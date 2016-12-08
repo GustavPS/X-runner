@@ -16,10 +16,12 @@ class Player : public Gravitable
         // Simulation
         void simulate(float,
                       float,
-                      const std::vector<Object*>&) override;
+                      std::vector<Object*>&) override;
 
     private:
         // State
+        int jump_steps {};
+        bool should_accelerate_jump {};
         bool on_ground {};
         bool on_quicksand {};
         int slow_bird_count {};
@@ -29,9 +31,12 @@ class Player : public Gravitable
         sf::Clock nfbb_clock;
 
         // Collision handling
-        void handle_collision(const std::string &type) override;
+        void handle_collision(Object*&, const sf::Vector2f&) override;
         void handle_end_collision() override;
         void handle_null_collision() override;
+
+        // Helpers
+        void accelerate_jump();
 };
 
 #endif

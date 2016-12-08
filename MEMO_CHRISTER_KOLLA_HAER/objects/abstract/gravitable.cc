@@ -3,16 +3,18 @@
 Gravitable::Gravitable(const sf::Vector2f &position,
                        const sf::Vector2f &dimensions,
                        const std::vector<std::string> &types,
-                       float speed
+                       float speed,
                        float weight)
     : Movable { position, dimensions, types, speed }
     , weight { weight }
 {}
-
-Gravitable::gravitate(float distance_modifier,
+#include <iostream>
+void Gravitable::simulate(float distance_modifier,
                       float gravity_modifier,
-                      const std::vector<Object*>& objects)
+                      std::vector<Object*>& objects)
 {
-    //do gravvy stuff
-    //call move()
+    sf::Vector2f distance;
+    count = 1;
+    distance.y = gravity_modifier * count * distance_modifier;
+    move(distance, objects);
 }

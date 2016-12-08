@@ -5,15 +5,18 @@
 #include <string>
 #include <vector>
 
-#include "../objects/block.h"
-#include "../objects/player.h"
+#include "../objects/abstract/object.h"
+#include "../objects/non_abstract/player.h"
+//#include "../objects/block.h"
+//#include "../objects/player.h"
 
 class Level_Parser
 {
     public:
         Level_Parser(const std::string&);
+        std::vector<Object*> get_objects() const;
+        Player* get_player() const;
         std::vector<Object*> get_blocks() const;
-        Player get_player() const;
 
     private:
         pugi::xml_document xml_doc;

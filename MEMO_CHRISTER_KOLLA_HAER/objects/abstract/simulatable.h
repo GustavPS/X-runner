@@ -1,21 +1,19 @@
-#ifndef SIMULATEABLE_H
+#ifndef SIMULATABLE_H
 #define SIMULATABLE_H
 
 #include "object.h"
 
-#include <vector>
-
-class Simulate : public Object
+class Simulatable : public Object
 {
     public:
         // Constructors & destructors
-        Simulate(const sf::Vector2f&,
+        Simulatable(const sf::Vector2f&,
                  const sf::Vector2f&,
                  const std::vector<std::string>&);
         // Pure virtual functions
         virtual void simulate(float,
                               float,
-                              const std::vector<Object*>&) = 0;
+                              std::vector<Object*>&) = 0;
 };
 
 #endif
