@@ -1,0 +1,182 @@
+\documentclass{TDP003mall}
+
+
+\usepackage{listings}
+\newcommand{\version}{Version 1.1}
+\author{Daniel Persson, \url{daniel.o.persson@liu.se}\\
+  Emanuel Kinberger, \url{emanuel.kinberger@liu.se}\\
+  Klas Arvidsson, \url{klas.arvidsson@liu.se}}
+\title{Dokumentmall}
+\date{2016-09-05}
+\rhead{Daniel Persson\\
+Emanuel Kinberger\\
+Klas Arvidsson}
+
+
+
+\begin{document}
+\projectpage
+\section{Revisionshistorik}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|l|}
+\hline
+Ver. & Revisionsbeskrivning & Datum \\\hline
+1.1 & Modifierad för att stödja xelatex och unicode & 150603 \\\hline
+1.0 & Skapad för studenter att använda som mall till
+kommande dokumentinlämningar & 140908 \\\hline
+\end{tabularx}
+\end{table}
+
+
+\section{Möte}
+Under mötet så disskuterade vi varandras kod, vad som var bra och vad som kunde förbättras. \\
+Vi förberede mötet genom att ladda upp projekten på gitlab och se till att alla beställargruppen hade tillgång till koden. För att underlätta mötet så såg vi till att vi och vår beställargrupp hade läst varandras kod så vi inte skulle behöva förklara koden på mötet. \\
+Vi hade mötet den 8:de December 2016 klockan 13:00
+
+\section{Granskat projekt}
+Det spelet som vi granskade och gav feedback på heter ``Arcaball-X'', det går ut på att förstöra alla brickor genom att styra en liten platta längst ner på spelet. Man ska studsa en boll på platan så den åker upp på brickorna, om bollen nuddar en bricka så går den sönder.
+
+\subsection{Klassuppdelning}
+``Arcaball-X'' är uppdelat i flera olika filer, de som fanns när vi granskade projektet heter:
+\begin{itemize}
+\item GameEngine
+\item GameLoop
+\item GameMenu
+\item GameState
+\item Graphic
+\item ResourceManager
+\end{itemize}
+
+\subsubsection{Alla klasser}
+De borde överväga att änvända ``container.at(x)'' istället för ``[]-operatorn'', fördelen med ``container.at(x)'' är att den throwar ett error om indexet inte finns, vilket ``[]-operatorn'' inte gör. Detta kan framförallt vara bra under utveckling då man inte missar några undefined behaviors, men om de kontrollerar sizen på vectorn innan så är det ingen fara.
+\\\\
+Konstruktorerna borde definieras i ``.cc'' filen och enbart deklareras i ``.h'' filen, just nu deklareras och definieras klasserna i ``.h'' filen.
+
+\subsubsection{GameEngine}
+Av vår förståelse så innehåller klassen GameEngine funktioner och variabler som hanterar hela spelet. Det är denna klassen som används från main filen, funktionen ``startGame()'' startas och den styr sedan hela spelet. \\
+Variablerna ``brickHeight'' och ``brickWidth'' som finns i denna klassen tycker vi inte borde finnas här utan borde finnas i en brick klass istället då detta hör till brickorna. En stor fördel med detta är att man kan ha brickor med olika height och width vilket kan vara interessant på en bana. \\
+Dom har även instanser av andra klasser sparade som medlemsvariabler i GameEngine, detta tycker vi är väldigt snyggt gjort då de kan komma åt exakt allt dom behöver från denna klassen.
+\\\\
+I funktionen ``GameEngine::startGame()'' så hittade vi två saker som kan förbättras, på rad 34 så finns det en while-loop utan några måsvingar, det blir väldigt mycket tydligare om man har while och if-satser med måsvingar, speciellt om det ligger en helt if-sats i while-loopen vilket det i detta fallet gör. \\
+
+Allt detta ligger även i en while-loop som har ``while(!done!)'' som argument, det blir mycket tydligare om man istället har ``while(window.isOpen()'' som argument då man enklare fattar att denna loopen kommer köras sålänge spelet är på.
+\\\\
+I destruktorn så deletar dom även bara de första objektet av varje typ då dom inte använder en for-loop. De borde loopa över varje typ och deleta den typen för att undvika minnesläckor.
+
+\subsubsection{GameLoop}
+Klassen GameLoop tycker vi är snygg designad, det enda vi kunde hitta var på rad 87: \\
+\begin{frame}[Kod]
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                directivestyle={\color{black}}
+                emph={int,char,double,float,unsigned},
+                emphstyle={\color{blue}}
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+  m_gameObjects[Balls][0]->upDate();
+  m_gameObjects[Pads][0]->move();
+  //draw all current objects
+  m_gameObjects[Balls][0]->move();
+  m_graphic->drawWindow(m_gameObjects[Balls][0]->draw());
+  m_graphic->drawWindow(m_gameObjects[Walls][0]->draw());
+  m_graphic->drawWindow(m_gameObjects[Walls][1]->draw());
+  m_graphic->drawWindow(m_gameObjects[Walls][2]->draw());
+  m_graphic->drawWindow(m_gameObjects[Pads][0]->draw());
+\end{lstlisting}
+\end{frame}
+
+Här målas inte alla gameObjects ut utan bara dom första, för att lösa detta måste de implementera en for-loop som loopar igenom alla gameObjects och målar ut dom på i den loopen istället.
+
+\subsubsection{GameMenu}
+Klassen GameMenu ärvs av klassen GameState, vilket är snyggt då de kan återanvände kod från den klassen. \\
+Det enda vi hittade var hårdkodade värden för namn och poäng på rad 146: \\
+\begin{frame}[Kod]
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                directivestyle={\color{black}}
+                emph={int,char,double,float,unsigned},
+                emphstyle={\color{blue}}
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+  std::string name{"Christer"};
+  std::string point{"12334"};
+\end{lstlisting}
+\end{frame}
+
+\subsubsection{GameState}
+GameState är bas-klassen för GameMenu, det enda den innehåller är en virtual funktion som returnerar en enum CurrentState. \\
+Vi tycker inte att konstruktorna ska vara protected utan den borde vara public då det är standard i C++. Vi tycker även det är tydligare att ha \\
+\begin{frame}[Kod]
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                directivestyle={\color{black}}
+                emph={int,char,double,float,unsigned},
+                emphstyle={\color{blue}}
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+  GameState() = default;
+\end{lstlisting}
+\end{frame}
+istället för \\
+\begin{frame}[Kod]
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                directivestyle={\color{black}}
+                emph={int,char,double,float,unsigned},
+                emphstyle={\color{blue}}
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+  GameState() {}
+\end{lstlisting}
+\end{frame}
+
+\subsubsection{Graphic}
+Av vår förståelse så hanterar Graphic klassen spelfönstret. Vi har inga kommentarer om denna klassen då vi tygger att designen av denna klassen är bra.
+
+\subsubsection{ResourceManager}
+Precis som i GameState så tycker vi att konstruktorn och destruktorn ska vara default om man bara har tomma måsvingar efter dom då det blir tydligare vad de gör. \\
+Vi tycker namnet är lite otydligt då när vi bara läste klassnamnet så lät det som att klassen hanterar pekare och andra resurser, ett bättre namn skulle kunna vara ``loader'' då det enda den gör är att ladda fonts och bilder.
+
+\subsection{Använding av const}
+Vi hittade flera ställen där de kan använda const på funktioner då dom inte ändrar några värden. \\
+
+Funktionen ``GameMenu::seeHighScore()'' borde vara const då den inte ändrar några värden ( Om funktionen är tänkt att ändra några värden så är det ett dåligt namn på funktionen ). Detta är även sant för följande: 
+\begin{itemize}
+\item Funktionen: ``Graphic::isWindowOpen()''
+\item Funktionen: ``Graphic::getEvent()''
+\item Funktionen: ``ResourceManager::getTexture''
+\item Funktionen: ``ResourceManger::getFont''
+\end{itemize}
+Följande parametrar borde vara const-referenser:
+\begin{itemize}
+\item Funktionen: ``Graphic::setUpWindow()'', parametern ``std::string name'' borde vara en const-referens.
+\item Funktionen: ``GameLoop::GameLoop()'', parametern ``ent'' är en referens men borde vara en const-referens.
+\end{itemize}
+
+\subsection{Namngivning}
+Följande funktionsnamn och/eller variabelnamn tycker vi kan ändras för att bli tydligare:
+\begin{itemize}
+\item Funktionen ``Graphic::setUpWindow()'' borde heta ``Graphic::setupWindow()''. Det finns t.ex ``setupText()'' och ``setupMarkerVectors()'' funktioner som följer den senare namnkonventionen.
+\item Funktionen: ``GameEngine::setUpGraphic()'' borde heta ``GameEngine:setupGraphic()''.
+\item Funktionen: ``GameMenu::seeHighScore'' borde heta ``GameMenu::seeHighscore()'' eftersom Highscore är ett ord.
+\end{itemize}
+
+\subsection{Minneshantering}
+Som vi skrev innan så finns det minnesläckor i koden just nu. \\
+I destruktorn för klassen ``GameEngine'' så tas inte alla ``gameObjects'' bort, bara den första av varje typ vilket leder till minnesläckor.
+
+\subsection{Vårt projekt}
+
+\end{document}
