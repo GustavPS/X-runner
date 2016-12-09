@@ -7,6 +7,7 @@ Engine::Engine()
     , view { sf::FloatRect(0, 0, 1920, 1080) }
 {
     dynamic_cast<Game_State*>(game_state)->load_level("new.tmx");
+    active_state->set_zoom(view);
 }
 
 void Engine::simulate()
@@ -31,9 +32,9 @@ void Engine::render(sf::RenderWindow& window)
 {
     window.clear();
     
-    //active_state->set_view(view);
+    active_state->set_view(view);
 
-    //window.setView(view);
+    window.setView(view);
 
    // window.draw(active_state->get_background());
 

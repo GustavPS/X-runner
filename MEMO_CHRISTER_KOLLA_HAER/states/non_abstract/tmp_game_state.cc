@@ -19,7 +19,7 @@ void Game_State::load_level(const std::string &level)
 
     objects = level_parser.get_objects();
 
-    for (const auto object : objects)
+    for (auto object : objects)
     {
         if (object->get_shape().getTexture() != nullptr)
             texturated_objects.push_back(object);
@@ -53,13 +53,14 @@ int Game_State::simulate()
     return 0;
 }
 
+void Game_State::set_zoom(sf::View &view)
+{
+    view.zoom(0.5);
+}
+
 void Game_State::set_view(sf::View &view)
 {
-    sf::Vector2f player_position { player->get_position() };
-    sf::Vector2f player_dimensions { player->get_shape().getSize() };
-    view.zoom(0.5);
-    view.setCenter(player_position.x + player_dimensions.x,
-                   player_position.y + player_dimensions.y);
+    view.setCenter(player->get_position() + player->get_shape().getSize());
 }
 
 void Game_State::reset()

@@ -19,6 +19,7 @@ class State
 
         // Pure virtual functions
         virtual int simulate() = 0;
+        virtual void set_zoom(sf::View&) = 0;
         virtual void set_view(sf::View&) = 0;
     
     protected:

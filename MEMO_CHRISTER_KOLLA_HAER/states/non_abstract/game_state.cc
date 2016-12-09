@@ -51,13 +51,14 @@ int Game_State::simulate()
     }
 }
 
+void Game_State::set_zoom(sf::View &view)
+{
+    view.zoom(0.5);
+}
+
 void Game_State::set_view(sf::View &view)
 {
-    sf::Vector2f player_position { player->get_position() };
-    sf::Vector2f player_dimensions { player->get_shape().getSize() };
-    view.zoom(0.5);
-    view.setCenter(player_position.x + player_dimensions.x,
-                   player_position.y + player_dimensions.y);
+    view.setCenter(player->get_position() + player->get_shape().getSize());
 }
 
 void Game_State::reset()

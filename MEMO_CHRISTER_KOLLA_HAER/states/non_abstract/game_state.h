@@ -24,6 +24,7 @@ class Game_State : public State
         sf::Clock clock;
 
         //View
+        void set_zoom(sf::View&) override;
         void set_view(sf::View&) override;
 
     private:
