@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-Movable::Movable(const sf::Vector2f& position,
+Movable_Object::Movable_Object(const sf::Vector2f& position,
                const sf::Vector2f& dimensions,
                const std::vector<std::string> &types,
                float speed)
@@ -10,56 +10,101 @@ Movable::Movable(const sf::Vector2f& position,
     , speed { speed }
 {}
 
-void Movable::move(sf::Vector2f &distance,
-                   std::vector<Object*> &objects)
+void Movable_Object::simulate(std::vector<Object*> &objects,
+                              float distance_modifier,
+                              sf::Vector2f &distance)
 {
-    float &longest { std::abs(distance.x) > std::abs(distance.y) ? distance.x : distance.y };
+    distance *= distance_modifier;
+
+    float &longest { std::abs(distance.x) > std::abs(distance.y)
+                     ? distance.x
+                     : distance.y };
 
     sf::Vector2f steps { distance.x / longest, distance.y / longest };
+    sf::Vector2f partial_steps;
 
-    while (longest > 1)
+    for (int i {}; longest > 1; ++i)
     {
-        set_position(position.x + steps.x, position.y + steps.y);
-        distance.x -= steps.x;
-        distance.y -= steps.y;
-        check_collision(steps, objects);
+        if (i % 2 == 0)
+        {
+            partial_steps = { steps.x, 0 };
+            set_position(position.x + steps.x, position.y);
+        }
+        else
+        {
+            partial_steps = { 0, steps.y };
+            set_position(position.x, position.y + steps.y);
+        }
+        distance.x -= partial_steps.x;
+        distance.y -= partial_steps.y;
+        check_collision(objects, partial_steps);
     }
-    set_position(position.x + distance.x, position.y + distance.y);
-    //check_collision(distance, objects);
-    check_collision(distance, objects);
+
+    partial_steps = { distance.x, 0 };
+    set_position(position.x + distance.x, position.y);
+    check_collision(objects, partial_steps);
+
+    partial_steps = { 0, distance.y };
+    set_position(position.x, position.y + distance.y);
+    check_collision(objects, partial_steps);
 }
 
 #include <iostream>
-void Movable::check_collision(const sf::Vector2f &steps,
-                              std::vector<Object*> &objects)
+void Movable_Object::check_collision(std::vector<Object*> &objects,
+                                     const sf::Vector2f &steps)
 {
-    for (auto it { objects.begin() }; it != objects.end(); ++it)
+    for (auto object : objects)
     {
-        if (*it == nullptr)
+        if (object->m_delete == false
+         && shape.getGlobalBounds().intersects(
+            object->get_shape().getGlobalBounds()))
         {
-            objects.erase(it);
-        }
-        else if (shape.getGlobalBounds().intersects(
-            (*it)->get_shape().getGlobalBounds()))
-        {
-            handle_collision(*it, steps);
-            handle_end_collision();
+            if (handle_collision(object, steps))
+                for (std::string &type : object->get_types())
+                    collided_object_types.insert(type);
         }
     }
-    if (collided_object_types.size() == 0)
-        handle_null_collision();
+    handle_end_collision();
     collided_object_types.clear();
 }
 
-void Movable::set_position(const sf::Vector2f &_position)
+void Movable_Object::set_position(const sf::Vector2f &_position)
 {
     position = _position;
     shape.setPosition(_position);
 }
 
-void Movable::set_position(float x, float y)
+void Movable_Object::set_position(float x, float y)
 {
     position.x = x;
     position.y = y;
     shape.setPosition(x, y);
+}
+
+bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
+{
+    bool collision_occured {};
+    std::string _type { object->get_types().at(0) };
+
+    /*Collision with types*/
+    if (_type == "ground" && steps.y > 0
+     && collided_object_types.find(_type) == collided_object_types.end())
+    {
+        set_position(position.x, position.y - steps.y);
+        collision_occured = true;
+    }
+    else if (_type == "roof" && steps.y < 0
+          && collided_object_types.find(_type) == collided_object_types.end())
+    {
+        set_position(position.x, position.y - steps.y);
+        collision_occured = true;
+    }
+    else if (_type == "wall" && steps.x != 0
+          && collided_object_types.find(_type) == collided_object_types.end())
+    {
+        set_position(position.x - steps.x, position.y);
+        collision_occured = true;
+    }
+
+    return collision_occured;
 }

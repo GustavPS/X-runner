@@ -5,7 +5,7 @@ Player::Player(const sf::Vector2f &position,
                const std::vector<std::string> &types,
                float speed,
                float weight)
-    : Gravitable { position, dimensions, types, speed, weight }
+    : Gravitating_Object { position, dimensions, types, speed, weight }
 {
     sf::Texture txt;
     txt.loadFromFile("player.png");
@@ -13,51 +13,22 @@ Player::Player(const sf::Vector2f &position,
     // do some stuff, like texture of shape.
 }
 
-#include <iostream>
-#include <iomanip>
-#include <math.h>
-void Player::accelerate_jump()
+void Player::simulate(std::vector<Object*> &objects,
+                      float distance_modifier,
+                      float gravity_constant)
 {
-    if (jump_steps != -24)
-    {
-        std::cerr << std::fixed << std::setprecision(20) << jump_steps << " " << (jump_steps != -2.4 ? "!= -2.4" : "== 2.4") << "\n";
-        //std::cerr << jump_steps << " ";
-        jump_steps -= 3;
-    }
-    else
-    {
-        should_accelerate_jump = false;
-    }
-}
-
-void Player::simulate(float distance_modifier,
-              float gravity_modifier,
-              std::vector<Object*> &objects)
-{
-    // Gravitate me!
-    Gravitable::simulate(distance_modifier, gravity_modifier, objects);
-
-    // Where do I move?
     sf::Vector2f distance;
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         distance.x = -1;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         distance.x = 1;
-    
+   
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
      && on_ground && !on_quicksand)
-    {
-        should_accelerate_jump = true;
-    }
-    if(should_accelerate_jump)
-    {
-        accelerate_jump();
-    }
-    else if (jump_steps != 0)
-    {
-       // std::cerr << jump_steps;
-        jump_steps += 3;
-    }
+        jumping = true;
+    if (jumping)
+        distance.y = -1.5;
 
     // Speed modifying debuffs
     float speed_modifier {1};
@@ -89,90 +60,102 @@ void Player::simulate(float distance_modifier,
         }
     }
 
-    if (nfbb_clock.getElapsedTime().asSeconds() < 2)
-        speed_modifier = 0;
-    
+    if (nfbb_count  > 0)
+    {
+        if (nfbb_clock.getElapsedTime().asSeconds() < 2)
+        {
+            speed_modifier = 0;
+        }
+        else
+        {
+            nfbb_count = 0;
+        }
+    }
 
-    // Execute move
-    distance.x *= speed * speed_modifier * distance_modifier;
-    distance.y = (jump_steps / 10) * speed * speed_modifier * distance_modifier;
-    move(distance, objects);
+    // Apply speed modifiers
+    distance *= speed * speed_modifier;
+
+    // Continue simulation
+    Gravitating_Object::simulate(
+        objects, distance_modifier, gravity_constant, distance);
 }
 
-void Player::handle_collision(Object *&object, const sf::Vector2f &steps)
+#include <iostream>
+bool Player::handle_collision(Object *object, const sf::Vector2f &steps)
 {
+    bool has_collided { Gravitating_Object::handle_collision(object, steps) };
+
     auto _types { object->get_types() };
 
     std::string _type { _types.at(0) };
 
     std::string _subtype;
     if (_types.size() > 1)
-        _subtype = _types.at(1); 
+        _subtype = _types.at(1);
 
     /*Collision with types*/
-    if (_type == "ground" && steps.y > 0
-     && collided_object_types.find(_type) == collided_object_types.end())
+    if (_type == "ground" && steps.y > 0)
     {
-        count = 1;
+        jumping = false;
         on_ground = true;
-        set_position(position.x, position.y - steps.y);
-        collided_object_types.insert(_type);
+        has_collided = true; //kan omittas pga Movable_Object::this_fun
     }
-    else if (_type == "roof" && steps.y < 0
-          && collided_object_types.find(_type) == collided_object_types.end())
+    else if (_type == "roof" && steps.y < 0)
     {
-        set_position(position.x, position.y - steps.y);
-        collided_object_types.insert(_type);
-    }
-    else if (_type == "wall" && steps.x != 0
-          && collided_object_types.find(_type) == collided_object_types.end())
-    {
-        set_position(position.x - steps.x, position.y);
-        collided_object_types.insert(_type);
+        jumping = false;
+        has_collided = true; //kan omittas pga Movable_Object::this_fun
     }
     else if (_type == "slow_bird")
     {
         ++slow_bird_count;
         slow_bird_clock.restart();
-        collided_object_types.insert(_type);
+        has_collided = true;  // används inte av detta objekt, kan omittas
     }
     else if (_type == "boost_bird")
     {
         ++boost_bird_count;
         boost_bird_clock.restart();
-        collided_object_types.insert(_type);
+        has_collided = true; // ^^ (same for following)
     }
     else if (_type == "nfbb")
     {
-        delete object;
-        object = nullptr;
+        object->m_delete = true;
+        ++nfbb_count;
         nfbb_clock.restart();
-        collided_object_types.insert(_type);
+        has_collided = true;
     }
 
     /*Collision with subtypes*/
     if (_subtype == "quicksand" && steps.y > 0)
     {
         on_quicksand = true;
-        collided_object_types.insert(_subtype);
+        has_collided = true;
     }
+
+    return has_collided;
 }
 
 void Player::handle_end_collision()
 {
     /*Collision has not occured with <x>*/
-    if (collided_object_types.find("ground") == collided_object_types.end())
+    if (collided_object_types.size() > 0)
+    {
+        if (on_ground
+            && collided_object_types.find("ground")
+                == collided_object_types.end())
+        {
+            on_ground = false;
+        }
+        if (on_quicksand
+            && collided_object_types.find("quicksand")
+                == collided_object_types.end())
+        {
+            on_quicksand = false;
+        }
+    }
+    else
     {
         on_ground = false;
-    }
-    if (collided_object_types.find("quicksand") == collided_object_types.end())
-    {
         on_quicksand = false;
     }
-}
-
-void Player::handle_null_collision()
-{
-    on_ground = false;
-    on_quicksand = false;
 }

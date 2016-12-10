@@ -3,7 +3,7 @@
 
 #include "../abstract/gravitable.h"
 
-class Player : public Gravitable
+class Player : public Gravitating_Object
 {
     public:
         // Constructors & destructors
@@ -14,29 +14,25 @@ class Player : public Gravitable
                float);
 
         // Simulation
-        void simulate(float,
+        void simulate(std::vector<Object*>&,
                       float,
-                      std::vector<Object*>&) override;
+                      float) override;
 
     private:
         // State
-        int jump_steps {};
-        bool should_accelerate_jump {};
+        bool jumping {};
         bool on_ground {};
         bool on_quicksand {};
         int slow_bird_count {};
         int boost_bird_count {};
+        int nfbb_count {};
         sf::Clock slow_bird_clock;
         sf::Clock boost_bird_clock;
         sf::Clock nfbb_clock;
 
         // Collision handling
-        void handle_collision(Object*&, const sf::Vector2f&) override;
+        bool handle_collision(Object*, const sf::Vector2f&) override;
         void handle_end_collision() override;
-        void handle_null_collision() override;
-
-        // Helpers
-        void accelerate_jump();
 };
 
 #endif

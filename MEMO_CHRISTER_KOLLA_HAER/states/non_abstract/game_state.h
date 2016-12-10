@@ -29,7 +29,7 @@ class Game_State : public State
 
     private:
         // State
-        double gravity_modifier;
+        float gravity_constant;
 
         // Objects
         std::vector<Simulatable*> simulatable_objects;

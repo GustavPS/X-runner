@@ -5,11 +5,11 @@
 
 #include <unordered_set>
 
-class Movable : public Simulatable
+class Movable_Object : public Simulatable
 {
     public:
         // Constructors & destructors
-        Movable(const sf::Vector2f&,
+        Movable_Object(const sf::Vector2f&,
                 const sf::Vector2f&,
                 const std::vector<std::string>&,
                 float);
@@ -19,24 +19,26 @@ class Movable : public Simulatable
         float speed;
 
         // Moving
-        void move(sf::Vector2f&,
-                  std::vector<Object*>&);
+        void simulate(std::vector<Object*>&,
+                      float,
+                      sf::Vector2f&);
         void set_position(const sf::Vector2f&);
         void set_position(float, float);
 
         // State
         std::unordered_set<std::string> collided_object_types;
 
+        virtual bool handle_collision(Object*,
+                                      const sf::Vector2f&);
     private:
         // Helper functions
-        void check_collision(const sf::Vector2f&,
-                             std::vector<Object*>&);
+        void check_collision(std::vector<Object*>&,
+                             const sf::Vector2f&);
 
         // Pure virtual functions
-        virtual void handle_collision(Object*&,
-                                      const sf::Vector2f&) = 0;
-        virtual void handle_end_collision() = 0;
-        virtual void handle_null_collision() = 0;
+        //virtual void handle_collision(Object*,
+          //                            const sf::Vector2f&) = 0;
+        virtual void handle_end_collision() {}
         // ^ NOTE: kanske kan default implementeras som { /* do nothing */ } ist för pure virtual
 };
 

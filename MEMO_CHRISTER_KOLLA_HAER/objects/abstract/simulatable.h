@@ -8,12 +8,12 @@ class Simulatable : public Object
     public:
         // Constructors & destructors
         Simulatable(const sf::Vector2f&,
-                 const sf::Vector2f&,
-                 const std::vector<std::string>&);
+                    const sf::Vector2f&,
+                    const std::vector<std::string>&);
         // Pure virtual functions
-        virtual void simulate(float,
+        virtual void simulate(std::vector<Object*>&,
                               float,
-                              std::vector<Object*>&) = 0;
+                              float) = 0;
 };
 
 #endif

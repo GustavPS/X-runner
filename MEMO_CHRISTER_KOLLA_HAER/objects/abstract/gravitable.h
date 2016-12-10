@@ -3,11 +3,11 @@
 
 #include "movable.h"
 
-class Gravitable : public Movable
+class Gravitating_Object : public Movable_Object
 {
     public:
         // Constructors & destructors
-        Gravitable(const sf::Vector2f&,
+        Gravitating_Object(const sf::Vector2f&,
                    const sf::Vector2f&,
                    const std::vector<std::string> &types,
                    float,
@@ -16,11 +16,14 @@ class Gravitable : public Movable
     protected:
         // Attributes
         float weight;
-        int count {};
+        sf::Clock gravity_clock;
         // Gravitation
-        void simulate(float,
-                       float,
-                       std::vector<Object*>&) override;
+        void simulate(std::vector<Object*>&,
+                      float,
+                      float,
+                      sf::Vector2f&);
+
+        virtual bool handle_collision(Object*, const sf::Vector2f&) override;
 };
 
 #endif

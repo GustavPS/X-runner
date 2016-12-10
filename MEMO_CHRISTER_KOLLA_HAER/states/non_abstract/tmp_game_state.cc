@@ -15,7 +15,7 @@ void Game_State::load_level(const std::string &level)
         std::cerr << "Du suger kuk!";
     background.setTexture(bgTexture);
 
-    gravity_modifier = 9.82;
+    gravity_constant = 9.82;
 
     objects = level_parser.get_objects();
 
@@ -36,17 +36,27 @@ void Game_State::load_level(const std::string &level)
 
 int Game_State::simulate()
 {
+    // Simulate simulatable objects
     float distance_modifier { (clock.restart().asMilliseconds() / 1000.0f) };
-
     for (auto it { simulatable_objects.begin() }; it != simulatable_objects.end(); ++it)
     {
-        if (*it == nullptr)
+        if ((*it)->m_delete == true)
         {
             simulatable_objects.erase(it);
         }
         else
         {
-            (*it)->simulate(distance_modifier, gravity_modifier, objects);
+            (*it)->simulate(objects, distance_modifier, gravity_constant);
+        }
+    }
+
+    // Cleanup deleted objects
+    for (auto it { objects.begin() }; it != objects.end(); ++it)
+    {
+        if ((*it)->m_delete == true)
+        {
+            delete *it;
+            objects.erase(it);
         }
     }
 

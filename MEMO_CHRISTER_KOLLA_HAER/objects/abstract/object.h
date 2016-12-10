@@ -21,8 +21,8 @@ class Object
         sf::RectangleShape get_shape() const;
         std::vector<std::string> get_types() const;
 
-        // Pure virtual functions
-        // NOTE: NEED A PURE VIRTUAL FUNCTION
+        // State
+        bool m_delete {};
     
     protected:
         // Attributes

@@ -21,17 +21,27 @@ void Game_State::load_level(const std::string &level)
 
 int Game_State::simulate()
 {
+    // Simulate simulatable objects
     float distance_modifier { (clock.restart().asMilliseconds() / 1000.0f) };
-
     for (auto it { simulatable_objects.begin() }; it != simulatable_objects.end(); ++it)
     {
-        if (*it == nullptr)
+        if ((*it)->m_delete == true)
         {
             simulatable_objects.erase(it);
         }
         else
         {
             (*it)->simulate(distance_modifier, gravity_modifier, objects)
+        }
+    }
+
+    // Cleanup deleted objects
+    for (auto it { objects.begin() }; it != objects.end(); ++it)
+    {
+        if ((*it)->m_delete == true)
+        {
+            delete *it;
+            objects.erase(it);
         }
     }
 }
