@@ -16,6 +16,7 @@ class Level_Parser
         Level_Parser(const std::string&);
         std::vector<Object*> get_objects() const;
         Player* get_player() const;
+        std::vector<Object*> get_npcs() const;
         std::vector<Object*> get_blocks() const;
 
     private:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" nextobjectid="61">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="32" tileheight="32" nextobjectid="62">
  <tileset firstgid="1" name="hyptosis_tile-art-batch-1" tilewidth="32" tileheight="32" tilecount="900" columns="30">
   <image source="../test/hyptosis_tile-art-batch-1.png" width="960" height="960"/>
  </tileset>
@@ -55,5 +55,8 @@
  </objectgroup>
  <objectgroup name="player">
   <object id="35" name="player" gid="782" x="64.6667" y="191" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup name="npcs">
+  <object id="61" name="slow_bird" gid="214" x="210.75" y="77.25" width="24" height="24"/>
  </objectgroup>
 </map>

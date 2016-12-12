@@ -15,7 +15,7 @@ class State
 
         // Getters
         sf::Sprite get_background() const;
-        std::vector<Object*> get_texturated_objects() const;
+        std::vector<const Object*> get_texturated_objects() const;
 
         // Pure virtual functions
         virtual int simulate() = 0;
@@ -26,7 +26,7 @@ class State
         // Objects
         sf::Sprite background;
         std::vector<Object*> objects;
-        std::vector<Object*> texturated_objects;
+        std::vector<const Object*> texturated_objects;
 
         // Resetting the state
         virtual void reset(); 

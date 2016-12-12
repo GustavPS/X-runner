@@ -3,43 +3,36 @@
 
 #include "simulatable.h"
 
-#include <unordered_set>
-
 class Movable_Object : public Simulatable
 {
     public:
         // Constructors & destructors
         Movable_Object(const sf::Vector2f&,
-                const sf::Vector2f&,
-                const std::vector<std::string>&,
-                float);
+                       const sf::Vector2f&,
+                       const std::vector<std::string>&,
+                       float);
+
+        int prepare_simulate(const float);
+
+        // Execute simulation of object : NOT overriding pure virtual
+        void simulate(const int,
+                      std::vector<Object*>&);
+
+        virtual void end_simulate() override;
 
     protected:
-        // Attributes
+        // State
         float speed;
+        sf::Vector2f distance;
 
-        // Moving
-        void simulate(std::vector<Object*>&,
-                      float,
-                      sf::Vector2f&);
+        // Collision handling : overriding null-defined
+        virtual bool handle_collision(Object*,
+                                      const sf::Vector2f&) override;
+
+    private:
+        // Move object
         void set_position(const sf::Vector2f&);
         void set_position(float, float);
-
-        // State
-        std::unordered_set<std::string> collided_object_types;
-
-        virtual bool handle_collision(Object*,
-                                      const sf::Vector2f&);
-    private:
-        // Helper functions
-        void check_collision(std::vector<Object*>&,
-                             const sf::Vector2f&);
-
-        // Pure virtual functions
-        //virtual void handle_collision(Object*,
-          //                            const sf::Vector2f&) = 0;
-        virtual void handle_end_collision() {}
-        // ^ NOTE: kanske kan default implementeras som { /* do nothing */ } ist för pure virtual
 };
 
 #endif

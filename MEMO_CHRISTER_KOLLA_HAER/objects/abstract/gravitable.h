@@ -8,21 +8,23 @@ class Gravitating_Object : public Movable_Object
     public:
         // Constructors & destructors
         Gravitating_Object(const sf::Vector2f&,
-                   const sf::Vector2f&,
-                   const std::vector<std::string> &types,
-                   float,
-                   float);
+                           const sf::Vector2f&,
+                           const std::vector<std::string> &types,
+                           float,
+                           float);
 
+        int prepare_simulate(const float,
+                             const float);
+
+        // Execute simulation of object : NOT overriding pure virtual
+        void simulate(const int,
+                      std::vector<Object*>&);
     protected:
-        // Attributes
+        // State
         float weight;
         sf::Clock gravity_clock;
-        // Gravitation
-        void simulate(std::vector<Object*>&,
-                      float,
-                      float,
-                      sf::Vector2f&);
 
+        // Collision handling : overriding null-defined
         virtual bool handle_collision(Object*, const sf::Vector2f&) override;
 };
 

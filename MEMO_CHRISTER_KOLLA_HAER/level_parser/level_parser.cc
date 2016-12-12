@@ -1,5 +1,7 @@
 #include "level_parser.h"
 
+#include "../objects/non_abstract/bird.h"
+
 Level_Parser::Level_Parser(const std::string &path)
 {
     pugi::xml_parse_result parse_result;
@@ -14,6 +16,10 @@ std::vector<Object*> Level_Parser::get_objects() const
 {
     std::vector<Object*> objects { get_player() };
 
+    auto npcs { get_npcs() };
+
+    objects.insert(objects.end(), npcs.begin(), npcs.end());
+
     auto block { get_blocks() };
 
     objects.insert(objects.end(), block.begin(), block.end());
@@ -26,7 +32,7 @@ Player* Level_Parser::get_player() const
     auto xml_player { get_objects_as_xml("player").at(0) };
 
     sf::Vector2f position { xml_player->attribute("x").as_float(),
-                            xml_player->attribute("y").as_float() };
+                            xml_player->attribute("y").as_float() - 24 };
 
     sf::Vector2f dimensions { xml_player->attribute("width").as_float(),
                               xml_player->attribute("height").as_float() };
@@ -40,6 +46,30 @@ Player* Level_Parser::get_player() const
     return new Player { position, dimensions, types, 250, 10 };
 }
 
+std::vector<Object*> Level_Parser::get_npcs() const
+{
+    auto xml_blocks { get_objects_as_xml("npcs") };
+
+    std::vector<Object*> blocks;
+
+    for (const auto xml_block : xml_blocks)
+    {
+        sf::Vector2f position { xml_block->attribute("x").as_float(),
+                                xml_block->attribute("y").as_float() - 24 };
+        
+        sf::Vector2f dimensions { xml_block->attribute("width").as_float(),
+                                  xml_block->attribute("height").as_float() };
+        
+        std::vector<std::string> types { xml_block->attribute("name").as_string() };
+
+        delete xml_block;
+
+        blocks.push_back( new Bird { position, dimensions, types, 35 } );
+    }
+
+    return blocks;
+}
+
 std::vector<Object*> Level_Parser::get_blocks() const
 {
     auto xml_blocks { get_objects_as_xml("blocks") };
@@ -49,7 +79,7 @@ std::vector<Object*> Level_Parser::get_blocks() const
     for (const auto xml_block : xml_blocks)
     {
         sf::Vector2f position { xml_block->attribute("x").as_float(),
-                                xml_block->attribute("y").as_float() };
+                                xml_block->attribute("y").as_float()};
         
         sf::Vector2f dimensions { xml_block->attribute("width").as_float(),
                                   xml_block->attribute("height").as_float() };

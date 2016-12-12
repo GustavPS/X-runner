@@ -3,69 +3,51 @@
 #include <cmath>
 
 Movable_Object::Movable_Object(const sf::Vector2f& position,
-               const sf::Vector2f& dimensions,
-               const std::vector<std::string> &types,
-               float speed)
-    : Simulatable { position, dimensions, types }
+                               const sf::Vector2f& size,
+                               const std::vector<std::string> &types,
+                               float speed)
+    : Simulatable { position, size, types }
     , speed { speed }
 {}
 
-void Movable_Object::simulate(std::vector<Object*> &objects,
-                              float distance_modifier,
-                              sf::Vector2f &distance)
+int Movable_Object::prepare_simulate(const float distance_modifier)
 {
+    // Apply distance_modifier
     distance *= distance_modifier;
 
-    float &longest { std::abs(distance.x) > std::abs(distance.y)
-                     ? distance.x
-                     : distance.y };
+    // Calulate axis with the greatest movement
+    float longest { std::abs(
+                        std::abs(distance.x) > std::abs(distance.y)
+                        ? distance.x
+                        : distance.y) };
 
-    sf::Vector2f steps { distance.x / longest, distance.y / longest };
-    sf::Vector2f partial_steps;
+    // Calculate the number of simulations needed for this object
+    // (an object can never move >1 on any axis per simulation)
+    int i {1};
+    while (longest-- > 1)
+        ++i;
 
-    for (int i {}; longest > 1; ++i)
-    {
-        if (i % 2 == 0)
-        {
-            partial_steps = { steps.x, 0 };
-            set_position(position.x + steps.x, position.y);
-        }
-        else
-        {
-            partial_steps = { 0, steps.y };
-            set_position(position.x, position.y + steps.y);
-        }
-        distance.x -= partial_steps.x;
-        distance.y -= partial_steps.y;
-        check_collision(objects, partial_steps);
-    }
-
-    partial_steps = { distance.x, 0 };
-    set_position(position.x + distance.x, position.y);
-    check_collision(objects, partial_steps);
-
-    partial_steps = { 0, distance.y };
-    set_position(position.x, position.y + distance.y);
-    check_collision(objects, partial_steps);
+    // Return the number of simulations needed for this object
+    return i;
 }
 
-#include <iostream>
-void Movable_Object::check_collision(std::vector<Object*> &objects,
-                                     const sf::Vector2f &steps)
+void Movable_Object::simulate(const int total_simulations,
+                              std::vector<Object*> &objects)
 {
-    for (auto object : objects)
-    {
-        if (object->m_delete == false
-         && shape.getGlobalBounds().intersects(
-            object->get_shape().getGlobalBounds()))
-        {
-            if (handle_collision(object, steps))
-                for (std::string &type : object->get_types())
-                    collided_object_types.insert(type);
-        }
-    }
-    handle_end_collision();
-    collided_object_types.clear();
+    // Move on x-axis, then check collision
+    sf::Vector2f steps { distance.x / total_simulations, 0 };
+    set_position(position + steps);
+    check_collision(objects, steps, false);
+
+    // Move on y-axis, then check collision
+    steps = { 0, distance.y / total_simulations };
+    set_position(position + steps);
+    check_collision(objects, steps);
+}
+
+void Movable_Object::end_simulate()
+{
+    distance *= 0.f;
 }
 
 void Movable_Object::set_position(const sf::Vector2f &_position)
@@ -83,28 +65,37 @@ void Movable_Object::set_position(float x, float y)
 
 bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
 {
-    bool collision_occured {};
-    std::string _type { object->get_types().at(0) };
+    bool has_collided {};
+    
+    const std::string _type { object->get_types().at(0) };
 
-    /*Collision with types*/
-    if (_type == "ground" && steps.y > 0
-     && collided_object_types.find(_type) == collided_object_types.end())
+    if (_type == "ground" && steps.y > 0)
     {
-        set_position(position.x, position.y - steps.y);
-        collision_occured = true;
+        if (collided_object_types.find(_type)
+            == collided_object_types.end())
+        {
+            set_position(position.x, position.y - steps.y);
+            has_collided = true;
+        }
     }
-    else if (_type == "roof" && steps.y < 0
-          && collided_object_types.find(_type) == collided_object_types.end())
+    else if (_type == "roof" && steps.y < 0)
     {
-        set_position(position.x, position.y - steps.y);
-        collision_occured = true;
+        if (collided_object_types.find(_type)
+            == collided_object_types.end())
+        {
+            set_position(position.x, position.y - steps.y);
+            has_collided = true;
+        }
     }
-    else if (_type == "wall" && steps.x != 0
-          && collided_object_types.find(_type) == collided_object_types.end())
+    else if (_type == "wall" && steps.x != 0)
     {
-        set_position(position.x - steps.x, position.y);
-        collision_occured = true;
+        if (collided_object_types.find(_type)
+            == collided_object_types.end())
+        {
+            set_position(position.x - steps.x, position.y);
+            has_collided = true;
+        }
     }
 
-    return collision_occured;
+    return has_collided;
 }

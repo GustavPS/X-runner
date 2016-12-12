@@ -1,23 +1,26 @@
 #include "player.h"
+#include "bird.h"
+
+#include <cmath>
 
 Player::Player(const sf::Vector2f &position,
-               const sf::Vector2f &dimensions,
+               const sf::Vector2f &size,
                const std::vector<std::string> &types,
                float speed,
                float weight)
-    : Gravitating_Object { position, dimensions, types, speed, weight }
+    : Gravitating_Object { position, size, types, speed, weight }
 {
     sf::Texture txt;
     txt.loadFromFile("player.png");
-    shape.setTexture( new sf::Texture { txt } );
+    shape.setTexture( new sf::Texture { txt } ); // memleak
     // do some stuff, like texture of shape.
 }
 
-void Player::simulate(std::vector<Object*> &objects,
-                      float distance_modifier,
-                      float gravity_constant)
+int Player::prepare_simulate(std::vector<Object*> &objects,
+                             const float distance_modifier,
+                             const float gravity_constant)
 {
-    sf::Vector2f distance;
+    check_collision(objects);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         distance.x = -1;
@@ -25,7 +28,7 @@ void Player::simulate(std::vector<Object*> &objects,
         distance.x = 1;
    
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
-     && on_ground && !on_quicksand)
+     && on_ground && !quicksand_debuff)
         jumping = true;
     if (jumping)
         distance.y = -1.5;
@@ -33,42 +36,42 @@ void Player::simulate(std::vector<Object*> &objects,
     // Speed modifying debuffs
     float speed_modifier {1};
 
-    if (on_quicksand)
+    if (quicksand_debuff)
         speed_modifier *= 0.75;
 
-    if (slow_bird_count > 0)
+    if (slow_bird_debuffs.size())
     {
-        if (slow_bird_clock.getElapsedTime().asSeconds() < 5)
+        if (slow_bird_clock.getElapsedTime().asSeconds() < 2)
         {
-            speed_modifier *= 0.75 * slow_bird_count;
+            speed_modifier *= std::pow(0.66, slow_bird_debuffs.size());
         }
         else
         {
-            slow_bird_count = 0;
+            slow_bird_debuffs.clear();
         }
     }
 
-    if (boost_bird_count > 0)
+    if (boost_bird_buffs.size())
     {
-        if (boost_bird_clock.getElapsedTime().asSeconds() < 5)
+        if (boost_bird_clock.getElapsedTime().asSeconds() < 2)
         {
-            speed_modifier *= 1.25 * boost_bird_count;
+            speed_modifier *= std::pow(1.33, boost_bird_buffs.size());
         }
         else
         {
-            boost_bird_count = 0;
+            boost_bird_buffs.clear();
         }
     }
 
-    if (nfbb_count  > 0)
+    if (nfbb_debuff)
     {
-        if (nfbb_clock.getElapsedTime().asSeconds() < 2)
+        if (nfbb_clock.getElapsedTime().asSeconds() < 1)
         {
             speed_modifier = 0;
         }
         else
         {
-            nfbb_count = 0;
+            nfbb_debuff = false;
         }
     }
 
@@ -76,86 +79,110 @@ void Player::simulate(std::vector<Object*> &objects,
     distance *= speed * speed_modifier;
 
     // Continue simulation
-    Gravitating_Object::simulate(
-        objects, distance_modifier, gravity_constant, distance);
+    // Return the number of simulations needed for this object
+    return Gravitating_Object::prepare_simulate(
+        distance_modifier, gravity_constant);
 }
 
-#include <iostream>
+void Player::simulate(const int total_simulations,
+                      std::vector<Object*> &objects)
+{
+    // Check collision
+    check_collision(objects);
+
+    // Continue simulation
+    Gravitating_Object::simulate(
+        total_simulations, objects);
+}
+
 bool Player::handle_collision(Object *object, const sf::Vector2f &steps)
 {
     bool has_collided { Gravitating_Object::handle_collision(object, steps) };
 
-    auto _types { object->get_types() };
+    const auto _types { object->get_types() };
 
-    std::string _type { _types.at(0) };
+    const std::string &_type { _types.at(0) };
 
-    std::string _subtype;
-    if (_types.size() > 1)
-        _subtype = _types.at(1);
+    const std::string _subtype { _types.size() > 1
+                                 ? _types.at(1)
+                                 : std::string() };
 
     /*Collision with types*/
     if (_type == "ground" && steps.y > 0)
     {
         jumping = false;
         on_ground = true;
-        has_collided = true; //kan omittas pga Movable_Object::this_fun
+        has_collided = true;
     }
     else if (_type == "roof" && steps.y < 0)
     {
         jumping = false;
-        has_collided = true; //kan omittas pga Movable_Object::this_fun
+        has_collided = true;
     }
     else if (_type == "slow_bird")
     {
-        ++slow_bird_count;
-        slow_bird_clock.restart();
-        has_collided = true;  // används inte av detta objekt, kan omittas
+        if (slow_bird_debuffs.find(object)
+            == slow_bird_debuffs.end())
+        {
+            slow_bird_clock.restart();
+            slow_bird_debuffs.insert(object);
+            has_collided = true;
+        }
     }
     else if (_type == "boost_bird")
     {
-        ++boost_bird_count;
-        boost_bird_clock.restart();
-        has_collided = true; // ^^ (same for following)
+        if (true)
+        {
+            boost_bird_clock.restart();
+            boost_bird_buffs.insert(object);
+            has_collided = true;
+        }
     }
     else if (_type == "nfbb")
     {
-        object->m_delete = true;
-        ++nfbb_count;
         nfbb_clock.restart();
+        nfbb_debuff = true;
         has_collided = true;
     }
 
     /*Collision with subtypes*/
     if (_subtype == "quicksand" && steps.y > 0)
     {
-        on_quicksand = true;
+        quicksand_debuff = true;
         has_collided = true;
     }
 
     return has_collided;
 }
 
-void Player::handle_end_collision()
+void Player::handle_end_collision(const sf::Vector2f &steps)
 {
     /*Collision has not occured with <x>*/
-    if (collided_object_types.size() > 0)
+    if (steps.y)
     {
-        if (on_ground
-            && collided_object_types.find("ground")
-                == collided_object_types.end())
+        if (collided_object_types.size() > 0)
+        {
+            if (on_ground)
+            {
+                if (collided_object_types.find("ground")
+                    == collided_object_types.end())
+                {
+                    on_ground = false;
+                }
+            }
+            if (quicksand_debuff)
+            {
+                if (collided_object_types.find("quicksand")
+                    == collided_object_types.end())
+                {
+                    quicksand_debuff = false;
+                }
+            }
+        }
+        else
         {
             on_ground = false;
+            quicksand_debuff = false;
         }
-        if (on_quicksand
-            && collided_object_types.find("quicksand")
-                == collided_object_types.end())
-        {
-            on_quicksand = false;
-        }
-    }
-    else
-    {
-        on_ground = false;
-        on_quicksand = false;
     }
 }

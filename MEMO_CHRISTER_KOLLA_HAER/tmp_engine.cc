@@ -44,7 +44,7 @@ void Engine::render(sf::RenderWindow& window)
 
     window.draw(tmp);
 
-    std::vector<Object*> texturated_objects
+    std::vector<const Object*> texturated_objects
         { active_state->get_texturated_objects() };
 
     for (const auto object : texturated_objects)

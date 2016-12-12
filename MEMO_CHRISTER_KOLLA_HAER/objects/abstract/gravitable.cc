@@ -1,46 +1,50 @@
 #include "gravitable.h"
 
 Gravitating_Object::Gravitating_Object(const sf::Vector2f &position,
-                                       const sf::Vector2f &dimensions,
+                                       const sf::Vector2f &size,
                                        const std::vector<std::string> &types,
                                        float speed,
                                        float weight)
-    : Movable_Object { position, dimensions, types, speed }
+    : Movable_Object { position, size, types, speed }
     , weight { weight }
 {}
 
-void Gravitating_Object::simulate(std::vector<Object*>& objects,
-                                  float distance_modifier,
-                                  float gravity_constant,
-                                  sf::Vector2f &distance)
+int Gravitating_Object::prepare_simulate(const float distance_modifier,
+                                         const float gravity_constant)
 {
-    // Apply gravity
+    // Apply gravity_constant
     distance.y += gravity_constant
                   * gravity_clock.getElapsedTime()
                         .asMilliseconds()
                   / 15;
 
     // Continue simulation
-    Movable_Object::simulate(objects, distance_modifier, distance);
+    // Return the number of simulations needed for this object
+    return Movable_Object::prepare_simulate(distance_modifier);
+}
+
+void Gravitating_Object::simulate(const int total_simulations,
+                                  std::vector<Object*>& objects)
+{
+    // Continue simulation
+    Movable_Object::simulate(
+        total_simulations, objects);
 }
 
 bool Gravitating_Object::handle_collision(Object *object, const sf::Vector2f &steps)
 {
     bool has_collided { Movable_Object::handle_collision(object, steps) };
 
-    std::string _type { object->get_types().at(0) };
+    const std::string _type { object->get_types().at(0) };
 
-    /*Collision with types*/
-    if (_type == "ground" && steps.y > 0
-     && collided_object_types.find(_type) == collided_object_types.end())
+    if (_type == "ground" && steps.y > 0)
     {
         gravity_clock.restart();
-        has_collided = true; //kan omittas pga Movable_Object::this_fun
+        has_collided = true;
     }
-    else if (_type == "roof" && steps.y < 0
-          && collided_object_types.find(_type) == collided_object_types.end())
+    else if (_type == "roof" && steps.y < 0)
     {
-        gravity_clock.restart();
-        has_collided = true; //kan omittas pga Movable_Object::this_fun
+        gravity_clock.restart(); // ?? VILL VI???
+        has_collided = true;
     }
 }

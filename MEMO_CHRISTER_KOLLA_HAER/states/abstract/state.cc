@@ -8,12 +8,12 @@ State::~State()
 sf::Sprite State::get_background() const
     { return background; }
 
-std::vector<Object*> State::get_texturated_objects() const
+std::vector<const Object*> State::get_texturated_objects() const
     { return texturated_objects; }
 
 void State::reset()
 {
-    for (auto object : objects)
+    for (const auto *object : objects)
     {
         delete object;
     }

@@ -13,26 +13,34 @@ class Player : public Gravitating_Object
                float,
                float);
 
-        // Simulation
-        void simulate(std::vector<Object*>&,
-                      float,
-                      float) override;
+        virtual int prepare_simulate(std::vector<Object*>&,
+                                     const float,
+                                     const float) override final;
+
+        // Execute simulation of object : overriding pure virtual : final
+        virtual void simulate(const int,
+                              std::vector<Object*>&) override final;
 
     private:
-        // State
+        // State : general
         bool jumping {};
         bool on_ground {};
-        bool on_quicksand {};
-        int slow_bird_count {};
-        int boost_bird_count {};
-        int nfbb_count {};
-        sf::Clock slow_bird_clock;
-        sf::Clock boost_bird_clock;
-        sf::Clock nfbb_clock;
 
-        // Collision handling
-        bool handle_collision(Object*, const sf::Vector2f&) override;
-        void handle_end_collision() override;
+        // State : buffs & debuffs
+        sf::Clock slow_bird_clock;
+        std::unordered_set<Object*> slow_bird_debuffs;
+
+        sf::Clock boost_bird_clock;
+        std::unordered_set<Object*> boost_bird_buffs;
+
+        sf::Clock nfbb_clock;
+        bool nfbb_debuff {};
+
+        bool quicksand_debuff {};
+
+        // Collision handling : overriding null-defined : final
+        virtual bool handle_collision(Object*, const sf::Vector2f&) override final;
+        virtual void handle_end_collision(const sf::Vector2f &steps) override final;
 };
 
 #endif
