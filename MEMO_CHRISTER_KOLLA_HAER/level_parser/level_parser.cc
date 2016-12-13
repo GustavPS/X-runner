@@ -1,6 +1,7 @@
 #include "level_parser.h"
 
 #include "../objects/non_abstract/bird.h"
+#include "../objects/non_abstract/boost_bird.h"
 
 Level_Parser::Level_Parser(const std::string &path)
 {
@@ -43,7 +44,7 @@ Player* Level_Parser::get_player() const
 
     delete xml_player; //note possible memleak if > 1 players in level_parser
 
-    return new Player { position, dimensions, types, 250, 10 };
+    return new Player { position, dimensions, types, 250 };
 }
 
 std::vector<Object*> Level_Parser::get_npcs() const
@@ -64,7 +65,10 @@ std::vector<Object*> Level_Parser::get_npcs() const
 
         delete xml_block;
 
-        blocks.push_back( new Bird { position, dimensions, types, 35 } );
+        if (types.at(0) == "slow_bird")
+            blocks.push_back( new Bird { position, dimensions, types, 35 } );
+        else
+            blocks.push_back( new Boost_Bird { position, dimensions, types, 35 } );
     }
 
     return blocks;

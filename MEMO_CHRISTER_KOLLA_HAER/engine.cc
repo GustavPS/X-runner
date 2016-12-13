@@ -38,7 +38,10 @@ void Engine::render(sf::RenderWindow& window)
 
     for (const auto object : texturated_objects)
     {
-        window.draw(object->get_shape());
+        auto s = object->get_shape();
+        s.x = roundf(s.x);
+        s.y = roundf(s.y);
+        window.draw(s);
     }
     
     window.display();

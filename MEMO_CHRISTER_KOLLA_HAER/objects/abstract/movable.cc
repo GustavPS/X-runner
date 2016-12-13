@@ -4,10 +4,8 @@
 
 Movable_Object::Movable_Object(const sf::Vector2f& position,
                                const sf::Vector2f& size,
-                               const std::vector<std::string> &types,
-                               float speed)
+                               const std::vector<std::string> &types)
     : Simulatable { position, size, types }
-    , speed { speed }
 {}
 
 int Movable_Object::prepare_simulate(const float distance_modifier)
@@ -31,39 +29,33 @@ int Movable_Object::prepare_simulate(const float distance_modifier)
     return i;
 }
 
-void Movable_Object::simulate(const int total_simulations,
-                              std::vector<Object*> &objects)
+std::vector<Object*> Movable_Object::simulate(const int total_simulations,
+                                              const std::vector<const Object*> &objects)
 {
+    // Check collision before moving (if another object collided with this)
+    check_collision(objects);
+
     // Move on x-axis, then check collision
     sf::Vector2f steps { distance.x / total_simulations, 0 };
-    set_position(position + steps);
+    shape.setPosition(shape.getPosition() + steps);
     check_collision(objects, steps, false);
 
     // Move on y-axis, then check collision
     steps = { 0, distance.y / total_simulations };
-    set_position(position + steps);
+    shape.setPosition(shape.getPosition() + steps);
     check_collision(objects, steps);
+
+    return {};
 }
 
-void Movable_Object::end_simulate()
+void Movable_Object::end_simulate(const std::vector<const Object*> &objects)
 {
     distance *= 0.f;
+    Simulatable::end_simulate(objects);
 }
 
-void Movable_Object::set_position(const sf::Vector2f &_position)
-{
-    position = _position;
-    shape.setPosition(_position);
-}
-
-void Movable_Object::set_position(float x, float y)
-{
-    position.x = x;
-    position.y = y;
-    shape.setPosition(x, y);
-}
-
-bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
+bool Movable_Object::handle_collision(const Object *object,
+                                      const sf::Vector2f &steps)
 {
     bool has_collided {};
     
@@ -74,7 +66,7 @@ bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
         if (collided_object_types.find(_type)
             == collided_object_types.end())
         {
-            set_position(position.x, position.y - steps.y);
+            shape.setPosition(shape.getPosition() - steps);
             has_collided = true;
         }
     }
@@ -83,7 +75,7 @@ bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
         if (collided_object_types.find(_type)
             == collided_object_types.end())
         {
-            set_position(position.x, position.y - steps.y);
+            shape.setPosition(shape.getPosition() - steps);
             has_collided = true;
         }
     }
@@ -92,7 +84,7 @@ bool Movable_Object::handle_collision(Object *object, const sf::Vector2f &steps)
         if (collided_object_types.find(_type)
             == collided_object_types.end())
         {
-            set_position(position.x - steps.x, position.y);
+            shape.setPosition(shape.getPosition() - steps);
             has_collided = true;
         }
     }

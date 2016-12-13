@@ -3,35 +3,32 @@
 
 #include "../abstract/gravitable.h"
 
-class Player : public Gravitating_Object
+class Player final : public Gravitating_Object
 {
     public:
         // Constructors & destructors
         Player(const sf::Vector2f&,
                const sf::Vector2f&,
                const std::vector<std::string> &types,
-               float,
                float);
 
-        virtual int prepare_simulate(std::vector<Object*>&,
-                                     const float,
+        virtual int prepare_simulate(const float,
                                      const float) override final;
 
-        // Execute simulation of object : overriding pure virtual : final
-        virtual void simulate(const int,
-                              std::vector<Object*>&) override final;
-
     private:
+        // Attributes
+        const float speed;
+
         // State : general
         bool jumping {};
         bool on_ground {};
 
         // State : buffs & debuffs
         sf::Clock slow_bird_clock;
-        std::unordered_set<Object*> slow_bird_debuffs;
+        std::unordered_set<const Object*> slow_bird_debuffs;
 
         sf::Clock boost_bird_clock;
-        std::unordered_set<Object*> boost_bird_buffs;
+        std::unordered_set<const Object*> boost_bird_buffs;
 
         sf::Clock nfbb_clock;
         bool nfbb_debuff {};
@@ -39,7 +36,7 @@ class Player : public Gravitating_Object
         bool quicksand_debuff {};
 
         // Collision handling : overriding null-defined : final
-        virtual bool handle_collision(Object*, const sf::Vector2f&) override final;
+        virtual bool handle_collision(const Object*, const sf::Vector2f&) override final;
         virtual void handle_end_collision(const sf::Vector2f &steps) override final;
 };
 

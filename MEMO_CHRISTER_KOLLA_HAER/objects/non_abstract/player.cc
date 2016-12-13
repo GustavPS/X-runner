@@ -6,9 +6,9 @@
 Player::Player(const sf::Vector2f &position,
                const sf::Vector2f &size,
                const std::vector<std::string> &types,
-               float speed,
-               float weight)
-    : Gravitating_Object { position, size, types, speed, weight }
+               float speed)
+    : Gravitating_Object { position, size, types }
+    , speed { speed }
 {
     sf::Texture txt;
     txt.loadFromFile("player.png");
@@ -16,12 +16,9 @@ Player::Player(const sf::Vector2f &position,
     // do some stuff, like texture of shape.
 }
 
-int Player::prepare_simulate(std::vector<Object*> &objects,
-                             const float distance_modifier,
+int Player::prepare_simulate(const float distance_modifier,
                              const float gravity_constant)
 {
-    check_collision(objects);
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         distance.x = -1;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -68,6 +65,7 @@ int Player::prepare_simulate(std::vector<Object*> &objects,
         if (nfbb_clock.getElapsedTime().asSeconds() < 1)
         {
             speed_modifier = 0;
+            boost_bird_buffs.clear();
         }
         else
         {
@@ -75,7 +73,7 @@ int Player::prepare_simulate(std::vector<Object*> &objects,
         }
     }
 
-    // Apply speed modifiers
+    // Apply speed and speed_modifier
     distance *= speed * speed_modifier;
 
     // Continue simulation
@@ -83,19 +81,9 @@ int Player::prepare_simulate(std::vector<Object*> &objects,
     return Gravitating_Object::prepare_simulate(
         distance_modifier, gravity_constant);
 }
-
-void Player::simulate(const int total_simulations,
-                      std::vector<Object*> &objects)
-{
-    // Check collision
-    check_collision(objects);
-
-    // Continue simulation
-    Gravitating_Object::simulate(
-        total_simulations, objects);
-}
-
-bool Player::handle_collision(Object *object, const sf::Vector2f &steps)
+#include <iostream>
+bool Player::handle_collision(const Object *object, 
+                              const sf::Vector2f &steps)
 {
     bool has_collided { Gravitating_Object::handle_collision(object, steps) };
 
@@ -131,7 +119,8 @@ bool Player::handle_collision(Object *object, const sf::Vector2f &steps)
     }
     else if (_type == "boost_bird")
     {
-        if (true)
+        if (boost_bird_buffs.find(object)
+            == boost_bird_buffs.end())
         {
             boost_bird_clock.restart();
             boost_bird_buffs.insert(object);
@@ -140,6 +129,7 @@ bool Player::handle_collision(Object *object, const sf::Vector2f &steps)
     }
     else if (_type == "nfbb")
     {
+        std::cerr << "mangoo";
         nfbb_clock.restart();
         nfbb_debuff = true;
         has_collided = true;

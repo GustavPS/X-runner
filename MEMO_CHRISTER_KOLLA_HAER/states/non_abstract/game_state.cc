@@ -13,11 +13,13 @@ void Game_State::load_level(const std::string &level)
 
     sf::Texture bgTexture;
     bgTexture.loadFromFile("new.png");
+    bgTexture.setSmooth(false);
     background = bgTexture;
 
     gravity_modifier = 1;
 
-    objects = level_parser.get_objects();
+    auto tmp_objects = level_parser.get_objects();
+    objects.insert(objects.end(), tmp_objects.begin(), tmp_objects.end());
 
     for (const auto object : objects)
     {
@@ -58,6 +60,7 @@ void Game_State::set_zoom(sf::View &view)
 
 void Game_State::set_view(sf::View &view)
 {
+
     view.setCenter(player->get_position() + player->get_shape().getSize());
 }
 

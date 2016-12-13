@@ -2,11 +2,8 @@
 
 Gravitating_Object::Gravitating_Object(const sf::Vector2f &position,
                                        const sf::Vector2f &size,
-                                       const std::vector<std::string> &types,
-                                       float speed,
-                                       float weight)
-    : Movable_Object { position, size, types, speed }
-    , weight { weight }
+                                       const std::vector<std::string> &types)
+    : Movable_Object { position, size, types }
 {}
 
 int Gravitating_Object::prepare_simulate(const float distance_modifier,
@@ -23,15 +20,20 @@ int Gravitating_Object::prepare_simulate(const float distance_modifier,
     return Movable_Object::prepare_simulate(distance_modifier);
 }
 
-void Gravitating_Object::simulate(const int total_simulations,
-                                  std::vector<Object*>& objects)
+std::vector<Object*> Gravitating_Object::simulate(const int total_simulations,
+                                                  const std::vector<const Object*>& objects)
 {
     // Continue simulation
-    Movable_Object::simulate(
-        total_simulations, objects);
+    return Movable_Object::simulate(total_simulations, objects);
 }
 
-bool Gravitating_Object::handle_collision(Object *object, const sf::Vector2f &steps)
+void Gravitating_Object::end_simulate(const std::vector<const Object*> &objects)
+{
+    Movable_Object::end_simulate(objects);
+}
+
+bool Gravitating_Object::handle_collision(const Object *object,
+                                          const sf::Vector2f &steps)
 {
     bool has_collided { Movable_Object::handle_collision(object, steps) };
 

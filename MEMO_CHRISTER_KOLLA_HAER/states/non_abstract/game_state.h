@@ -30,7 +30,6 @@ class Game_State : public State
     private:
         // State
         float gravity_constant;
-        std::size_t objects_size;
 
         // Objects
         std::vector<Simulatable*> simulatable_objects;

@@ -12,15 +12,17 @@ class Bird : public Movable_Object
              const std::vector<std::string> &types,
              float);
 
-        virtual int prepare_simulate(std::vector<Object*>&,
-                                     const float,
+        virtual int prepare_simulate(const float,
                                      const float) override final;
 
         // Execute simulation of object : overriding pure virtual : NOT final
-        virtual void simulate(const int,
-                              std::vector<Object*>&) override;
+        virtual std::vector<Object*> simulate(const int,
+                                              const std::vector<const Object*>&) override;
 
-    private:
+    protected:
+        // Attributes
+        const float speed;
+
         // State : general
         float m_direction;
 
@@ -29,7 +31,8 @@ class Bird : public Movable_Object
         bool player_debuff {};
         
         // Collision handling : overriding null-defined : final
-        virtual bool handle_collision(Object*, const sf::Vector2f&) override final;
+        virtual bool handle_collision(const Object*,
+                                      const sf::Vector2f&) override final;
 };
 
 #endif

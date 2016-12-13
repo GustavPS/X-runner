@@ -3,16 +3,11 @@
 Object::Object(const sf::Vector2f &position,
                const sf::Vector2f &size,
                const std::vector<std::string> &types)
-    : position { position }
-    , shape { size }
+    : shape { size }
     , types {types}
-    , m_interactable_status { true }
 {
     shape.setPosition(position);
 }
-
-sf::Vector2f Object::get_position() const
-    { return position; }
 
 sf::RectangleShape Object::get_shape() const
     { return shape; }

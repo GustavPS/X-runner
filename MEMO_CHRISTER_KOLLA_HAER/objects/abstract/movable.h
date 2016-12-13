@@ -9,30 +9,24 @@ class Movable_Object : public Simulatable
         // Constructors & destructors
         Movable_Object(const sf::Vector2f&,
                        const sf::Vector2f&,
-                       const std::vector<std::string>&,
-                       float);
+                       const std::vector<std::string>&);
 
         int prepare_simulate(const float);
 
-        // Execute simulation of object : NOT overriding pure virtual
-        void simulate(const int,
-                      std::vector<Object*>&);
+        // Execute simulation of object : overriding pure virtual
+        virtual std::vector<Object*> simulate(const int,
+                                              const std::vector<const Object*>&) override;
 
-        virtual void end_simulate() override;
+        // Clean-up simulation state
+        virtual void end_simulate(const std::vector<const Object*> &objects) override;
 
     protected:
-        // State
-        float speed;
+        // Simulation state
         sf::Vector2f distance;
 
         // Collision handling : overriding null-defined
-        virtual bool handle_collision(Object*,
+        virtual bool handle_collision(const Object*,
                                       const sf::Vector2f&) override;
-
-    private:
-        // Move object
-        void set_position(const sf::Vector2f&);
-        void set_position(float, float);
 };
 
 #endif

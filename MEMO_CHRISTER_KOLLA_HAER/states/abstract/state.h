@@ -25,7 +25,7 @@ class State
     protected:
         // Objects
         sf::Sprite background;
-        std::vector<Object*> objects;
+        std::vector<const Object*> objects;
         std::vector<const Object*> texturated_objects;
 
         // Resetting the state

@@ -4,21 +4,18 @@ Bird::Bird(const sf::Vector2f &position,
            const sf::Vector2f &size,
            const std::vector<std::string> &types,
            float speed)
-    : Movable_Object { position, size, types, speed }
+    : Movable_Object { position, size, types }
+    , speed { speed }
     , m_direction { 1 }
 {
-    m_interactable_status = true;
     sf::Texture txt;
     txt.loadFromFile("player.png");
     shape.setTexture( new sf::Texture { txt } ); // memleak
 }
 
-int Bird::prepare_simulate(std::vector<Object*> &objects,
-                           const float distance_modifier,
+int Bird::prepare_simulate(const float distance_modifier,
                            const float)
 {
-    check_collision(objects);
-
     distance.x = m_direction;
 
     if (player_debuff)
@@ -27,32 +24,33 @@ int Bird::prepare_simulate(std::vector<Object*> &objects,
         {
             sf::Texture txt;
             txt.loadFromFile("player_50.png");
+            txt.setSmooth(false);
             shape.setTexture( new sf::Texture { txt } ); // memleak
         }
         else
         {
             sf::Texture txt;
             txt.loadFromFile("player.png");
+            txt.setSmooth(false);
             shape.setTexture( new sf::Texture { txt } ); // memleak
             player_debuff = false;
         }
     }
 
+    // Apply speed
     distance *= speed;
 
     return Movable_Object::prepare_simulate(distance_modifier);
 }
-#include <iostream>
-void Bird::simulate(const int total_simulations,
-                    std::vector<Object*> &objects)
+
+std::vector<Object*> Bird::simulate(const int total_simulations,
+                                    const std::vector<const Object*> &objects)
 {
-    check_collision(objects);
-    
-    Movable_Object::simulate(
-        total_simulations, objects);
+    return Movable_Object::simulate(total_simulations, objects);
 }
 
-bool Bird::handle_collision(Object *object, const sf::Vector2f &steps)
+bool Bird::handle_collision(const Object *object,
+                            const sf::Vector2f &steps)
 {
     bool has_collided { Movable_Object::handle_collision(object, steps) };
 

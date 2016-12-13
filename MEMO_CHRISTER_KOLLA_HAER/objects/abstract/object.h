@@ -17,17 +17,12 @@ class Object
         // ^ NOTE: Should probably be implemented in a more meaningful way
 
         // Getters
-        sf::Vector2f get_position() const;
         sf::RectangleShape get_shape() const;
         std::vector<std::string> get_types() const;
         bool get_delete_status() const;
-
-        // State
-        bool m_interactable_status;
     
     protected:
         // State
-        sf::Vector2f position;
         sf::RectangleShape shape;
         std::vector<std::string> types;
         bool m_delete_status {};

@@ -6,7 +6,7 @@ Simulatable::Simulatable(const sf::Vector2f &position,
     : Object { position, size, types }
 {}
 
-void Simulatable::check_collision(std::vector<Object*> &objects,
+void Simulatable::check_collision(const std::vector<const Object*> &objects,
                                   const sf::Vector2f &steps,
                                   const bool clear)
 {
@@ -30,4 +30,10 @@ void Simulatable::check_collision(std::vector<Object*> &objects,
     handle_end_collision(steps);
     if (clear)
         collided_object_types.clear();
+}
+
+void Simulatable::end_simulate(const std::vector<const Object*> &objects)
+{
+    collided_object_types.clear();
+    check_collision(objects);
 }
