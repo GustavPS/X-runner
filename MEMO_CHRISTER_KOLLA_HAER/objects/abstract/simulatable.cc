@@ -12,17 +12,14 @@ void Simulatable::check_collision(const std::vector<const Object*> &objects,
 {
     for (auto *object : objects)
     {
-        if (!object->get_delete_status())
-        {
-            if (shape.getGlobalBounds().intersects(
+        if (shape.getGlobalBounds().intersects(
                     object->get_shape().getGlobalBounds()))
+        {
+            if (handle_collision(object, steps))
             {
-                if (handle_collision(object, steps))
+                for (std::string &type : object->get_types())
                 {
-                    for (std::string &type : object->get_types())
-                    {
-                        collided_object_types.insert(type);
-                    }
+                    collided_object_types.insert(type);
                 }
             }
         }

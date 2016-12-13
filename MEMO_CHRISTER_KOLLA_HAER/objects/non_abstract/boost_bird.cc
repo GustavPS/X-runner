@@ -25,7 +25,7 @@ std::vector<Object*> Boost_Bird::simulate(const int total_simulations,
         new_objects.push_back( new NFBB
                                {
                                    shape.getPosition(),
-                                   sf::Vector2f { 24, 24 },
+                                   sf::Vector2f { 24, 12 },
                                    std::vector<std::string> { "nfbb" }
                                } );
 
