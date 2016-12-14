@@ -1,9 +1,9 @@
 #ifndef MOVABLE_H
 #define MOVABLE_H
 
-#include "simulatable.h"
+#include "colliding_object.h"
 
-class Movable_Object : public Simulatable
+class Movable_Object : public Colliding_Object
 {
     public:
         // Constructors & destructors
@@ -32,8 +32,10 @@ class Movable_Object : public Simulatable
         bool m_roof_collision {};
         bool m_wall_collision {};
 
-        // Collision handling : overriding null-defined
+        // Collision handling
+        // : overriding pure virtual
         virtual void handle_collision(const Object*, const sf::Vector2f&) override;
+        // : overriding null-defined
         virtual void collision_state_cleanup() override;
 };
 

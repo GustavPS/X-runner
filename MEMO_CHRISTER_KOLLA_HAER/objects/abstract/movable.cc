@@ -6,7 +6,7 @@ Movable_Object::Movable_Object(const sf::Vector2f& position,
                                const sf::Vector2f& size,
                                const std::string &type,
                                const bool solid)
-    : Simulatable { position, size, type, solid }
+    : Colliding_Object { position, size, type, solid }
 {}
 
 int Movable_Object::prepare_simulate(const float distance_modifier)
@@ -57,7 +57,7 @@ std::vector<Object*> Movable_Object::simulate(const int total_simulations,
 void Movable_Object::end_simulate(const std::vector<const Object*> &objects)
 {
     distance *= 0.f;
-    Simulatable::end_simulate(objects);
+    Colliding_Object::end_simulate(objects);
 }
 
 void Movable_Object::handle_collision(const Object *object,

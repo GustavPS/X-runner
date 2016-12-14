@@ -90,9 +90,12 @@ int Game_State::simulate()
         }
     }
 
+    // Let each simulatable object perform its end-of-simulation code
+    for (auto *simulatable_object : simulatable_objects)
+        simulatable_object->end_simulate(objects);
+
     // Free memory of and remove objects marked for deletion from
     // <simulatable_objects>, <texturated_objects> and <objects>
-
     simulatable_objects.erase(
         std::remove_if(
             simulatable_objects.begin(),
@@ -139,10 +142,6 @@ int Game_State::simulate()
         if (simulatable_object != nullptr)
             simulatable_objects.push_back(simulatable_object);
     }
-
-    // Let each simulatable object perform its end-of-simulation code
-    for (auto *simulatable_object : simulatable_objects)
-        simulatable_object->end_simulate(objects);
 
     return 0;
 }

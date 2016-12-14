@@ -3,6 +3,8 @@
 
 #include "../abstract/gravitable.h"
 
+#include <unordered_set>
+
 class Player final : public Gravitating_Object
 {
     public:

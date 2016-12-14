@@ -3,8 +3,6 @@
 
 #include "object.h"
 
-#include <unordered_set>
-
 class Simulatable : public Object
 {
     public:
@@ -23,19 +21,8 @@ class Simulatable : public Object
         virtual std::vector<Object*> simulate(const int,
                                               const std::vector<const Object*>&) = 0;
         
-        // Clean-up simulation state : defined
-        virtual void end_simulate(const std::vector<const Object*> &objects);
-
-    protected:
-        // Collision handling : defined
-        void check_collision(const std::vector<const Object*>&,
-                             const sf::Vector2f& = {});
-
-        // Collision handling : null-defined
-        virtual void handle_collision(const Object*,
-                                      const sf::Vector2f& = {}) {}
-        virtual void handle_end_collision(const sf::Vector2f&) {}
-        virtual void collision_state_cleanup() {}
+        // Clean-up simulation state : null-defined
+        virtual void end_simulate(const std::vector<const Object*> &objects) {}
 };
 
 #endif

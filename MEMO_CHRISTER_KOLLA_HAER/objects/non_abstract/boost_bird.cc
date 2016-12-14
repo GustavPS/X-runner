@@ -20,7 +20,7 @@ std::vector<Object*> Boost_Bird::simulate(const int total_simulations,
 {
     auto new_objects { Bird::simulate(total_simulations, objects) };
 
-    if (nfbb_clock.getElapsedTime().asSeconds() >= 6.f)
+    if (nfbb_clock.getElapsedTime().asSeconds() >= 10.f)
     {
         new_objects.push_back( new NFBB
                                {
@@ -28,8 +28,6 @@ std::vector<Object*> Boost_Bird::simulate(const int total_simulations,
                                    sf::Vector2f { 16.f, 16.f },
                                    "nfbb"
                                } );
-
-        std::cerr << new_objects.size() << " ";
 
         nfbb_clock.restart();
     }

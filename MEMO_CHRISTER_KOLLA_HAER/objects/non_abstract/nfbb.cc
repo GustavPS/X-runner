@@ -16,7 +16,7 @@ std::vector<Object*> NFBB::simulate(const int total_simulations,
 {
     if (on_ground)
     {
-        if (despawn_clock.getElapsedTime().asSeconds() >= 3)
+        if (despawn_clock.getElapsedTime().asSeconds() >= 5)
         {
             m_delete_status = true;
         }
@@ -29,7 +29,6 @@ std::vector<Object*> NFBB::simulate(const int total_simulations,
     return Gravitating_Object::simulate(total_simulations, objects);
 }
 
-#include <iostream>
 void NFBB::handle_collision(const Object *object, 
                             const sf::Vector2f &steps)
 {

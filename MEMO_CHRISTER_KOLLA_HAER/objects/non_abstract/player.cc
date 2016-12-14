@@ -62,7 +62,7 @@ int Player::prepare_simulate(const float distance_modifier,
 
     if (nfbb_debuff)
     {
-        if (nfbb_clock.getElapsedTime().asSeconds() < 1.f)
+        if (nfbb_clock.getElapsedTime().asSeconds() < 1.5f)
         {
             speed_modifier = 0.f;
             boost_bird_buffs.clear();
