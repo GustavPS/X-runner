@@ -10,7 +10,8 @@ class Bird : public Movable_Object
         Bird(const sf::Vector2f&,
              const sf::Vector2f&,
              const std::string&,
-             const float);
+             const float,
+             const float = 2.f);
 
         // Prepare and calculate the required amount of simulations 
         // : overriding defined : final
@@ -18,8 +19,9 @@ class Bird : public Movable_Object
                                      const float) override final;
 
     protected:
-        // Attributes
+        // Constants : Attributes
         const float speed;
+        const float m_cooldown;
 
         // State : general
         float m_direction;

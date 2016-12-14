@@ -7,7 +7,7 @@ Boost_Bird::Boost_Bird(const sf::Vector2f &position,
                        const sf::Vector2f &size,
                        const std::string &type,
                        const float speed)
-    : Bird { position, size, type, speed }
+    : Bird { position, size, type, speed, 5.f }
 {
     sf::Texture txt;
     txt.loadFromFile("Block_Ninja/idle.PNG");
@@ -25,7 +25,7 @@ std::vector<Object*> Boost_Bird::simulate(const int total_simulations,
         new_objects.push_back( new NFBB
                                {
                                    shape.getPosition(),
-                                   sf::Vector2f { 16.f, 16.f },
+                                   sf::Vector2f { 24.f, 24.f },
                                    "nfbb"
                                } );
 

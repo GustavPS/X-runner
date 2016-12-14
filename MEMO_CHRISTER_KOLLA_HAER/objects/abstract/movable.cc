@@ -23,9 +23,9 @@ int Movable_Object::prepare_simulate(const float distance_modifier)
     // Calculate the number of simulations needed for this object
     // (an object can never move >16 (smallest object) on any axis per simulation)
     int i {1};
-    while (longest > 16.f)
+    while (longest > 24.f)
     {
-        longest -= 16;
+        longest -= 24;
         ++i;
     }
 

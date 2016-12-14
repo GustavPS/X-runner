@@ -50,9 +50,9 @@ int Player::prepare_simulate(const float distance_modifier,
 
     if (boost_bird_buffs.size())
     {
-        if (boost_bird_clock.getElapsedTime().asSeconds() < 2.f)
+        if (boost_bird_clock.getElapsedTime().asSeconds() < 5.f)
         {
-            speed_modifier *= std::pow(1.33f, boost_bird_buffs.size());
+            speed_modifier *= std::pow(1.166f, boost_bird_buffs.size());
         }
         else
         {
@@ -62,10 +62,10 @@ int Player::prepare_simulate(const float distance_modifier,
 
     if (nfbb_debuff)
     {
-        if (nfbb_clock.getElapsedTime().asSeconds() < 1.5f)
+        if (nfbb_clock.getElapsedTime().asSeconds() < 2.f)
         {
-            speed_modifier = 0.f;
-            boost_bird_buffs.clear();
+            speed_modifier *= 0.66f;
+            //boost_bird_buffs.clear();
         }
         else
         {

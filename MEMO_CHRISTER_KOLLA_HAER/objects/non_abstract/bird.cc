@@ -3,9 +3,11 @@
 Bird::Bird(const sf::Vector2f &position,
            const sf::Vector2f &size,
            const std::string &type,
-           const float speed)
+           const float speed,
+           const float cooldown)
     : Movable_Object { position, size, type }
     , speed { speed }
+    , m_cooldown { cooldown }
     , m_direction { 1.f }
 {
     sf::Texture txt;
@@ -20,7 +22,7 @@ int Bird::prepare_simulate(const float distance_modifier,
 
     if (player_debuff)
     {
-        if (player_clock.getElapsedTime().asSeconds() < 2.f)
+        if (player_clock.getElapsedTime().asSeconds() < m_cooldown)
         {
             sf::Texture txt;
             txt.loadFromFile("Block_Ninja/idle_50.PNG");
