@@ -2,14 +2,14 @@
 
 Bird::Bird(const sf::Vector2f &position,
            const sf::Vector2f &size,
-           const std::vector<std::string> &types,
-           float speed)
-    : Movable_Object { position, size, types }
+           const std::string &type,
+           const float speed)
+    : Movable_Object { position, size, type }
     , speed { speed }
-    , m_direction { 1 }
+    , m_direction { 1.f }
 {
     sf::Texture txt;
-    txt.loadFromFile("player.png");
+    txt.loadFromFile("Block_Ninja/idle.PNG");
     shape.setTexture( new sf::Texture { txt } ); // memleak
 }
 
@@ -20,17 +20,17 @@ int Bird::prepare_simulate(const float distance_modifier,
 
     if (player_debuff)
     {
-        if (player_clock.getElapsedTime().asSeconds() < 2)
+        if (player_clock.getElapsedTime().asSeconds() < 2.f)
         {
             sf::Texture txt;
-            txt.loadFromFile("player_50.png");
+            txt.loadFromFile("Block_Ninja/idle_50.PNG");
             txt.setSmooth(false);
             shape.setTexture( new sf::Texture { txt } ); // memleak
         }
         else
         {
             sf::Texture txt;
-            txt.loadFromFile("player.png");
+            txt.loadFromFile("Block_Ninja/idle.PNG");
             txt.setSmooth(false);
             shape.setTexture( new sf::Texture { txt } ); // memleak
             player_debuff = false;
@@ -43,25 +43,22 @@ int Bird::prepare_simulate(const float distance_modifier,
     return Movable_Object::prepare_simulate(distance_modifier);
 }
 
-std::vector<Object*> Bird::simulate(const int total_simulations,
-                                    const std::vector<const Object*> &objects)
-{
-    return Movable_Object::simulate(total_simulations, objects);
-}
-
-bool Bird::handle_collision(const Object *object,
+void Bird::handle_collision(const Object *object,
                             const sf::Vector2f &steps)
 {
-    bool has_collided { Movable_Object::handle_collision(object, steps) };
+    Movable_Object::handle_collision(object, steps);
 
-    const std::string _type { object->get_types().at(0) };
-
-    if (_type == "wall")
+    if (object->is_solid())
     {
-        m_direction *= -1;
-        has_collided = true;
+        if (steps.x != 0)
+        {
+            m_direction *= -1.f;
+        }
     }
-    else if (_type == "player")
+
+    const std::string type { object->get_type() };
+
+    if (type == "player")
     {
         if (!player_debuff)
         {
@@ -69,5 +66,4 @@ bool Bird::handle_collision(const Object *object,
             player_debuff = true;
         }
     }
-    return has_collided;
 }

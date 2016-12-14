@@ -12,9 +12,10 @@ void Game_State::load_level(const std::string &level)
 {
     reset();
 
-    Level_Parser level_parser { level };
+    Level_Parser level_parser { "level_1.tmx" };
+
     sf::Texture bgTexture;
-    if(!bgTexture.loadFromFile("new.png"))
+    if(!bgTexture.loadFromFile("level_1.png"))
         std::cerr << "Du suger kuk!";
     background.setTexture(bgTexture);
     bgTexture.setSmooth(false);
@@ -23,6 +24,8 @@ void Game_State::load_level(const std::string &level)
 
     auto tmp_objects { level_parser.get_objects() };
     objects.insert(objects.end(), tmp_objects.begin(), tmp_objects.end());
+
+    std::cerr << objects.size();
 
     for (auto *object : objects)
     {
@@ -146,7 +149,7 @@ int Game_State::simulate()
 
 void Game_State::set_zoom(sf::View &view)
 {
-    view.zoom(0.5);
+    view.zoom(0.75);
 }
 
 void Game_State::set_view(sf::View &view)

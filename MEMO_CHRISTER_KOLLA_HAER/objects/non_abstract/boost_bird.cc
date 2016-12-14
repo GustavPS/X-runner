@@ -5,12 +5,12 @@
 
 Boost_Bird::Boost_Bird(const sf::Vector2f &position,
                        const sf::Vector2f &size,
-                       const std::vector<std::string> &types,
-                       float speed)
-    : Bird { position, size, types, speed }
+                       const std::string &type,
+                       const float speed)
+    : Bird { position, size, type, speed }
 {
     sf::Texture txt;
-    txt.loadFromFile("player.png");
+    txt.loadFromFile("Block_Ninja/idle.PNG");
     shape.setTexture( new sf::Texture { txt } ); // memleak
 }
 
@@ -20,13 +20,13 @@ std::vector<Object*> Boost_Bird::simulate(const int total_simulations,
 {
     auto new_objects { Bird::simulate(total_simulations, objects) };
 
-    if (nfbb_clock.getElapsedTime().asSeconds() >= 12)
+    if (nfbb_clock.getElapsedTime().asSeconds() >= 6.f)
     {
         new_objects.push_back( new NFBB
                                {
                                    shape.getPosition(),
-                                   sf::Vector2f { 24, 12 },
-                                   std::vector<std::string> { "nfbb" }
+                                   sf::Vector2f { 16.f, 16.f },
+                                   "nfbb"
                                } );
 
         std::cerr << new_objects.size() << " ";

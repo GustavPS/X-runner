@@ -9,15 +9,13 @@ class Bird : public Movable_Object
         // Constructors & destructors
         Bird(const sf::Vector2f&,
              const sf::Vector2f&,
-             const std::vector<std::string> &types,
-             float);
+             const std::string&,
+             const float);
 
+        // Prepare and calculate the required amount of simulations 
+        // : overriding defined : final
         virtual int prepare_simulate(const float,
                                      const float) override final;
-
-        // Execute simulation of object : overriding pure virtual : NOT final
-        virtual std::vector<Object*> simulate(const int,
-                                              const std::vector<const Object*>&) override;
 
     protected:
         // Attributes
@@ -30,8 +28,8 @@ class Bird : public Movable_Object
         sf::Clock player_clock;
         bool player_debuff {};
         
-        // Collision handling : overriding null-defined : final
-        virtual bool handle_collision(const Object*,
+        // Collision handling : overriding defined : final
+        virtual void handle_collision(const Object*,
                                       const sf::Vector2f&) override final;
 };
 

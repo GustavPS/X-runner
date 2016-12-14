@@ -2,8 +2,8 @@
 
 NFBB::NFBB(const sf::Vector2f &position,
            const sf::Vector2f &size,
-           const std::vector<std::string> &types)
-    : Gravitating_Object { position, size, types }
+           const std::string &type)
+    : Gravitating_Object { position, size, type }
 {
     sf::Texture txt;
     txt.loadFromFile("player.png");
@@ -30,23 +30,23 @@ std::vector<Object*> NFBB::simulate(const int total_simulations,
 }
 
 #include <iostream>
-bool NFBB::handle_collision(const Object *object, 
+void NFBB::handle_collision(const Object *object, 
                             const sf::Vector2f &steps)
 {
-    bool has_collided { Gravitating_Object::handle_collision(object, steps) };
+    Gravitating_Object::handle_collision(object, steps);
 
-    const std::string _type { object->get_types().at(0) };
-
-    if (_type == "ground" && steps.y > 0)
+    if (object->is_solid())
     {
-        on_ground = true;
-        has_collided = true;
+        if (steps.y > 0.f)
+        {
+            on_ground = true;
+        }
     }
-    else if (_type == "player")
+
+    const std::string type { object->get_type() };
+
+    if (type == "player")
     {
-        std::cerr << " EYYYSAN ";
         m_delete_status = true;
     }
-
-    return has_collided;
 }

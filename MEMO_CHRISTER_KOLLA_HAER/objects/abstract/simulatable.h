@@ -11,10 +11,11 @@ class Simulatable : public Object
         // Constructors & destructors
         Simulatable(const sf::Vector2f&,
                     const sf::Vector2f&,
-                    const std::vector<std::string>&);
+                    const std::string&,
+                    const bool = false);
 
-        // Prepare and calculate the required amount of simulations
-        //     : pure virtual
+        // Prepare and calculate the required amount of simulations 
+        // : pure virtual
         virtual int prepare_simulate(const float,
                                      const float) = 0;
 
@@ -22,23 +23,19 @@ class Simulatable : public Object
         virtual std::vector<Object*> simulate(const int,
                                               const std::vector<const Object*>&) = 0;
         
-        // Clean-up simulation state
+        // Clean-up simulation state : defined
         virtual void end_simulate(const std::vector<const Object*> &objects);
 
     protected:
-        // Simulation state
-        std::unordered_set<std::string> collided_object_types;
-
-        // Collision handling
+        // Collision handling : defined
         void check_collision(const std::vector<const Object*>&,
-                             const sf::Vector2f& = {},
-                             const bool = true);
+                             const sf::Vector2f& = {});
 
         // Collision handling : null-defined
-        virtual bool handle_collision(const Object*,
-                                      const sf::Vector2f& = {}) { return {}; }
-
+        virtual void handle_collision(const Object*,
+                                      const sf::Vector2f& = {}) {}
         virtual void handle_end_collision(const sf::Vector2f&) {}
+        virtual void collision_state_cleanup() {}
 };
 
 #endif

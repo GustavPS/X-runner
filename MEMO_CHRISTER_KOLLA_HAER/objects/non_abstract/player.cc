@@ -5,13 +5,13 @@
 
 Player::Player(const sf::Vector2f &position,
                const sf::Vector2f &size,
-               const std::vector<std::string> &types,
-               float speed)
-    : Gravitating_Object { position, size, types }
+               const std::string &type,
+               const float speed)
+    : Gravitating_Object { position, size, type }
     , speed { speed }
 {
     sf::Texture txt;
-    txt.loadFromFile("player.png");
+    txt.loadFromFile("Block_Ninja/idle.PNG");
     shape.setTexture( new sf::Texture { txt } ); // memleak
     // do some stuff, like texture of shape.
 }
@@ -20,27 +20,27 @@ int Player::prepare_simulate(const float distance_modifier,
                              const float gravity_constant)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        distance.x = -1;
+        distance.x = -1.f;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        distance.x = 1;
-   
+        distance.x = 1.f;
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
      && on_ground && !quicksand_debuff)
         jumping = true;
     if (jumping)
-        distance.y = -1.5;
+        distance.y = -1.5f;
 
     // Speed modifying debuffs
-    float speed_modifier {1};
+    float speed_modifier {1.f};
 
     if (quicksand_debuff)
-        speed_modifier *= 0.75;
+        speed_modifier *= 0.33f;
 
     if (slow_bird_debuffs.size())
     {
-        if (slow_bird_clock.getElapsedTime().asSeconds() < 2)
+        if (slow_bird_clock.getElapsedTime().asSeconds() < 2.f)
         {
-            speed_modifier *= std::pow(0.66, slow_bird_debuffs.size());
+            speed_modifier *= std::pow(0.66f, slow_bird_debuffs.size());
         }
         else
         {
@@ -50,9 +50,9 @@ int Player::prepare_simulate(const float distance_modifier,
 
     if (boost_bird_buffs.size())
     {
-        if (boost_bird_clock.getElapsedTime().asSeconds() < 2)
+        if (boost_bird_clock.getElapsedTime().asSeconds() < 2.f)
         {
-            speed_modifier *= std::pow(1.33, boost_bird_buffs.size());
+            speed_modifier *= std::pow(1.33f, boost_bird_buffs.size());
         }
         else
         {
@@ -62,9 +62,9 @@ int Player::prepare_simulate(const float distance_modifier,
 
     if (nfbb_debuff)
     {
-        if (nfbb_clock.getElapsedTime().asSeconds() < 1)
+        if (nfbb_clock.getElapsedTime().asSeconds() < 1.f)
         {
-            speed_modifier = 0;
+            speed_modifier = 0.f;
             boost_bird_buffs.clear();
         }
         else
@@ -81,98 +81,81 @@ int Player::prepare_simulate(const float distance_modifier,
     return Gravitating_Object::prepare_simulate(
         distance_modifier, gravity_constant);
 }
-#include <iostream>
-bool Player::handle_collision(const Object *object, 
+
+void Player::handle_collision(const Object *object, 
                               const sf::Vector2f &steps)
 {
-    bool has_collided { Gravitating_Object::handle_collision(object, steps) };
+    Gravitating_Object::handle_collision(object, steps);
 
-    const auto _types { object->get_types() };
-
-    const std::string &_type { _types.at(0) };
-
-    const std::string _subtype { _types.size() > 1
-                                 ? _types.at(1)
-                                 : std::string() };
-
-    /*Collision with types*/
-    if (_type == "ground" && steps.y > 0)
+    if (object->is_solid())
     {
-        jumping = false;
-        on_ground = true;
-        has_collided = true;
+        if (steps.y > 0.f)
+        {
+            jumping = false;
+            on_ground = true;
+        }
+        else if (steps.y < 0.f)
+        {
+            jumping = false;
+        }
     }
-    else if (_type == "roof" && steps.y < 0)
-    {
-        jumping = false;
-        has_collided = true;
-    }
-    else if (_type == "slow_bird")
+
+    const std::string type { object->get_type() };
+
+    if (type == "slow_bird")
     {
         if (slow_bird_debuffs.find(object)
             == slow_bird_debuffs.end())
         {
             slow_bird_clock.restart();
             slow_bird_debuffs.insert(object);
-            has_collided = true;
         }
     }
-    else if (_type == "boost_bird")
+    else if (type == "boost_bird")
     {
         if (boost_bird_buffs.find(object)
             == boost_bird_buffs.end())
         {
             boost_bird_clock.restart();
             boost_bird_buffs.insert(object);
-            has_collided = true;
         }
     }
-    else if (_type == "nfbb")
+    else if (type == "nfbb")
     {
-        std::cerr << "mangoo";
         nfbb_clock.restart();
         nfbb_debuff = true;
-        has_collided = true;
     }
-
-    /*Collision with subtypes*/
-    if (_subtype == "quicksand" && steps.y > 0)
+    else if (type == "quicksand")
     {
-        quicksand_debuff = true;
-        has_collided = true;
+        if (steps.y > 0.f)
+        {
+            quicksand_debuff = true;
+            m_quicksand_collision = true;
+        }
     }
-
-    return has_collided;
 }
 
 void Player::handle_end_collision(const sf::Vector2f &steps)
 {
     /*Collision has not occured with <x>*/
-    if (steps.y)
+    if (steps.y != 0.f)
     {
-        if (collided_object_types.size() > 0)
-        {
-            if (on_ground)
-            {
-                if (collided_object_types.find("ground")
-                    == collided_object_types.end())
-                {
-                    on_ground = false;
-                }
-            }
-            if (quicksand_debuff)
-            {
-                if (collided_object_types.find("quicksand")
-                    == collided_object_types.end())
-                {
-                    quicksand_debuff = false;
-                }
-            }
-        }
-        else
+        if (!m_ground_collision)
         {
             on_ground = false;
+        }
+
+        if (!m_quicksand_collision)
+        {
             quicksand_debuff = false;
         }
     }
+
+    Gravitating_Object::handle_end_collision(steps);
+}
+
+void Player::collision_state_cleanup()
+{
+    m_quicksand_collision = false;
+    Gravitating_Object::collision_state_cleanup();
 }

@@ -2,18 +2,23 @@
 
 Object::Object(const sf::Vector2f &position,
                const sf::Vector2f &size,
-               const std::vector<std::string> &types)
+               const std::string &type,
+               const bool solid)
     : shape { size }
-    , types {types}
+    , type { type }
+    , solid { solid }
 {
     shape.setPosition(position);
 }
 
-sf::RectangleShape Object::get_shape() const
-    { return shape; }
+std::string Object::get_type() const
+    { return type; }
 
-std::vector<std::string> Object::get_types() const
-    { return types; }
+bool Object::is_solid() const
+    { return solid; }
 
 bool Object::get_delete_status() const
     { return m_delete_status; }
+
+sf::RectangleShape Object::get_shape() const
+    { return shape; }

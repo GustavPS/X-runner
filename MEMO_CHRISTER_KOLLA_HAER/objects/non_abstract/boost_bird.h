@@ -9,10 +9,10 @@ class Boost_Bird final : public Bird
         // Constructors & destructors
         Boost_Bird(const sf::Vector2f&,
                    const sf::Vector2f&,
-                   const std::vector<std::string> &types,
-                   float);
+                   const std::string&,
+                   const float);
 
-        // Execute simulation of object : overriding pure virtual : final
+        // Execute simulation of object : overriding defined : final
         virtual std::vector<Object*> simulate(const int,
                                               const std::vector<const Object*>&) override final;
 

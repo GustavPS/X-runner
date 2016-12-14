@@ -39,7 +39,7 @@ void Engine::render(sf::RenderWindow& window)
    // window.draw(active_state->get_background());
 
     sf::Texture bgTexture;
-    bgTexture.loadFromFile("new.png");
+    bgTexture.loadFromFile("level_1.png");
     sf::Sprite tmp { bgTexture };
 
     window.draw(tmp);

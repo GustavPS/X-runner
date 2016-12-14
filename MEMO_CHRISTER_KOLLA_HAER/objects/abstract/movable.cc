@@ -4,8 +4,9 @@
 
 Movable_Object::Movable_Object(const sf::Vector2f& position,
                                const sf::Vector2f& size,
-                               const std::vector<std::string> &types)
-    : Simulatable { position, size, types }
+                               const std::string &type,
+                               const bool solid)
+    : Simulatable { position, size, type, solid }
 {}
 
 int Movable_Object::prepare_simulate(const float distance_modifier)
@@ -20,10 +21,13 @@ int Movable_Object::prepare_simulate(const float distance_modifier)
                         : distance.y) };
 
     // Calculate the number of simulations needed for this object
-    // (an object can never move >1 on any axis per simulation)
+    // (an object can never move >16 (smallest object) on any axis per simulation)
     int i {1};
-    while (longest-- > 1)
+    while (longest > 16.f)
+    {
+        longest -= 16;
         ++i;
+    }
 
     // Return the number of simulations needed for this object
     return i;
@@ -32,16 +36,18 @@ int Movable_Object::prepare_simulate(const float distance_modifier)
 std::vector<Object*> Movable_Object::simulate(const int total_simulations,
                                               const std::vector<const Object*> &objects)
 {
+    collision_state_cleanup();
+
     // Check collision before moving (if another object collided with this)
     check_collision(objects);
 
     // Move on x-axis, then check collision
-    sf::Vector2f steps { distance.x / total_simulations, 0 };
+    sf::Vector2f steps { distance.x / total_simulations, 0.f };
     shape.setPosition(shape.getPosition() + steps);
-    check_collision(objects, steps, false);
+    check_collision(objects, steps);
 
     // Move on y-axis, then check collision
-    steps = { 0, distance.y / total_simulations };
+    steps = { 0.f, distance.y / total_simulations };
     shape.setPosition(shape.getPosition() + steps);
     check_collision(objects, steps);
 
@@ -54,40 +60,42 @@ void Movable_Object::end_simulate(const std::vector<const Object*> &objects)
     Simulatable::end_simulate(objects);
 }
 
-bool Movable_Object::handle_collision(const Object *object,
+void Movable_Object::handle_collision(const Object *object,
                                       const sf::Vector2f &steps)
 {
-    bool has_collided {};
-    
-    const std::string _type { object->get_types().at(0) };
+    if (object->is_solid())
+    {
+        auto object_shape { object->get_shape() };
 
-    if (_type == "ground" && steps.y > 0)
-    {
-        if (collided_object_types.find(_type)
-            == collided_object_types.end())
+        if (steps.y > 0.f && !m_ground_collision)
         {
-            shape.setPosition(shape.getPosition() - steps);
-            has_collided = true;
+            shape.setPosition(shape.getPosition().x, object_shape.getPosition().y
+                                                     - shape.getSize().y);
+            m_ground_collision = true;
+        }
+        else if (steps.y < 0.f && !m_roof_collision)
+        {
+            shape.setPosition(shape.getPosition().x, object_shape.getPosition().y
+                                                     + object_shape.getSize().y);
+            m_roof_collision = true;
+        }
+        else if (steps.x < 0.f && !m_wall_collision)
+        {
+            shape.setPosition(object_shape.getPosition().x + object_shape.getSize().x
+                            , shape.getPosition().y);
+        }
+        else if (steps.x > 0.f && !m_wall_collision)
+        {
+            shape.setPosition(object_shape.getPosition().x - shape.getSize().x
+                            , shape.getPosition().y);
+            m_wall_collision = true;
         }
     }
-    else if (_type == "roof" && steps.y < 0)
-    {
-        if (collided_object_types.find(_type)
-            == collided_object_types.end())
-        {
-            shape.setPosition(shape.getPosition() - steps);
-            has_collided = true;
-        }
-    }
-    else if (_type == "wall" && steps.x != 0)
-    {
-        if (collided_object_types.find(_type)
-            == collided_object_types.end())
-        {
-            shape.setPosition(shape.getPosition() - steps);
-            has_collided = true;
-        }
-    }
+}
 
-    return has_collided;
+void Movable_Object::collision_state_cleanup()
+{
+    m_ground_collision = false;
+    m_roof_collision = false;
+    m_wall_collision = false;
 }

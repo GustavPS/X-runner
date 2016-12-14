@@ -12,20 +12,27 @@ class Object
         // Constructors & destructors
         Object(const sf::Vector2f&,
                const sf::Vector2f&,
-               const std::vector<std::string>&);
+               const std::string&,
+               const bool = false);
         virtual ~Object() noexcept = default;
         // ^ NOTE: Should probably be implemented in a more meaningful way
 
         // Getters
-        sf::RectangleShape get_shape() const;
-        std::vector<std::string> get_types() const;
+        std::string get_type() const;
+        bool is_solid() const;
         bool get_delete_status() const;
+        sf::RectangleShape get_shape() const;
     
     protected:
-        // State
-        sf::RectangleShape shape;
-        std::vector<std::string> types;
+        // Constants : attributes
+        const std::string type;
+
+        // State : attributes
+        bool solid {};
+
+        // State : general
         bool m_delete_status {};
+        sf::RectangleShape shape;
         
 };
 
