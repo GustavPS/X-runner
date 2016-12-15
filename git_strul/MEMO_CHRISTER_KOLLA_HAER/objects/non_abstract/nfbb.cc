@@ -28,7 +28,7 @@ std::vector<Object*> NFBB::simulate(const int total_simulations,
 
     return Gravitating_Object::simulate(total_simulations, objects);
 }
-
+#include <iostream>
 void NFBB::handle_collision(const Object *object, 
                             const sf::Vector2f &steps)
 {
@@ -46,6 +46,7 @@ void NFBB::handle_collision(const Object *object,
 
     if (type == "player")
     {
+        std::cerr << " nfbb ";
         m_delete_status = true;
     }
 }

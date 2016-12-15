@@ -14,8 +14,8 @@ class State
         virtual ~State() noexcept;
 
         // Getters
-        sf::Sprite get_background() const;
-        std::vector<const Object*> get_texturated_objects() const;
+        const sf::Sprite& get_background() const;
+        const std::vector<const Object*>& get_texturated_objects() const;
 
         // Pure virtual functions
         virtual int simulate() = 0;
@@ -24,6 +24,7 @@ class State
     
     protected:
         // Objects
+        sf::Texture background_texture;
         sf::Sprite background;
         std::vector<const Object*> objects;
         std::vector<const Object*> texturated_objects;

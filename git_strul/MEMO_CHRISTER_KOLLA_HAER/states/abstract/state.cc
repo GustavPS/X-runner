@@ -5,10 +5,10 @@ State::~State()
     reset();
 }
 
-sf::Sprite State::get_background() const
+const sf::Sprite& State::get_background() const
     { return background; }
 
-std::vector<const Object*> State::get_texturated_objects() const
+const std::vector<const Object*>& State::get_texturated_objects() const
     { return texturated_objects; }
 
 void State::reset()

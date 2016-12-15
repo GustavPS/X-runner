@@ -11,7 +11,6 @@ void Game_State::load_level(const std::string &level)
 
     Level_Parser level_parser { level };
 
-    sf::Texture bgTexture;
     bgTexture.loadFromFile("new.png");
     bgTexture.setSmooth(false);
     background = bgTexture;

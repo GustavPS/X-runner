@@ -52,7 +52,7 @@ int Player::prepare_simulate(const float distance_modifier,
     {
         if (boost_bird_clock.getElapsedTime().asSeconds() < 5.f)
         {
-            speed_modifier *= std::pow(1.15f, boost_bird_buffs.size());
+            speed_modifier *= std::pow(1.1f, boost_bird_buffs.size());
         }
         else
         {
@@ -81,7 +81,7 @@ int Player::prepare_simulate(const float distance_modifier,
     return Gravitating_Object::prepare_simulate(
         distance_modifier, gravity_constant);
 }
-
+#include <iostream>
 void Player::handle_collision(const Object *object, 
                               const sf::Vector2f &steps)
 {
@@ -120,7 +120,7 @@ void Player::handle_collision(const Object *object,
             boost_bird_buffs.insert(object);
         }
     }
-    else if (type == "nfbb")
+    else if (type == "nfbb" && !m_roof_collision && !m_wall_collision)
     {
         nfbb_clock.restart();
         nfbb_debuff = true;

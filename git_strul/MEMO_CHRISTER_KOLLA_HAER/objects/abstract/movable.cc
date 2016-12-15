@@ -41,14 +41,16 @@ std::vector<Object*> Movable_Object::simulate(const int total_simulations,
     // Check collision before moving (if another object collided with this)
     check_collision(objects);
 
-    // If there is movement
-    if (distance.x != 0 || distance.y != 0)
+    sf::Vector2f steps;
+    if (distance.x != 0)
     {
         // Move on x-axis, then check collision
-        sf::Vector2f steps { distance.x / total_simulations, 0.f };
+        steps = { distance.x / total_simulations, 0.f };
         shape.setPosition(shape.getPosition() + steps);
         check_collision(objects, steps);
-
+    }
+    if (distance.y != 0)
+    {
         // Move on y-axis, then check collision
         steps = { 0.f, distance.y / total_simulations };
         shape.setPosition(shape.getPosition() + steps);

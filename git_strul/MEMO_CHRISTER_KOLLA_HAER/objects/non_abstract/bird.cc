@@ -12,6 +12,7 @@ Bird::Bird(const sf::Vector2f &position,
 {
     sf::Texture txt;
     txt.loadFromFile("Block_Ninja/idle.PNG");
+    txt.setSmooth(false);
     shape.setTexture( new sf::Texture { txt } ); // memleak
 }
 

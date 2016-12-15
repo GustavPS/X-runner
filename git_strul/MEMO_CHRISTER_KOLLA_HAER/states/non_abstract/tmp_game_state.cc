@@ -14,11 +14,8 @@ void Game_State::load_level(const std::string &level)
 
     Level_Parser level_parser { "level_1.tmx" };
 
-    sf::Texture bgTexture;
-    if(!bgTexture.loadFromFile("level_1.png"))
-        std::cerr << "Du suger kuk!";
-    background.setTexture(bgTexture);
-    bgTexture.setSmooth(false);
+    background_texture.loadFromFile("level_1.png");
+    background.setTexture(background_texture);
 
     gravity_constant = 9.82;
 

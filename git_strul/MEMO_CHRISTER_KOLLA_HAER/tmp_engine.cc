@@ -36,13 +36,7 @@ void Engine::render(sf::RenderWindow& window)
 
     window.setView(view);
 
-   // window.draw(active_state->get_background());
-
-    sf::Texture bgTexture;
-    bgTexture.loadFromFile("level_1.png");
-    sf::Sprite tmp { bgTexture };
-
-    window.draw(tmp);
+    window.draw(active_state->get_background());
 
     std::vector<const Object*> texturated_objects
         { active_state->get_texturated_objects() };
