@@ -1,7 +1,7 @@
 #include "level_parser.h"
 
 #include "../objects/non_abstract/player.h"
-#include "../objects/non_abstract/bird.h"
+#include "../objects/non_abstract/slow_bird.h"
 #include "../objects/non_abstract/bomb_bird.h"
 #include "../objects/non_abstract/boost_bird.h"
 #include "../objects/non_abstract/nfbb.h"
@@ -10,17 +10,27 @@
 
 Level_Parser::Level_Parser(const std::string &path)
 {
-    load_level(path);
-}
-
-void Level_Parser::load_level(const std::string &path)
-{
     pugi::xml_parse_result parse_result;
     parse_result = m_xml_doc.load_file(path.c_str());
     if (!parse_result)
     {
         throw std::logic_error(std::string(parse_result.description()));
     }
+
+    m_textures["player"] = new sf::Texture;
+    m_textures["player"]->loadFromFile("Block_Ninja/idle.PNG");
+
+    m_textures["slow_bird"] = new sf::Texture;
+    m_textures["slow_bird"]->loadFromFile("Block_Ninja/idle.PNG");
+
+    m_textures["boost_bird"] = new sf::Texture;
+    m_textures["boost_bird"]->loadFromFile("Block_Ninja/idle.PNG");
+
+    m_textures["bomb_bird"] = new sf::Texture;
+    m_textures["bomb_bird"]->loadFromFile("Block_Ninja/idle.PNG");
+
+    m_textures["nfbb"] = new sf::Texture;
+    m_textures["nfbb"]->loadFromFile("Block_Ninja/idle.PNG");
 }
 
 std::vector<Object*> Level_Parser::get_objects() const
@@ -83,13 +93,16 @@ std::vector<Object*> Level_Parser::get_xml_objects() const
             int gid {xml_object.attribute("gid").as_int()};
 
             float speed {};
+            int direction {};
             for (pugi::xml_node xml_property
                     { xml_object.child("properties").child("property") }
                 ; xml_property
                 ; xml_property = xml_property.next_sibling("property"))
             {
                 if (std::string(xml_property.attribute("name").as_string()) == "speed")
-                    speed = xml_property.attribute("value").as_float(); 
+                    speed = xml_property.attribute("value").as_float();
+                else if (std::string(xml_property.attribute("name").as_string()) == "direction")
+                    direction = xml_property.attribute("value").as_int(); 
             }
 
             // Bugfix: Tiled Map Editor offsets position.y with +size.y for texturated objects
@@ -98,30 +111,30 @@ std::vector<Object*> Level_Parser::get_xml_objects() const
 
             if (type == "player")
             {
-                xml_objects.push_back( new Player { position, size, type, speed } );
+                xml_objects.push_back( new Player { position, size, type, m_textures.find(type)->second, speed } );
             }
             else if (type == "slow_bird")
             {
-                xml_objects.push_back( new Bird { position, size, type, speed } );
-            }
-            else if (type == "bomb_slow_bird")
-            {
-                xml_objects.push_back( new Bomb_Bird { position, size, type, speed } );
+                xml_objects.push_back( new Slow_Bird { position, size, type, m_textures.find(type)->second, speed, direction } );
             }
             else if (type == "boost_bird")
             {
-                xml_objects.push_back( new Boost_Bird { position, size, type, speed } );
+                xml_objects.push_back( new Boost_Bird { position, size, type, m_textures.find(type)->second, speed, direction } );
+            }
+            else if (type == "bomb_bird")
+            {
+                xml_objects.push_back( new Bomb_Bird { position, size, type, m_textures.find(type)->second, speed, direction, m_textures.find("nfbb")->second } );
             }
             else if (type == "nfbb")
             {
-                xml_objects.push_back( new NFBB { position, size, type } );
+                xml_objects.push_back( new NFBB { position, size, type, m_textures.find(type)->second } );
             }
         }
     }
 
     return xml_objects;
 }
-#include <iostream>
+
 std::vector<Object*> Level_Parser::get_csv_objects() const
 {
     std::vector<Object*> csv_objects;

@@ -6,6 +6,7 @@
 #include "../../objects/abstract/object.h"
 
 #include <vector>
+#include <unordered_map>
 
 class State
 {
@@ -24,6 +25,7 @@ class State
     
     protected:
         // Objects
+        std::unordered_map<std::string, sf::Texture*> textures;
         sf::Texture background_texture;
         sf::Sprite background;
         std::vector<const Object*> objects;

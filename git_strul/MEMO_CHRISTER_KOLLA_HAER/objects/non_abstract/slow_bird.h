@@ -1,13 +1,13 @@
-#ifndef BOOST_BIRD_H
-#define BOOST_BIRD_H
+#ifndef SLOW_BIRD_H
+#define SLOW_BIRD_H
 
 #include "bird.h"
 
-class Boost_Bird final : public Bird
+class Slow_Bird : public Bird
 {
     public:
         // Constructors & destructors
-        Boost_Bird(const sf::Vector2f&,
+        Slow_Bird(const sf::Vector2f&,
                    const sf::Vector2f&,
                    const std::string&,
                    const sf::Texture *const,

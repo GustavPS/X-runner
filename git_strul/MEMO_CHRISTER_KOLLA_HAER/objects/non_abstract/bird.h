@@ -10,8 +10,11 @@ class Bird : public Movable_Object
         Bird(const sf::Vector2f&,
              const sf::Vector2f&,
              const std::string&,
+             const sf::Texture *const,
              const float,
-             const float = 2.f);
+             const int,
+             const float,
+             const bool = false);
 
         // Prepare and calculate the required amount of simulations 
         // : overriding defined : final
@@ -20,19 +23,21 @@ class Bird : public Movable_Object
 
     protected:
         // Constants : Attributes
-        const float speed;
+        const float m_speed;
         const float m_cooldown;
 
         // State : general
-        float m_direction;
+        int m_direction;
 
         // State : buffs & debuffs
-        sf::Clock player_clock;
-        bool player_debuff {};
+        sf::Clock m_player_clock;
+        bool m_player_debuff {};
         
         // Collision handling : overriding defined : final
-        virtual void handle_collision(const Object*,
+        virtual void handle_moving_collision(const Object*,
                                       const sf::Vector2f&) override final;
+
+        virtual void handle_static_collision(const Object*);
 };
 
 #endif

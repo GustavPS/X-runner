@@ -13,9 +13,10 @@ class Object
         Object(const sf::Vector2f&,
                const sf::Vector2f&,
                const std::string&,
-               const bool = false);
+               const bool = false,
+               const sf::Texture *const = nullptr);
+
         virtual ~Object() noexcept = default;
-        // ^ NOTE: Should probably be implemented in a more meaningful way
 
         // Getters
         std::string get_type() const;
@@ -24,15 +25,18 @@ class Object
         sf::RectangleShape get_shape() const;
     
     protected:
+        // Constants : textures
+        const sf::Texture *const m_texture;
+
         // Constants : attributes
-        const std::string type;
+        const std::string m_type;
 
         // State : attributes
-        bool solid {};
+        bool m_solid {};
 
         // State : general
         bool m_delete_status {};
-        sf::RectangleShape shape;
+        sf::RectangleShape m_shape;
         
 };
 

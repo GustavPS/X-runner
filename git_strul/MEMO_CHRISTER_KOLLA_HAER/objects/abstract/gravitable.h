@@ -10,7 +10,8 @@ class Gravitating_Object : public Movable_Object
         Gravitating_Object(const sf::Vector2f&,
                            const sf::Vector2f&,
                            const std::string&,
-                           const bool = false);
+                           const bool = false,
+                           const sf::Texture *const = nullptr);
 
         // Prepare and calculate the required amount of simulations 
         // : overriding defined
@@ -19,10 +20,10 @@ class Gravitating_Object : public Movable_Object
 
     protected:
         // State : general
-        sf::Clock gravity_clock;
+        sf::Clock m_gravity_clock;
 
         // Collision handling : overriding defined
-        virtual void handle_collision(const Object*,
+        virtual void handle_moving_collision(const Object*,
                                       const sf::Vector2f&) override;
 };
 

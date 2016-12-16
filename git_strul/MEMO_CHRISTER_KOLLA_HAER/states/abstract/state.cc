@@ -13,7 +13,13 @@ const std::vector<const Object*>& State::get_texturated_objects() const
 
 void State::reset()
 {
-    for (const auto *object : objects)
+    for (auto &kv : textures)
+    {
+        delete kv.second;
+    }
+    textures.clear();
+
+    for (auto *object : objects)
     {
         delete object;
     }

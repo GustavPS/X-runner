@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="33" tilewidth="32" tileheight="32" nextobjectid="18">
  <tileset firstgid="1" name="hyptosis_tile-art-batch-1" tilewidth="32" tileheight="32" tilecount="900" columns="30">
-  <image source="../test/hyptosis_tile-art-batch-1.png" width="960" height="960"/>
+  <image source="../../../../Downloads/hyptosis_tile-art-batch-1.png" width="960" height="960"/>
   <tile id="356">
    <properties>
     <property name="type" value="bird_stopper"/>
@@ -9,7 +9,7 @@
   </tile>
  </tileset>
  <tileset firstgid="901" name="meta_tiles" tilewidth="32" tileheight="32" tilecount="2" columns="2">
-  <image source="../test/meta_tiles.png" width="67" height="34"/>
+  <image source="../../test/meta_tiles.png" width="67" height="34"/>
   <tile id="0">
    <properties>
     <property name="solid" type="bool" value="true"/>
@@ -148,31 +148,37 @@
   </object>
   <object id="9" name="slow_bird" gid="215" x="1028" y="508" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>
   <object id="11" name="slow_bird" gid="215" x="868" y="252" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>
   <object id="13" name="boost_bird" gid="215" x="36" y="412" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>
   <object id="14" name="slow_bird" gid="215" x="1252" y="636" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>
   <object id="15" name="slow_bird" gid="215" x="292" y="220" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>
-  <object id="17" name="bomb_slow_bird" gid="215" x="452" y="92" width="24" height="24">
+  <object id="17" name="bomb_bird" gid="215" x="452" y="92" width="24" height="24">
    <properties>
+    <property name="direction" type="int" value="1"/>
     <property name="speed" type="float" value="35"/>
    </properties>
   </object>

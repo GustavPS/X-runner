@@ -10,7 +10,8 @@ class Simulatable : public Object
         Simulatable(const sf::Vector2f&,
                     const sf::Vector2f&,
                     const std::string&,
-                    const bool = false);
+                    const bool = false,
+                    const sf::Texture *const = nullptr);
 
         // Prepare and calculate the required amount of simulations 
         // : pure virtual
@@ -23,6 +24,12 @@ class Simulatable : public Object
         
         // Clean-up simulation state : null-defined
         virtual void end_simulate(const std::vector<const Object*> &objects) {}
+
+    protected:
+        // Collision detection
+        // : defined
+        virtual const std::vector<const Object*> get_colliding_objects(
+            const std::vector<const Object*>&) const;
 };
 
 #endif

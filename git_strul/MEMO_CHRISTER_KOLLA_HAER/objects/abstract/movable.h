@@ -1,16 +1,17 @@
 #ifndef MOVABLE_H
 #define MOVABLE_H
 
-#include "colliding_object.h"
+#include "simulatable.h"
 
-class Movable_Object : public Colliding_Object
+class Movable_Object : public Simulatable
 {
     public:
         // Constructors & destructors
         Movable_Object(const sf::Vector2f&,
                        const sf::Vector2f&,
                        const std::string&,
-                       const bool = false);
+                       const bool = false,
+                       const sf::Texture *const = nullptr);
 
         // Prepare and calculate the required amount of simulations 
         // : overriding pure virtual
@@ -25,7 +26,7 @@ class Movable_Object : public Colliding_Object
 
     protected:
         // State : simulation
-        sf::Vector2f distance;
+        sf::Vector2f m_distance;
 
         // State : collision
         bool m_ground_collision {};
@@ -33,10 +34,13 @@ class Movable_Object : public Colliding_Object
         bool m_wall_collision {};
 
         // Collision handling
-        // : overriding pure virtual
-        virtual void handle_collision(const Object*, const sf::Vector2f&) override;
-        // : overriding null-defined
-        virtual void collision_state_cleanup() override;
+        // : defined
+        virtual void handle_moving_collision(const Object*, const sf::Vector2f&);
+        virtual void collision_state_cleanup();
+        // : null-defined
+        virtual void handle_static_collision(const Object*) {};
+        virtual void handle_end_collision() {}
+        
 };
 
 #endif

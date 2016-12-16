@@ -9,7 +9,8 @@ class NFBB final : public Gravitating_Object
         // Constructors & destructors
         NFBB(const sf::Vector2f&,
              const sf::Vector2f&,
-             const std::string&);
+             const std::string&,
+             const sf::Texture *const);
 
         // Execute simulation of object : overriding defined : final
         virtual std::vector<Object*> simulate(const int,
@@ -17,11 +18,14 @@ class NFBB final : public Gravitating_Object
 
     private:
         // State : general
-        bool on_ground {};
-        sf::Clock despawn_clock;
+        bool m_on_ground {};
+        sf::Clock m_despawn_clock;
 
         // Collision handling : overriding defined : final
-        virtual void handle_collision(const Object*, const sf::Vector2f&) override final;
+        virtual void handle_static_collision(const Object*) override final;
+        
+        // Collision handling : overriding null-defined : final
+        virtual void handle_end_collision() override final;
 };
 
 #endif
