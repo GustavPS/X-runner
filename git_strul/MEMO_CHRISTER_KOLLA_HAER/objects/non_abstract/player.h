@@ -21,9 +21,6 @@ class Player final : public Gravitating_Object
                                      const float) override final;
 
     private:
-        // Texture
-        sf::Texture *m_texture;
-
         // Constants : attributes
         const float m_speed;
 

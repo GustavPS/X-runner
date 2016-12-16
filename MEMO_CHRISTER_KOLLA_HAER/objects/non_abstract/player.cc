@@ -81,7 +81,7 @@ int Player::prepare_simulate(const float distance_modifier,
     return Gravitating_Object::prepare_simulate(
         distance_modifier, gravity_constant);
 }
-
+#include <iostream>
 void Player::handle_collision(const Object *object, 
                               const sf::Vector2f &steps)
 {
@@ -124,6 +124,7 @@ void Player::handle_collision(const Object *object,
     {
         nfbb_clock.restart();
         nfbb_debuff = true;
+        std::cerr << " hej ";
     }
     else if (type == "quicksand")
     {

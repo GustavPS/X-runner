@@ -7,7 +7,6 @@ int main()
     sf::RenderWindow window(
         sf::VideoMode(1920, 1080), "X Runner", sf::Style::Fullscreen);
     
-
     Engine engine;
 
     while(window.isOpen())

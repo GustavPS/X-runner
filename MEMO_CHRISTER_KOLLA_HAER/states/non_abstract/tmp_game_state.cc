@@ -143,6 +143,14 @@ int Game_State::simulate()
             simulatable_objects.push_back(simulatable_object);
     }
 
+    /*if (player->at_goal())
+    {
+        return 1;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        return 2;
+    }*/
     return 0;
 }
 

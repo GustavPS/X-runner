@@ -1,0 +1,31 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Revisionshistorik}{2}{section.1}
+\contentsline {section}{\numberline {2}Spelide}{2}{section.2}
+\contentsline {section}{\numberline {3}Målgrupp}{2}{section.3}
+\contentsline {section}{\numberline {4}Spelupplevelse}{2}{section.4}
+\contentsline {section}{\numberline {5}Konventioner}{2}{section.5}
+\contentsline {section}{\numberline {6}Spelmekanik}{3}{section.6}
+\contentsline {subsection}{\numberline {6.1}Meny}{3}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}In-game}{3}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Spelarkontroller}{3}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Spelarkollision med NPC's \& specialblock}{3}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Online-multiplayer (i mån av tid)}{3}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Rendering}{3}{subsubsection.6.2.4}
+\contentsline {section}{\numberline {7}Regler}{4}{section.7}
+\contentsline {subsection}{\numberline {7.1}Avklarande av banor}{4}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Soliditet}{4}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Gravitation}{4}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Spelare}{4}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}NPC's}{6}{subsection.7.5}
+\contentsline {subsubsection}{\numberline {7.5.1}Slow Bird}{6}{subsubsection.7.5.1}
+\contentsline {subsubsection}{\numberline {7.5.2}Boost Bird}{6}{subsubsection.7.5.2}
+\contentsline {subsection}{\numberline {7.6}Block}{6}{subsection.7.6}
+\contentsline {subsubsection}{\numberline {7.6.1}Net from Boost Bird}{6}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.2}Quicksand}{6}{subsubsection.7.6.2}
+\contentsline {subsubsection}{\numberline {7.6.3}Goalblock}{6}{subsubsection.7.6.3}
+\contentsline {subsubsection}{\numberline {7.6.4}Terrain}{7}{subsubsection.7.6.4}
+\contentsline {section}{\numberline {8}Visualisering}{7}{section.8}
+\contentsline {section}{\numberline {9}Kravformulering}{8}{section.9}
+\contentsline {subsection}{\numberline {9.1}Ska-krav}{8}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Bör-krav}{8}{subsection.9.2}
+\contentsline {section}{\numberline {10}Kravuppfyllelse}{8}{section.10}
