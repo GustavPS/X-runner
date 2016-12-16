@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \graphicspath{ {bilder/} }
 \usepackage{enumitem}
-\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent,after=\vspace{\baselineskip}}
 
 \newcommand{\version}{Version 1.0}
 \author{Love Bäckman, \url{lovba497@student.liu.se} \\
@@ -35,27 +35,23 @@ Spelaren ärver från klassen Gravitating\_Object, som ärver från klassen Mova
 Player's konstruktor tar emot en Vector2f för position, en Vector2f för storlek, en sträng för typ, en Texture-pekare för textur och en float för hastighet.
 \\\\
 Samtliga parametrar förutom hastigheten skickas vidare till Gravitating\_Object's konstruktor, tillsammans med ett falskt booleskt värde som talar om att spelaren är icke-solid. Hastigheten lagras i Player's m\_speed-variabel.
-\\\\
+
+\subsection{Variabler}
 Player ärver följande konstant-variabler från sina superklasser (enligt stilen \textbf{variabel} - typ av konstant - beskrivning):
 \begin{description}
 \item[const sf::Texture *const m\_texture] - textures - textur som spelaren ska ritas ut med
 \item[const std::string m\_type] - attributes - identifierar att spelaren är av typ ``player''
 \end{description}
-
 Player introducerar följande nya konstant-variabler (enligt stilen \textbf{variabel} - typ av konstant - beskrivning)
 \begin{description}
-\item[const float speed] - attributes - definierar spelaren bashastighet
+\item[const float m\_speed] - attributes - definierar spelaren bashastighet
 \end{description}
-
 Player ärver följande state-variabler från sina superklasser (enligt stilen \textbf{variabel} - typ av state - beskrivning):
 \begin{description}
 \item[bool m\_solid] - attributes - om spelaren är solid (alltid falsk)
 \item[bool m\_delete\_status] - general - om spelaren ska deletas (alltid falsk)
 \item[sf::RectangleShape \_shape] - general - shape som används för att få ut position, storlek samt för utritning
 \end{description}
-
-
-
 Player introducerar följande nya state-variabler (enligt stilen \textbf{variabel} - typ av state - beskrivning):
 \begin{description}
 \item[bool m\_jumping] - general - om spelaren hoppar
@@ -77,6 +73,7 @@ Player introducerar följande nya state-variabler (enligt stilen \textbf{variabe
 \item[bool m\_quicksand\_collision] - collision - om spelaren kolliderat med ett block av typ Quicksand
 \end{description}
 
+\subsection{Metoder - Arv}
 Player ärver följande metoder från sina superklasser:
 \begin{itemize}
 \item get\_type
@@ -87,42 +84,43 @@ Player ärver följande metoder från sina superklasser:
 \item end\_simulate
 \end{itemize}
 
-\subsection{get\_type}
+ \subsubsection{get\_type}
 Parametrar: \textit{}
 \\Return: \textit{std::string}
 \\\\
 Metoden get\_type returnerar m\_type-variabeln.
 
-\subsection{is\_solid}
+ \subsubsection{is\_solid}
 Parametrar: \textit{}
 \\Return: \textit{bool}
 \\\\
 Metoden is\_solid returnerar m\_solid-variabeln.
 
-\subsection{get\_delete\_status}
+ \subsubsection{get\_delete\_status}
 Parametrar: \textit{}
 \\Return: \textit{bool}
 \\\\
 Metoden get\_delete\_status returnerar m\_delete\_status-variabeln.
 
-\subsection{get\_shape}
+ \subsubsection{get\_shape}
 Parametrar: \textit{}
 \\Return: \textit{sf::RectangleShape}
 \\\\
 Metoden get\_shape returnerar m\_shape-variabeln.
 
-\subsection{simulate}
+ \subsubsection{simulate}
 Parametrar: \textit{const int total\_simulations, const std::vector<const Object *const> \&objects}
-\\Return: std::vector<Object *const>
+\\Return: \textit{std::vector<Object *const>}
 \\\\
 Metoden simulate utför ett objekts simuleringslogik. För Player-klassen innebär detta att förflytta sig samt kolla utföra kollisionskontroller.
 
-\subsection{end\_simulate}
+ \subsubsection{end\_simulate}
 Parametrar: \textit{const std::vector<const Object *const> \&objects}
 Return:
 \\\\
 Metoden end\_simulate utför logik som skall utföras efter att ett objekt simulerat färdigt. För Player-klassen innbära detta att utföra en sisa kollisionskontroll samt återställa simulation state-variabler.
 
+\subsection{Metoder - Arv \& Override}
 Player ärver och override:ar följande metoder från sina superklasser:
 \begin{itemize}
 \item prepare\_simulate
@@ -132,7 +130,7 @@ Player ärver och override:ar följande metoder från sina superklasser:
 \item collision\_state\_cleanup()
 \end{itemize}
 
-\subsection{prepare\_simulate}
+ \subsubsection{prepare\_simulate}
 Parametrar: \textit{const float distance\_modifier, const float gravity\_constant}
 \\Return: \textit{int}
 \\\\
@@ -146,25 +144,25 @@ Movable\_Object::prepare\_simulate applicerar distance\_modifier på m\_distance
 \\\\
 Movable\_Object::prepare\_simulate returnerar sedan antalet behövda simulationer till Gravitating\_object::prepare\_simulate, som returnerar vidare till prepare\_simulate som returnerar värdet till sin anropare.
 \\\\
-\subsection{handle\_moving\_collision}
+ \subsubsection{handle\_moving\_collision}
 Parametrar: \textit{const Object *const object, const sf::Vector2f \&steps}
 \\Return: \textit{}
 \\\\
 Metoden handle\_moving\_collision hanterar kollisioner mellan spelaren och objekt som uppstår medan spelaren försöker förflytta sig. Metoden börjar med att anropa sina superklassers implementationer av metoden, för att sedan utföra logik specifik för Player-klassen. I metodkedjan för handle\_moving\_collision hanteras framförallt kollisioner mellan spelare och solida objekt, vid vilka spelarens position justeras så att denne inte kan passera igenom dem.
 
-\subsection{handle\_static\_collision}
+ \subsubsection{handle\_static\_collision}
 Parametrar: \textit{const Object *const object}
 \\Return: \textit{}
 \\\\
 Metoden handle\_moving\_collision hanterar kollisioner mellan spelaren och objekt som uppstår före och efter att spelaren har förflyttat sig. Metoden börjar med att anropa sina superklassers implementationer av metoden, för att sedan utföra logik specifik för Player-klassen. I metodkedjan för handle\_moving\_collision hanteras kollisioner med andra rörliga objekt, vid vilka spelarens state påverkas.
 
-\subsection{handle\_end\_collision}
+ \subsubsection{handle\_end\_collision}
 Parametrar: \textit{}
 \\Return: \textit{}
 \\\\
 Metoden handle\_end\_collision utför logik som ska utföras efter all annan kollisionslogik baserat på vad som har och inte har kolliderats med under de tidigare kollisionskontrollerna (collision state). Efter logiken utförs anropas superklassernas implementationer av metoden.
 
-\subsection{collision\_state\_cleanup}
+ \subsubsection{collision\_state\_cleanup}
 Parametrar: \textit{}
 \\Return: \textit{}
 \\\\

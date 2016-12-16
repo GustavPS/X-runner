@@ -1,14 +1,17 @@
 \select@language {swedish}
 \contentsline {section}{\numberline {1}Revisionshistorik}{2}{section.1}
 \contentsline {section}{\numberline {2}Detaljbeskrivning av Player}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}get\_type}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}is\_solid}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}get\_delete\_status}{3}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}get\_shape}{3}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}simulate}{4}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}end\_simulate}{4}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}prepare\_simulate}{4}{subsection.2.7}
-\contentsline {subsection}{\numberline {2.8}handle\_moving\_collision}{5}{subsection.2.8}
-\contentsline {subsection}{\numberline {2.9}handle\_static\_collision}{5}{subsection.2.9}
-\contentsline {subsection}{\numberline {2.10}handle\_end\_collision}{5}{subsection.2.10}
-\contentsline {subsection}{\numberline {2.11}collision\_state\_cleanup}{5}{subsection.2.11}
+\contentsline {subsection}{\numberline {2.1}Variabler}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Metoder - Arv}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}get\_type}{3}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}is\_solid}{3}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}get\_delete\_status}{3}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}get\_shape}{4}{subsubsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.5}simulate}{4}{subsubsection.2.2.5}
+\contentsline {subsubsection}{\numberline {2.2.6}end\_simulate}{4}{subsubsection.2.2.6}
+\contentsline {subsection}{\numberline {2.3}Metoder - Arv \& Override}{4}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}prepare\_simulate}{4}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}handle\_moving\_collision}{5}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}handle\_static\_collision}{5}{subsubsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.4}handle\_end\_collision}{5}{subsubsection.2.3.4}
+\contentsline {subsubsection}{\numberline {2.3.5}collision\_state\_cleanup}{5}{subsubsection.2.3.5}
