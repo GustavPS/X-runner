@@ -1,0 +1,130 @@
+\hypertarget{classBird}{\section{Bird Class Reference}
+\label{classBird}\index{Bird@{Bird}}
+}
+
+
+Inheritance diagram for Bird\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classBird__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bird\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classBird__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBird_afe65295d7e648178245a1cd784924ecd}{Bird} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const sf\+::\+Texture $\ast$, const float, const int, const float, const bool=false)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+virtual int \hyperlink{classBird_af2882ba302f03c5bdf5950cc21a39f66}{prepare\+\_\+simulate} (const float, const float) overridefinal
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Prepares simulation of object\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) overridefinal}\label{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}
+
+\item 
+\hypertarget{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}{virtual void {\bfseries handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)}\label{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classBird_aad13ddaf4a6315ad3a2873e487cbc32b}{const float {\bfseries m\+\_\+speed}}\label{classBird_aad13ddaf4a6315ad3a2873e487cbc32b}
+
+\item 
+\hypertarget{classBird_a2e894d3d297ea72053ee319929c25f2c}{const float {\bfseries m\+\_\+cooldown}}\label{classBird_a2e894d3d297ea72053ee319929c25f2c}
+
+\item 
+\hypertarget{classBird_a2271962e5278b53dd7e600eea08465fc}{int {\bfseries m\+\_\+direction}}\label{classBird_a2271962e5278b53dd7e600eea08465fc}
+
+\item 
+\hypertarget{classBird_af212f094ae7b24978b494ef657ec9085}{sf\+::\+Clock {\bfseries m\+\_\+player\+\_\+clock}}\label{classBird_af212f094ae7b24978b494ef657ec9085}
+
+\item 
+\hypertarget{classBird_a0b43d6e0d01d780a18304731063897f6}{bool {\bfseries m\+\_\+player\+\_\+debuff} \{\}}\label{classBird_a0b43d6e0d01d780a18304731063897f6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBird_afe65295d7e648178245a1cd784924ecd}{\index{Bird@{Bird}!Bird@{Bird}}
+\index{Bird@{Bird}!Bird@{Bird}}
+\subsubsection[{Bird}]{\setlength{\rightskip}{0pt plus 5cm}Bird\+::\+Bird (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const sf\+::\+Texture $\ast$}]{texture, }
+\item[{const float}]{speed, }
+\item[{const int}]{direction, }
+\item[{const float}]{cooldown, }
+\item[{const bool}]{solid = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{classBird_afe65295d7e648178245a1cd784924ecd}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{} \\
+\hline
+{\em speed} & \char`\"{}\+Speed of the object\char`\"{} \\
+\hline
+{\em direction} & \char`\"{}\+Direction of the object\char`\"{} \\
+\hline
+{\em cooldown} & \char`\"{}\+How long the objects opacity is 0.\+5\char`\"{} \\
+\hline
+{\em solid} & \char`\"{}\+If the object is solid\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBird_af2882ba302f03c5bdf5950cc21a39f66}{\index{Bird@{Bird}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
+\index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Bird@{Bird}}
+\subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Bird\+::prepare\+\_\+simulate (
+\begin{DoxyParamCaption}
+\item[{const float}]{distance\+\_\+modifier, }
+\item[{const float}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classBird_af2882ba302f03c5bdf5950cc21a39f66}
+
+
+\char`\"{}\+Prepares simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+modifier} & \char`\"{}\+Delta since last simulation-\/sequence\char`\"{} \\
+\hline
+{\em gravity\+\_\+constant} & \char`\"{}\+How much high the gravity is\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Simulation cycles required by this object this simulation-\/sequence\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSimulatable__Object_abe7c02fe250ef5be42011890d8a7b37b}{Simulatable\+\_\+\+Object}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/abstractish/bird.\+h\item 
+objects/abstractish/bird.\+cc\end{DoxyCompactItemize}

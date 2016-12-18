@@ -1,0 +1,106 @@
+\hypertarget{classState}{\section{State Class Reference}
+\label{classState}\index{State@{State}}
+}
+
+
+Inheritance diagram for State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{classState__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_a591f523d68d09675b3bd6f8e1084e642}{virtual \hyperlink{classState_a591f523d68d09675b3bd6f8e1084e642}{$\sim$\+State} () noexcept}\label{classState_a591f523d68d09675b3bd6f8e1084e642}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Virtual destructor which frees all resources owned by the state\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classState_af0cf4ef9c4b4e9a22dacf949f3df8cea}{virtual void {\bfseries prepare\+\_\+simulate} ()=0}\label{classState_af0cf4ef9c4b4e9a22dacf949f3df8cea}
+
+\item 
+\hypertarget{classState_a2fd001147b34d4a07102ba0acf680982}{virtual int {\bfseries simulate} ()=0}\label{classState_a2fd001147b34d4a07102ba0acf680982}
+
+\item 
+\hypertarget{classState_aacfda33b8dc4e6d39febdb192270a85a}{virtual void {\bfseries set\+\_\+view} (sf\+::\+View \&)=0}\label{classState_aacfda33b8dc4e6d39febdb192270a85a}
+
+\item 
+const sf\+::\+Sprite \& \hyperlink{classState_a9e132079dc08365e3c30633dd002ab8c}{get\+\_\+background} () const 
+\item 
+const std\+::vector$<$ const \\*
+\hyperlink{classObject}{Object} $\ast$ $>$ \& \hyperlink{classState_aa234d5b01d5f75580825ea0e38074482}{get\+\_\+texturated\+\_\+objects} () const 
+\item 
+std\+::unordered\+\_\+map\\*
+$<$ std\+::string, sf\+::\+Text $>$ \& \hyperlink{classState_a38fe48726722d318d346608f4f947121}{ref\+\_\+text\+\_\+objects} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_a2ebdd6e26d78ad2d34a8bf14ddb7ccf3}{virtual void {\bfseries soft\+\_\+reset} ()}\label{classState_a2ebdd6e26d78ad2d34a8bf14ddb7ccf3}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_a9fe3983efbf800d94bde79b304fa0769}{std\+::unordered\+\_\+map\\*
+$<$ std\+::string, sf\+::\+Texture $\ast$ $>$ {\bfseries textures}}\label{classState_a9fe3983efbf800d94bde79b304fa0769}
+
+\item 
+\hypertarget{classState_a4982a5b77746daf5e042359b45cb9a3a}{sf\+::\+Texture {\bfseries background\+\_\+texture}}\label{classState_a4982a5b77746daf5e042359b45cb9a3a}
+
+\item 
+\hypertarget{classState_addd1389225a80440a320adbb386cfe12}{sf\+::\+Sprite {\bfseries background}}\label{classState_addd1389225a80440a320adbb386cfe12}
+
+\item 
+\hypertarget{classState_ac01e57d52a3bf0d9b24c02daecd79e30}{sf\+::\+Font {\bfseries font}}\label{classState_ac01e57d52a3bf0d9b24c02daecd79e30}
+
+\item 
+\hypertarget{classState_a9f93fadc63056740b57f2b8655327fcd}{std\+::vector$<$ const \hyperlink{classObject}{Object} $\ast$ $>$ {\bfseries objects}}\label{classState_a9f93fadc63056740b57f2b8655327fcd}
+
+\item 
+\hypertarget{classState_a8f0f08cc8fcc900e4864f42d53a4d6b5}{std\+::vector$<$ const \hyperlink{classObject}{Object} $\ast$ $>$ {\bfseries texturated\+\_\+objects}}\label{classState_a8f0f08cc8fcc900e4864f42d53a4d6b5}
+
+\item 
+\hypertarget{classState_affee9f7ca66bb6a54f882b297939abbb}{std\+::unordered\+\_\+map\\*
+$<$ std\+::string, sf\+::\+Text $>$ {\bfseries text\+\_\+objects}}\label{classState_affee9f7ca66bb6a54f882b297939abbb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classState_a9e132079dc08365e3c30633dd002ab8c}{\index{State@{State}!get\+\_\+background@{get\+\_\+background}}
+\index{get\+\_\+background@{get\+\_\+background}!State@{State}}
+\subsubsection[{get\+\_\+background}]{\setlength{\rightskip}{0pt plus 5cm}const sf\+::\+Sprite \& State\+::get\+\_\+background (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classState_a9e132079dc08365e3c30633dd002ab8c}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Returns the background set in the state\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classState_aa234d5b01d5f75580825ea0e38074482}{\index{State@{State}!get\+\_\+texturated\+\_\+objects@{get\+\_\+texturated\+\_\+objects}}
+\index{get\+\_\+texturated\+\_\+objects@{get\+\_\+texturated\+\_\+objects}!State@{State}}
+\subsubsection[{get\+\_\+texturated\+\_\+objects}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::vector$<$ const {\bf Object} $\ast$ $>$ \& State\+::get\+\_\+texturated\+\_\+objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classState_aa234d5b01d5f75580825ea0e38074482}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Returns the texturated\+\_\+objects owned by the state\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classState_a38fe48726722d318d346608f4f947121}{\index{State@{State}!ref\+\_\+text\+\_\+objects@{ref\+\_\+text\+\_\+objects}}
+\index{ref\+\_\+text\+\_\+objects@{ref\+\_\+text\+\_\+objects}!State@{State}}
+\subsubsection[{ref\+\_\+text\+\_\+objects}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unordered\+\_\+map$<$ std\+::string, sf\+::\+Text $>$ \& State\+::ref\+\_\+text\+\_\+objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classState_a38fe48726722d318d346608f4f947121}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Returns the text\+\_\+objects owned by the state as a non-\/const reference\char`\"{} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+states/abstract/state.\+h\item 
+states/abstract/state.\+cc\end{DoxyCompactItemize}

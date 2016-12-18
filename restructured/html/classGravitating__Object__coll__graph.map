@@ -1,0 +1,5 @@
+<map id="Gravitating_Object" name="Gravitating_Object">
+<area shape="rect" id="node2" href="$classMovable__Object.html" title="Movable_Object" alt="" coords="14,155,129,181"/>
+<area shape="rect" id="node3" href="$classSimulatable__Object.html" title="Simulatable_Object" alt="" coords="5,80,139,107"/>
+<area shape="rect" id="node4" href="$classObject.html" title="Object" alt="" coords="42,5,101,32"/>
+</map>

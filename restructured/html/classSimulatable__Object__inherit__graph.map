@@ -1,0 +1,11 @@
+<map id="Simulatable_Object" name="Simulatable_Object">
+<area shape="rect" id="node3" href="$classMovable__Object.html" title="Movable_Object" alt="" coords="149,155,264,181"/>
+<area shape="rect" id="node2" href="$classObject.html" title="Object" alt="" coords="177,5,236,32"/>
+<area shape="rect" id="node4" href="$classBird.html" title="Bird" alt="" coords="128,229,173,256"/>
+<area shape="rect" id="node8" href="$classGravitating__Object.html" title="Gravitating_Object" alt="" coords="197,229,327,256"/>
+<area shape="rect" id="node5" href="$classBoost__Bird.html" title="Boost_Bird" alt="" coords="5,304,91,331"/>
+<area shape="rect" id="node6" href="$classSlow__Bird.html" title="Slow_Bird" alt="" coords="115,304,196,331"/>
+<area shape="rect" id="node7" href="$classBomb__Bird.html" title="Bomb_Bird" alt="" coords="113,379,199,405"/>
+<area shape="rect" id="node9" href="$classNFBB.html" title="NFBB" alt="" coords="225,304,283,331"/>
+<area shape="rect" id="node10" href="$classPlayer.html" title="Player" alt="" coords="308,304,365,331"/>
+</map>

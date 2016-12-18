@@ -1,0 +1,8 @@
+<map id="Bird" name="Bird">
+<area shape="rect" id="node5" href="$classBoost__Bird.html" title="Boost_Bird" alt="" coords="5,304,91,331"/>
+<area shape="rect" id="node6" href="$classSlow__Bird.html" title="Slow_Bird" alt="" coords="115,304,196,331"/>
+<area shape="rect" id="node2" href="$classMovable__Object.html" title="Movable_Object" alt="" coords="43,155,159,181"/>
+<area shape="rect" id="node3" href="$classSimulatable__Object.html" title="Simulatable_Object" alt="" coords="34,80,168,107"/>
+<area shape="rect" id="node4" href="$classObject.html" title="Object" alt="" coords="71,5,131,32"/>
+<area shape="rect" id="node7" href="$classBomb__Bird.html" title="Bomb_Bird" alt="" coords="113,379,199,405"/>
+</map>

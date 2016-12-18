@@ -1,0 +1,171 @@
+\hypertarget{classMovable__Object}{\section{Movable\+\_\+\+Object Class Reference}
+\label{classMovable__Object}\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+}
+
+
+Inheritance diagram for Movable\+\_\+\+Object\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMovable__Object__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Movable\+\_\+\+Object\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classMovable__Object__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMovable__Object_a7ef80ffc751a380e9c0beb7d4f0da9ce}{Movable\+\_\+\+Object} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const bool=false, const sf\+::\+Texture $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+int \hyperlink{classMovable__Object_aed1d50e30dc96faea3250bee8b4af227}{prepare\+\_\+simulate} (const float)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Prepares simulation of object\char`\"{} \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \hyperlink{classObject}{Object} $\ast$ $>$ \hyperlink{classMovable__Object_ac267e0c945b558b0cf533d7fbe5ee7c3}{simulate} (const int, const std\+::vector$<$ const \hyperlink{classObject}{Object} $\ast$ $>$ \&) override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Executes simulation of object\char`\"{} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classMovable__Object_ac9111a729082cd46a913e1877a57a930}{end\+\_\+simulate} (const std\+::vector$<$ const \hyperlink{classObject}{Object} $\ast$ $>$ \&objects) override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Executes end-\/of-\/simulation logic of object\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMovable__Object_a909989f83255795f755742be6db62713}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&)}\label{classMovable__Object_a909989f83255795f755742be6db62713}
+
+\item 
+\hypertarget{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}{virtual void {\bfseries collision\+\_\+state\+\_\+cleanup} ()}\label{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}
+
+\item 
+\hypertarget{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}{virtual void {\bfseries handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)}\label{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}
+
+\item 
+\hypertarget{classMovable__Object_a71916586f5f73c836568503dcd7b0eb7}{virtual void {\bfseries handle\+\_\+end\+\_\+collision} ()}\label{classMovable__Object_a71916586f5f73c836568503dcd7b0eb7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMovable__Object_a3824126abcb82e10d65c0427ac291ef4}{sf\+::\+Vector2f {\bfseries m\+\_\+distance}}\label{classMovable__Object_a3824126abcb82e10d65c0427ac291ef4}
+
+\item 
+\hypertarget{classMovable__Object_a00d1c3d1f5cb644a9d9de84128de136f}{bool {\bfseries m\+\_\+ground\+\_\+collision} \{\}}\label{classMovable__Object_a00d1c3d1f5cb644a9d9de84128de136f}
+
+\item 
+\hypertarget{classMovable__Object_aa491f8684b9fa3d4d81047de1ad644ee}{bool {\bfseries m\+\_\+roof\+\_\+collision} \{\}}\label{classMovable__Object_aa491f8684b9fa3d4d81047de1ad644ee}
+
+\item 
+\hypertarget{classMovable__Object_aacdedf600c68dbfaa756484c39ae9229}{bool {\bfseries m\+\_\+wall\+\_\+collision} \{\}}\label{classMovable__Object_aacdedf600c68dbfaa756484c39ae9229}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMovable__Object_a7ef80ffc751a380e9c0beb7d4f0da9ce}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\subsubsection[{Movable\+\_\+\+Object}]{\setlength{\rightskip}{0pt plus 5cm}Movable\+\_\+\+Object\+::\+Movable\+\_\+\+Object (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const bool}]{solid = {\ttfamily false}, }
+\item[{const sf\+::\+Texture $\ast$}]{texture = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}}\label{classMovable__Object_a7ef80ffc751a380e9c0beb7d4f0da9ce}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em solid} & \char`\"{}\+If the object is solid\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{}" \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMovable__Object_ac9111a729082cd46a913e1877a57a930}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!end\+\_\+simulate@{end\+\_\+simulate}}
+\index{end\+\_\+simulate@{end\+\_\+simulate}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\subsubsection[{end\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}void Movable\+\_\+\+Object\+::end\+\_\+simulate (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ const {\bf Object} $\ast$ $>$ \&}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classMovable__Object_ac9111a729082cd46a913e1877a57a930}
+
+
+\char`\"{}\+Executes end-\/of-\/simulation logic of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & \char`\"{}\+Objects to check for collision with\char`\"{}" \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classSimulatable__Object_a1c542c4d9cb7ba923ea9f974e5f03e84}{Simulatable\+\_\+\+Object}.
+
+\hypertarget{classMovable__Object_aed1d50e30dc96faea3250bee8b4af227}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
+\index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Movable\+\_\+\+Object\+::prepare\+\_\+simulate (
+\begin{DoxyParamCaption}
+\item[{const float}]{distance\+\_\+modifier}
+\end{DoxyParamCaption}
+)}}\label{classMovable__Object_aed1d50e30dc96faea3250bee8b4af227}
+
+
+\char`\"{}\+Prepares simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+modifier} & \char`\"{}\+Delta since last simulation-\/sequence\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Simulation cycles required by this object this simulation-\/sequence\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classMovable__Object_ac267e0c945b558b0cf533d7fbe5ee7c3}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!simulate@{simulate}}
+\index{simulate@{simulate}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Object} $\ast$ $>$ Movable\+\_\+\+Object\+::simulate (
+\begin{DoxyParamCaption}
+\item[{const int}]{simulation\+\_\+cycles, }
+\item[{const std\+::vector$<$ const {\bf Object} $\ast$ $>$ \&}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classMovable__Object_ac267e0c945b558b0cf533d7fbe5ee7c3}
+
+
+\char`\"{}\+Executes simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation\+\_\+cycles} & \char`\"{}\+Number simulation\+\_\+cycles the object will be subjected this simulation-\/sequence\char`\"{} \\
+\hline
+{\em objects} & \char`\"{}\+Objects to check for collision with\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+New objects spawned by this object\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSimulatable__Object_a60fb2da770367330360a90afc7b724f1}{Simulatable\+\_\+\+Object}.
+
+
+
+Reimplemented in \hyperlink{classBomb__Bird_a610b4c68c560a6ac30375c177642e021}{Bomb\+\_\+\+Bird}, and \hyperlink{classNFBB_a42a134a62a5d4049b74e7b4f4d7402dc}{N\+F\+B\+B}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/abstractish/movable\+\_\+object.\+h\item 
+objects/abstractish/movable\+\_\+object.\+cc\end{DoxyCompactItemize}

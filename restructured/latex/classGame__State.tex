@@ -1,0 +1,85 @@
+\hypertarget{classGame__State}{\section{Game\+\_\+\+State Class Reference}
+\label{classGame__State}\index{Game\+\_\+\+State@{Game\+\_\+\+State}}
+}
+
+
+Inheritance diagram for Game\+\_\+\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classGame__State__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+\_\+\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classGame__State__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGame__State_a8104ef051de61662ee5aef3f63c5d331}{\hyperlink{classGame__State_a8104ef051de61662ee5aef3f63c5d331}{Game\+\_\+\+State} ()}\label{classGame__State_a8104ef051de61662ee5aef3f63c5d331}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor \+: loads all textures and fonts used in the state\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classGame__State_a9ad8826703bd8aff5bfeaba29b25e296}{void \hyperlink{classGame__State_a9ad8826703bd8aff5bfeaba29b25e296}{prepare\+\_\+simulate} () override}\label{classGame__State_a9ad8826703bd8aff5bfeaba29b25e296}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Resets the state and loads a new level into it with the help
+        of the Level Parser class\char`\"{} \end{DoxyCompactList}\item 
+int \hyperlink{classGame__State_ab45e81cb4c422cd23cd245cd3fb9c87f}{simulate} () override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Simulates each object in the state and performs actions on
+        the state based on the result of the simulations\char`\"{} \end{DoxyCompactList}\item 
+void \hyperlink{classGame__State_a1a24aa350628b7f3005e56c5efaadad7}{set\+\_\+view} (sf\+::\+View \&) override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Centers the view around the player\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGame__State_a1a24aa350628b7f3005e56c5efaadad7}{\index{Game\+\_\+\+State@{Game\+\_\+\+State}!set\+\_\+view@{set\+\_\+view}}
+\index{set\+\_\+view@{set\+\_\+view}!Game\+\_\+\+State@{Game\+\_\+\+State}}
+\subsubsection[{set\+\_\+view}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+\_\+\+State\+::set\+\_\+view (
+\begin{DoxyParamCaption}
+\item[{sf\+::\+View \&}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classGame__State_a1a24aa350628b7f3005e56c5efaadad7}
+
+
+\char`\"{}\+Centers the view around the player\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & \char`\"{}\+View to perform action on\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classState}{State}.
+
+\hypertarget{classGame__State_ab45e81cb4c422cd23cd245cd3fb9c87f}{\index{Game\+\_\+\+State@{Game\+\_\+\+State}!simulate@{simulate}}
+\index{simulate@{simulate}!Game\+\_\+\+State@{Game\+\_\+\+State}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+\_\+\+State\+::simulate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classGame__State_ab45e81cb4c422cd23cd245cd3fb9c87f}
+
+
+\char`\"{}\+Simulates each object in the state and performs actions on
+        the state based on the result of the simulations\char`\"{} 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+An integer representing the next action to be taken by the Engine object\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+states/non\+\_\+abstract/game\+\_\+state.\+h\item 
+states/non\+\_\+abstract/game\+\_\+state.\+cc\end{DoxyCompactItemize}

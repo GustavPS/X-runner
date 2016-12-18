@@ -1,7 +1,6 @@
 #include "bomb_bird.h"
 
 #include "nfbb.h"
-
 Bomb_Bird::Bomb_Bird(const sf::Vector2f &position,
                        const sf::Vector2f &size,
                        const std::string &type,
@@ -21,7 +20,7 @@ std::vector<Object*> Bomb_Bird::simulate(const int simulation_cycles,
     // Drop a NFBB every 10 seconds
     if (m_nfbb_clock.getElapsedTime().asSeconds() >= 10.f)
     {
-        // Wait until position.x % block_width == (block_width - nfbb_width) / 2 
+        // Wait until position.x % block_width == (block_width - nfbb_width) / 2
         // so that the NFBB spawns centered on a block
         if (static_cast<int>(m_shape.getPosition().x) % 32 == 4)
         {

@@ -1,0 +1,101 @@
+\hypertarget{classBomb__Bird}{\section{Bomb\+\_\+\+Bird Class Reference}
+\label{classBomb__Bird}\index{Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}}
+}
+
+
+Inheritance diagram for Bomb\+\_\+\+Bird\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classBomb__Bird__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bomb\+\_\+\+Bird\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classBomb__Bird__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBomb__Bird_a920e7058e7cff86be951c2b9feede80e}{Bomb\+\_\+\+Bird} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const sf\+::\+Texture $\ast$, const float, const int, const sf\+::\+Texture $\ast$)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \hyperlink{classObject}{Object} $\ast$ $>$ \hyperlink{classBomb__Bird_a610b4c68c560a6ac30375c177642e021}{simulate} (const int, const std\+::vector$<$ const \hyperlink{classObject}{Object} $\ast$ $>$ \&) overridefinal
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Executes simulation of object\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBomb__Bird_a920e7058e7cff86be951c2b9feede80e}{\index{Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}!Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}}
+\index{Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}!Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}}
+\subsubsection[{Bomb\+\_\+\+Bird}]{\setlength{\rightskip}{0pt plus 5cm}Bomb\+\_\+\+Bird\+::\+Bomb\+\_\+\+Bird (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const sf\+::\+Texture $\ast$}]{texture, }
+\item[{const float}]{speed, }
+\item[{const int}]{direction, }
+\item[{const sf\+::\+Texture $\ast$}]{nfbb\+\_\+texture}
+\end{DoxyParamCaption}
+)}}\label{classBomb__Bird_a920e7058e7cff86be951c2b9feede80e}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{} \\
+\hline
+{\em speed} & \char`\"{}\+Speed of the object\char`\"{} \\
+\hline
+{\em direction} & \char`\"{}\+Direction of the object\char`\"{} \\
+\hline
+{\em nfbb\+\_\+texture} & \char`\"{}\+Texture of N\+F\+B\+B-\/objects spawned by the object\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBomb__Bird_a610b4c68c560a6ac30375c177642e021}{\index{Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}!simulate@{simulate}}
+\index{simulate@{simulate}!Bomb\+\_\+\+Bird@{Bomb\+\_\+\+Bird}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Object} $\ast$ $>$ Bomb\+\_\+\+Bird\+::simulate (
+\begin{DoxyParamCaption}
+\item[{const int}]{simulation\+\_\+cycles, }
+\item[{const std\+::vector$<$ const {\bf Object} $\ast$ $>$ \&}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classBomb__Bird_a610b4c68c560a6ac30375c177642e021}
+
+
+\char`\"{}\+Executes simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em simulation\+\_\+cycles} & \char`\"{}\+Number simulation\+\_\+cycles the object will be subjected this simulation-\/sequence\char`\"{} \\
+\hline
+{\em objects} & \char`\"{}\+Objects to check for collision with\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+New objects spawned by this object\char`\"{} 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classMovable__Object_ac267e0c945b558b0cf533d7fbe5ee7c3}{Movable\+\_\+\+Object}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/non\+\_\+abstract/bomb\+\_\+bird.\+h\item 
+objects/non\+\_\+abstract/bomb\+\_\+bird.\+cc\end{DoxyCompactItemize}

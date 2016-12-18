@@ -1,0 +1,132 @@
+\hypertarget{classObject}{\section{Object Class Reference}
+\label{classObject}\index{Object@{Object}}
+}
+
+
+Inheritance diagram for Object\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classObject__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classObject_a2df3d89d7e56659a1a0bc22d5019d587}{Object} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const bool=false, const sf\+::\+Texture $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classObject_ad405a082a0ef9a641cd5b83ff6dd33c0}{virtual \hyperlink{classObject_ad405a082a0ef9a641cd5b83ff6dd33c0}{$\sim$\+Object} () noexcept=default}\label{classObject_ad405a082a0ef9a641cd5b83ff6dd33c0}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Virtual destrucor = default\char`\"{} \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classObject_a19738c1d7a0f32703a61412906edb04f}{get\+\_\+type} () const 
+\item 
+bool \hyperlink{classObject_ae132d029eeaaa8e3d4660951e0a35ad8}{is\+\_\+solid} () const 
+\item 
+bool \hyperlink{classObject_a98541d2f7380e4b5d6c805bbd7aaab01}{get\+\_\+delete\+\_\+status} () const 
+\item 
+sf\+::\+Rectangle\+Shape \hyperlink{classObject_a15e719bf3122cf4d8333a2b8b2f18471}{get\+\_\+shape} () const 
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Returns the object's shape, which is used for drawing as well
+        as getting the objects position and size\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObject_a6d09f674d9c241d072a4f07934ffcac3}{const sf\+::\+Texture $\ast$ {\bfseries m\+\_\+texture}}\label{classObject_a6d09f674d9c241d072a4f07934ffcac3}
+
+\item 
+\hypertarget{classObject_a94ecef29d9e126dd4f142eb138cf93c9}{const std\+::string {\bfseries m\+\_\+type}}\label{classObject_a94ecef29d9e126dd4f142eb138cf93c9}
+
+\item 
+\hypertarget{classObject_a920a2971850ec196744477af2d7b976d}{bool {\bfseries m\+\_\+solid} \{\}}\label{classObject_a920a2971850ec196744477af2d7b976d}
+
+\item 
+\hypertarget{classObject_a122e8444050c3cc516f44be42b0aa065}{bool {\bfseries m\+\_\+delete\+\_\+status} \{\}}\label{classObject_a122e8444050c3cc516f44be42b0aa065}
+
+\item 
+\hypertarget{classObject_a4b5c1f1ad4ca0e33cdf00f74de3830f7}{sf\+::\+Rectangle\+Shape {\bfseries m\+\_\+shape}}\label{classObject_a4b5c1f1ad4ca0e33cdf00f74de3830f7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classObject_a2df3d89d7e56659a1a0bc22d5019d587}{\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\subsubsection[{Object}]{\setlength{\rightskip}{0pt plus 5cm}Object\+::\+Object (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const bool}]{solid = {\ttfamily false}, }
+\item[{const sf\+::\+Texture $\ast$}]{texture = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}}\label{classObject_a2df3d89d7e56659a1a0bc22d5019d587}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em solid} & \char`\"{}\+If the object is solid\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{}" \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classObject_a98541d2f7380e4b5d6c805bbd7aaab01}{\index{Object@{Object}!get\+\_\+delete\+\_\+status@{get\+\_\+delete\+\_\+status}}
+\index{get\+\_\+delete\+\_\+status@{get\+\_\+delete\+\_\+status}!Object@{Object}}
+\subsubsection[{get\+\_\+delete\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}bool Object\+::get\+\_\+delete\+\_\+status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classObject_a98541d2f7380e4b5d6c805bbd7aaab01}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+If object is marked for deletion\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classObject_a15e719bf3122cf4d8333a2b8b2f18471}{\index{Object@{Object}!get\+\_\+shape@{get\+\_\+shape}}
+\index{get\+\_\+shape@{get\+\_\+shape}!Object@{Object}}
+\subsubsection[{get\+\_\+shape}]{\setlength{\rightskip}{0pt plus 5cm}sf\+::\+Rectangle\+Shape Object\+::get\+\_\+shape (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classObject_a15e719bf3122cf4d8333a2b8b2f18471}
+
+
+\char`\"{}\+Returns the object's shape, which is used for drawing as well
+        as getting the objects position and size\char`\"{} 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Shape of object\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classObject_a19738c1d7a0f32703a61412906edb04f}{\index{Object@{Object}!get\+\_\+type@{get\+\_\+type}}
+\index{get\+\_\+type@{get\+\_\+type}!Object@{Object}}
+\subsubsection[{get\+\_\+type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Object\+::get\+\_\+type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classObject_a19738c1d7a0f32703a61412906edb04f}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Type of object\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classObject_ae132d029eeaaa8e3d4660951e0a35ad8}{\index{Object@{Object}!is\+\_\+solid@{is\+\_\+solid}}
+\index{is\+\_\+solid@{is\+\_\+solid}!Object@{Object}}
+\subsubsection[{is\+\_\+solid}]{\setlength{\rightskip}{0pt plus 5cm}bool Object\+::is\+\_\+solid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classObject_ae132d029eeaaa8e3d4660951e0a35ad8}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+If object is solid\char`\"{} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/abstractish/object.\+h\item 
+objects/abstractish/object.\+cc\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\hypertarget{classMenu__State}{\section{Menu\+\_\+\+State Class Reference}
+\label{classMenu__State}\index{Menu\+\_\+\+State@{Menu\+\_\+\+State}}
+}
+
+
+Inheritance diagram for Menu\+\_\+\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classMenu__State__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+\_\+\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classMenu__State__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMenu__State_abcb7829ec9a970e44efa5c235e988cfb}{\hyperlink{classMenu__State_abcb7829ec9a970e44efa5c235e988cfb}{Menu\+\_\+\+State} ()}\label{classMenu__State_abcb7829ec9a970e44efa5c235e988cfb}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor \+: loads all textures and fonts used in the state\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classMenu__State_a654017b2f4425a4d2e2827bc35c113eb}{void \hyperlink{classMenu__State_a654017b2f4425a4d2e2827bc35c113eb}{prepare\+\_\+simulate} () override}\label{classMenu__State_a654017b2f4425a4d2e2827bc35c113eb}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Resets the state and loads a new level into it with the help
+        of the Level Parser class\char`\"{} \end{DoxyCompactList}\item 
+int \hyperlink{classMenu__State_a8c8cd24b56f7123085195accaa6e1a48}{simulate} () override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Simulates each object in the state and performs actions on
+        the state based on the result of the simulations\char`\"{} \end{DoxyCompactList}\item 
+void \hyperlink{classMenu__State_a7a65c4db5146110cb6597b69226c4f1b}{set\+\_\+view} (sf\+::\+View \&) override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Centers the view around the player\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMenu__State_a7a65c4db5146110cb6597b69226c4f1b}{\index{Menu\+\_\+\+State@{Menu\+\_\+\+State}!set\+\_\+view@{set\+\_\+view}}
+\index{set\+\_\+view@{set\+\_\+view}!Menu\+\_\+\+State@{Menu\+\_\+\+State}}
+\subsubsection[{set\+\_\+view}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+\_\+\+State\+::set\+\_\+view (
+\begin{DoxyParamCaption}
+\item[{sf\+::\+View \&}]{view}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classMenu__State_a7a65c4db5146110cb6597b69226c4f1b}
+
+
+\char`\"{}\+Centers the view around the player\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & \char`\"{}\+View to perform action on\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classState}{State}.
+
+\hypertarget{classMenu__State_a8c8cd24b56f7123085195accaa6e1a48}{\index{Menu\+\_\+\+State@{Menu\+\_\+\+State}!simulate@{simulate}}
+\index{simulate@{simulate}!Menu\+\_\+\+State@{Menu\+\_\+\+State}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Menu\+\_\+\+State\+::simulate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classMenu__State_a8c8cd24b56f7123085195accaa6e1a48}
+
+
+\char`\"{}\+Simulates each object in the state and performs actions on
+        the state based on the result of the simulations\char`\"{} 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+An integer representing the next action to be taken by the Engine object\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState}{State}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+states/non\+\_\+abstract/menu\+\_\+state.\+h\item 
+states/non\+\_\+abstract/menu\+\_\+state.\+cc\end{DoxyCompactItemize}

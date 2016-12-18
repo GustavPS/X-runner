@@ -1,0 +1,111 @@
+\hypertarget{classPlayer}{\section{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+}
+
+
+Inheritance diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classPlayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classPlayer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayer_a40cd0f9599681aa40e536fc6ce47fdf2}{Player} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const sf\+::\+Texture $\ast$, const float)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+virtual int \hyperlink{classPlayer_a1480bbfb767687380ad6a2bf294cdcc8}{prepare\+\_\+simulate} (const float, const float) overridefinal
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Prepares simulation of object\char`\"{} \end{DoxyCompactList}\item 
+const std\+::string \& \hyperlink{classPlayer_a1d89d0ff8b76784f68cf0d9e509ab242}{get\+\_\+oog\+\_\+action} () const 
+\begin{DoxyCompactList}\small\item\em "Returns instructions of eventual out-\/of-\/game actions, which is used by the owning \hyperlink{classState}{State} to determine if out-\/of-\/game actions, such as quitting, should be taken" \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayer_a40cd0f9599681aa40e536fc6ce47fdf2}{\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{Player}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Player (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const sf\+::\+Texture $\ast$}]{texture, }
+\item[{const float}]{speed}
+\end{DoxyParamCaption}
+)}}\label{classPlayer_a40cd0f9599681aa40e536fc6ce47fdf2}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{} \\
+\hline
+{\em speed} & \char`\"{}\+Speed of the object\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayer_a1d89d0ff8b76784f68cf0d9e509ab242}{\index{Player@{Player}!get\+\_\+oog\+\_\+action@{get\+\_\+oog\+\_\+action}}
+\index{get\+\_\+oog\+\_\+action@{get\+\_\+oog\+\_\+action}!Player@{Player}}
+\subsubsection[{get\+\_\+oog\+\_\+action}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string \& Player\+::get\+\_\+oog\+\_\+action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classPlayer_a1d89d0ff8b76784f68cf0d9e509ab242}
+
+
+"Returns instructions of eventual out-\/of-\/game actions, which is used by the owning \hyperlink{classState}{State} to determine if out-\/of-\/game actions, such as quitting, should be taken" 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Return out-\/of-\/game action\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classPlayer_a1480bbfb767687380ad6a2bf294cdcc8}{\index{Player@{Player}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
+\index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Player@{Player}}
+\subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Player\+::prepare\+\_\+simulate (
+\begin{DoxyParamCaption}
+\item[{const float}]{distance\+\_\+modifier, }
+\item[{const float}]{gravity\+\_\+constant}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classPlayer_a1480bbfb767687380ad6a2bf294cdcc8}
+
+
+\char`\"{}\+Prepares simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+modifier} & \char`\"{}\+Delta since last simulation-\/sequence\char`\"{} \\
+\hline
+{\em gravity\+\_\+constant} & \char`\"{}\+How much high the gravity is\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Simulation cycles required by this object this simulation-\/sequence\char`\"{} 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{Gravitating\+\_\+\+Object}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/non\+\_\+abstract/player.\+h\item 
+objects/non\+\_\+abstract/player.\+cc\end{DoxyCompactItemize}

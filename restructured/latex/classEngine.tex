@@ -1,0 +1,60 @@
+\hypertarget{classEngine}{\section{Engine Class Reference}
+\label{classEngine}\index{Engine@{Engine}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classEngine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{\hyperlink{classEngine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine} ()}\label{classEngine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor \+: creates State-\/objects and view,
+        as well as setting the active-\/state and prepares it for simulation\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classEngine_a8ef7030a089ecb30bbfcb9e43094717a}{\hyperlink{classEngine_a8ef7030a089ecb30bbfcb9e43094717a}{$\sim$\+Engine} ()}\label{classEngine_a8ef7030a089ecb30bbfcb9e43094717a}
+
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Destructor \+: frees resources owned by the Engine\char`\"{} \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_abedfd6c2327693f468b710bd79a9fe4c}{simulate} (sf\+::\+Render\+Window \&)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Simulates the active state, and, depending on the return value
+       from the simulation, might change the active-\/state or close the window\char`\"{} \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_a4d9a19bdf6a13b84570e400acab6de6c}{render} (sf\+::\+Render\+Window \&)
+\begin{DoxyCompactList}\small\item\em \char`\"{}draws all texturated objects and text objects in the active state\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classEngine_a4d9a19bdf6a13b84570e400acab6de6c}{\index{Engine@{Engine}!render@{render}}
+\index{render@{render}!Engine@{Engine}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\+::render (
+\begin{DoxyParamCaption}
+\item[{sf\+::\+Render\+Window \&}]{window}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a4d9a19bdf6a13b84570e400acab6de6c}
+
+
+\char`\"{}draws all texturated objects and text objects in the active state\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \char`\"{}window draw on\char`\"{} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classEngine_abedfd6c2327693f468b710bd79a9fe4c}{\index{Engine@{Engine}!simulate@{simulate}}
+\index{simulate@{simulate}!Engine@{Engine}}
+\subsubsection[{simulate}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\+::simulate (
+\begin{DoxyParamCaption}
+\item[{sf\+::\+Render\+Window \&}]{window}
+\end{DoxyParamCaption}
+)}}\label{classEngine_abedfd6c2327693f468b710bd79a9fe4c}
+
+
+\char`\"{}\+Simulates the active state, and, depending on the return value
+       from the simulation, might change the active-\/state or close the window\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \char`\"{}window to close\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/engine.\+h\item 
+engine/engine.\+cc\end{DoxyCompactItemize}

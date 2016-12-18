@@ -13,20 +13,32 @@ class State
 {
     public:
         // Constructors & destructors
+        /*!
+           \brief "Virtual destructor which frees all resources owned by the state"
+        */
         virtual ~State() noexcept;
 
-        // Simulation : pure virtual
+        // Simulation
         virtual void prepare_simulate() = 0;
         virtual int simulate() = 0;
 
-        // View : pure virtual
+        // View
         virtual void set_view(sf::View&) = 0;
 
-        // Getters : defined
+        // Getters
+        /*!
+           \return "Returns the background set in the state"
+        */
         const sf::Sprite& get_background() const;
+        /*!
+           \return "Returns the texturated_objects owned by the state"
+        */
         const std::vector<const Object*>& get_texturated_objects() const;
+        /*!
+           \return "Returns the text_objects owned by the state as a non-const reference"
+        */
         std::unordered_map<std::string, sf::Text>& ref_text_objects();
-    
+
     protected:
         // Textures & background & fonts
         std::unordered_map<std::string, sf::Texture*> textures;
@@ -40,7 +52,7 @@ class State
         std::unordered_map<std::string, sf::Text> text_objects;
 
         // Reset : defined
-        virtual void soft_reset(); 
+        virtual void soft_reset();
 };
 
 #endif

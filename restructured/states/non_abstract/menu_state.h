@@ -8,13 +8,29 @@ class Menu_State : public State
 {
     public:
         // Constructors & destructors
+        /*!
+           \brief "Constructor : loads all textures and fonts used in the state"
+        */
         Menu_State();
 
-        // Simulation : overriding pure virtual
+        // Simulation
+        /*!
+           \brief "Resets the state and loads a new level into it with the help
+                   of the Level Parser class"
+        */
         void prepare_simulate() override;
+        /*!
+           \brief "Simulates each object in the state and performs actions on
+                   the state based on the result of the simulations"
+           \return "An integer representing the next action to be taken by the Engine object"
+        */
         int simulate() override;
 
-        // View : overriding pure virtual
+        // View
+        /*!
+           \brief "Centers the view around the player"
+           \param view "View to perform action on"
+        */
         void set_view(sf::View&) override;
 
     private:

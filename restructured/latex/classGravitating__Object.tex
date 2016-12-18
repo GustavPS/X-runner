@@ -1,0 +1,110 @@
+\hypertarget{classGravitating__Object}{\section{Gravitating\+\_\+\+Object Class Reference}
+\label{classGravitating__Object}\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
+}
+
+
+Inheritance diagram for Gravitating\+\_\+\+Object\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classGravitating__Object__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gravitating\+\_\+\+Object\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classGravitating__Object__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGravitating__Object_a7319a97eb2d84afbe66c5e0040bd3973}{Gravitating\+\_\+\+Object} (const sf\+::\+Vector2f \&, const sf\+::\+Vector2f \&, const std\+::string \&, const bool=false, const sf\+::\+Texture $\ast$=nullptr)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Constructor\char`\"{} \end{DoxyCompactList}\item 
+int \hyperlink{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{prepare\+\_\+simulate} (const float, const float)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Prepares simulation of object\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) override}\label{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGravitating__Object_abda4e488702c931d99b47785db6be33b}{sf\+::\+Clock {\bfseries m\+\_\+gravity\+\_\+clock}}\label{classGravitating__Object_abda4e488702c931d99b47785db6be33b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGravitating__Object_a7319a97eb2d84afbe66c5e0040bd3973}{\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}!Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
+\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}!Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
+\subsubsection[{Gravitating\+\_\+\+Object}]{\setlength{\rightskip}{0pt plus 5cm}Gravitating\+\_\+\+Object\+::\+Gravitating\+\_\+\+Object (
+\begin{DoxyParamCaption}
+\item[{const sf\+::\+Vector2f \&}]{position, }
+\item[{const sf\+::\+Vector2f \&}]{size, }
+\item[{const std\+::string \&}]{type, }
+\item[{const bool}]{solid = {\ttfamily false}, }
+\item[{const sf\+::\+Texture $\ast$}]{texture = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}}\label{classGravitating__Object_a7319a97eb2d84afbe66c5e0040bd3973}
+
+
+\char`\"{}\+Constructor\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \char`\"{}\+Position of the object\char`\"{} \\
+\hline
+{\em size} & \char`\"{}\+Size of the object\char`\"{} \\
+\hline
+{\em type} & \char`\"{}\+Type of the object\char`\"{} \\
+\hline
+{\em solid} & \char`\"{}\+If the object is solid\char`\"{} \\
+\hline
+{\em texture} & \char`\"{}\+Texture of the object\char`\"{}" \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
+\index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
+\subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Gravitating\+\_\+\+Object\+::prepare\+\_\+simulate (
+\begin{DoxyParamCaption}
+\item[{const float}]{distance\+\_\+modifier, }
+\item[{const float}]{gravity\+\_\+constant}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}
+
+
+\char`\"{}\+Prepares simulation of object\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance\+\_\+modifier} & \char`\"{}\+Delta since last simulation-\/sequence\char`\"{} \\
+\hline
+{\em gravity\+\_\+constant} & \char`\"{}\+How much high the gravity is\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\+Simulation cycles required by this object this simulation-\/sequence\char`\"{} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classSimulatable__Object_abe7c02fe250ef5be42011890d8a7b37b}{Simulatable\+\_\+\+Object}.
+
+
+
+Reimplemented in \hyperlink{classPlayer_a1480bbfb767687380ad6a2bf294cdcc8}{Player}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+objects/abstractish/gravitating\+\_\+object.\+h\item 
+objects/abstractish/gravitating\+\_\+object.\+cc\end{DoxyCompactItemize}

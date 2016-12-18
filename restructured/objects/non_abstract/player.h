@@ -9,17 +9,38 @@ class Player final : public Gravitating_Object
 {
     public:
         // Constructors & destructors
+        /*!
+           \brief "Constructor"
+           \param position "Position of the object"
+           \param size "Size of the object"
+           \param type "Type of the object"
+           \param texture "Texture of the object"
+           \param speed "Speed of the object"
+        */
         Player(const sf::Vector2f&,
                const sf::Vector2f&,
                const std::string&,
                const sf::Texture*,
                const float);
 
-        // Prepare and calculate the required amount of simulations 
-        // : overriding defined : final
+        // Simulation
+        /*!
+           \brief "Prepares simulation of object"
+           \param distance_modifier "Delta since last simulation-sequence"
+           \param gravity_constant "How much high the gravity is"
+           \return "Simulation cycles required by this object this simulation-sequence"
+        */
         virtual int prepare_simulate(const float,
                                      const float) override final;
 
+        // Getters
+        /*!
+           \brief "Returns instructions of eventual out-of-game actions,
+                   which is used by the owning State
+                   to determine if out-of-game actions,
+                   such as quitting, should be taken"
+           \return "Return out-of-game action"
+        */
         const std::string& get_oog_action() const;
 
     private:

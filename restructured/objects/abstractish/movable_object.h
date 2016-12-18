@@ -7,21 +7,39 @@ class Movable_Object : public Simulatable_Object
 {
     public:
         // Constructors & destructors
+        /*!
+           \brief "Constructor"
+           \param position "Position of the object"
+           \param size "Size of the object"
+           \param type "Type of the object"
+           \param solid "If the object is solid"
+           \param texture "Texture of the object""
+        */
         Movable_Object(const sf::Vector2f&,
                        const sf::Vector2f&,
                        const std::string&,
                        const bool = false,
                        const sf::Texture* = nullptr);
 
-        // Prepare and calculate the required amount of simulations 
-        // : overriding pure virtual
+        // Simulation
+        /*!
+           \brief "Prepares simulation of object"
+           \param distance_modifier "Delta since last simulation-sequence"
+           \return "Simulation cycles required by this object this simulation-sequence"
+        */
         int prepare_simulate(const float);
-
-        // Execute simulation of object : overriding pure virtual
+        /*!
+           \brief "Executes simulation of object"
+           \param simulation_cycles "Number simulation_cycles the object will be subjected this simulation-sequence"
+           \param objects "Objects to check for collision with"
+           \return "New objects spawned by this object"
+        */
         virtual std::vector<Object*> simulate(const int,
                                               const std::vector<const Object*>&) override;
-
-        // Clean-up simulation state : overriding defined
+        /*!
+           \brief "Executes end-of-simulation logic of object"
+           \param objects "Objects to check for collision with""
+        */
         virtual void end_simulate(const std::vector<const Object*> &objects) override;
 
     protected:
@@ -40,7 +58,7 @@ class Movable_Object : public Simulatable_Object
         // : null-defined
         virtual void handle_static_collision(const Object*) {};
         virtual void handle_end_collision() {}
-        
+
 };
 
 #endif
