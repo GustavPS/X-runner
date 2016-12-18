@@ -62,10 +62,12 @@ int Menu_State::simulate()
     const std::string oog_action { player->get_oog_action() };
     if (oog_action == "play")
     {
+        soft_reset();
         return 2;
     }
     else if(oog_action == "quit")
     {
+        soft_reset();
         return 3;
     }
 
