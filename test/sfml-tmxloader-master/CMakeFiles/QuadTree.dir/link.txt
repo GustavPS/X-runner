@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11   CMakeFiles/QuadTree.dir/examples/MapWithQuadTree.cpp.o  -o QuadTree -rdynamic libtmx-loader.so libpugi.so -lsfml-graphics -lsfml-window -lsfml-system -lz -Wl,-rpath,/home/lovba497/x_runner/test/sfml-tmxloader-master: 

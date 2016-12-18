@@ -1,6 +1,0 @@
-#include "slow_bird.h"
-
-void Slow_Bird::move()
-{
-
-}

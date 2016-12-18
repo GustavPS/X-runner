@@ -1,6 +1,0 @@
-#include "net.h"
-
-void Net::try_move(const sf::Vector2f &to, const std::vector<Object*> &objects, std::unordered_set<std::string> &colliders)
-{
-    
-}
