@@ -199,17 +199,14 @@ int Game_State::simulate()
             ofs << elapsed_time;
             ofs.close();
         }
-        soft_reset();
         return 1;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
-        soft_reset();
         return 1;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
     {
-        soft_reset();
         return 2;
     }
     return 0;

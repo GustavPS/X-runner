@@ -28,10 +28,11 @@ class State
         std::unordered_map<std::string, sf::Text>& ref_text_objects();
     
     protected:
-        // Textures & background
+        // Textures & background & fonts
         std::unordered_map<std::string, sf::Texture*> textures;
         sf::Texture background_texture;
         sf::Sprite background;
+        sf::Font font;
 
         // Objects
         std::vector<const Object*> objects;

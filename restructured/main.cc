@@ -9,9 +9,11 @@ int main()
     sf::RenderWindow window(
         sf::VideoMode(1920, 1080), "Where the f_ are the birds at?", sf::Style::Fullscreen);
 
-    window.setVerticalSyncEnabled(true);
-    
     window.setMouseCursorVisible(false);
+
+    window.setVerticalSyncEnabled(true);
+
+    //window.setFramerateLimit(60);
 
     while(window.isOpen())
     {

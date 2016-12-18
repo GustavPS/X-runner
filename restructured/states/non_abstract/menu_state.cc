@@ -59,15 +59,13 @@ int Menu_State::simulate()
     player->end_simulate(objects);
 
     // Return action corresponding to players out-of-game action variable, or 0
-    const std::string oog_action { player->get_oog_action() };
+    const std::string &oog_action { player->get_oog_action() };
     if (oog_action == "play")
     {
-        soft_reset();
         return 2;
     }
     else if(oog_action == "quit")
     {
-        soft_reset();
         return 3;
     }
 

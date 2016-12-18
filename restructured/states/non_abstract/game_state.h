@@ -19,9 +19,6 @@ class Game_State : public State
         void set_view(sf::View&) override;
 
     private:
-        // Fonts
-        sf::Font font;
-
         // State
         float record_time {};
         float gravity_constant {};
