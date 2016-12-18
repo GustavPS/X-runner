@@ -62,7 +62,7 @@ void Engine::render(sf::RenderWindow& window)
     {
         elapsed_time_it->second.setPosition(
             window.mapPixelToCoords(
-                sf::Vector2i(0, 0)));
+                sf::Vector2i(15, 0)));
         
         window.draw(elapsed_time_it->second);
     }
@@ -80,16 +80,6 @@ void Engine::render(sf::RenderWindow& window)
 
         window.draw(record_time_it->second);
     }
-
-    /*sf::Font font;
-    font.loadFromFile("resources/fonts/3x5/3X5_____.TTF");
-    sf::Text text { "hejsan", font, 40 };
-    text.setFont(font);
-    text.setPosition(window.mapPixelToCoords(sf::Vector2i(window.getSize().x - text.getLocalBounds().width - 60, 0)));
-    text.setColor(sf::Color::Red);
-    window.draw(text);*/
-    //record_sprite.setPosition(window.convertCoords(sf::Vector2i(0, 0)));
-    //window.draw(record_sprite);
     
     window.display();
 }

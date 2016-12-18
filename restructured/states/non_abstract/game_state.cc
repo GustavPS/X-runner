@@ -4,6 +4,9 @@
 
 #include <algorithm>
 #include <functional>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
 
 Game_State::Game_State()
 {
@@ -25,6 +28,12 @@ Game_State::Game_State()
     textures["nfbb"] = new sf::Texture;
     textures["nfbb"]->loadFromFile("resources/object_sprites/nfbb.png");
     textures["nfbb"]->setSmooth(true);
+
+    font.loadFromFile("resources/fonts/3x5/3X5_____.TTF");
+    text_objects["record_time"].setFont(font);
+    text_objects["record_time"].setCharacterSize(30);
+    text_objects["elapsed_time"].setFont(font);
+    text_objects["elapsed_time"].setCharacterSize(30);
 }
 
 void Game_State::prepare_simulate()
@@ -39,8 +48,21 @@ void Game_State::prepare_simulate()
     background_texture.setSmooth(true);
     background.setTexture(background_texture);
 
+    std::ifstream ifs { "resources/levels/level_1/record.txt" };
+    if (!ifs)
+    {
+        record_time = 0.f;
+    }
+    else
+    {
+        ifs >> record_time;
+    }
+    ifs.close();
+
     gravity_constant = 9.82;
     /*****************************************************/
+
+    text_objects["record_time"].setString(std::to_string(record_time));
 
     auto tmp_objects { level_parser.get_objects(textures) };
 
@@ -62,7 +84,7 @@ void Game_State::prepare_simulate()
     }
 
     delta_clock.restart();
-    result_clock.restart();
+    elapsed_time_clock.restart();
 }
 
 int Game_State::simulate()
@@ -165,14 +187,28 @@ int Game_State::simulate()
             simulatable_objects.push_back(simulatable_object);
     }
 
+    float elapsed_time = elapsed_time_clock.getElapsedTime().asSeconds();
+
+    text_objects["elapsed_time"].setString(std::to_string(elapsed_time));
+
     if (player->get_oog_action() == "goal")
     {
+        if (elapsed_time < record_time || record_time == 0.f)
+        {
+            std::ofstream ofs { "resources/levels/level_1/record.txt" };
+            ofs << elapsed_time;
+            ofs.close();
+        }
         return 1;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
         return 1;
+    }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+    {
         return 2;
+    }
     return 0;
 }
 

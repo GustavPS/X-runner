@@ -19,10 +19,14 @@ class Game_State : public State
         void set_view(sf::View&) override;
 
     private:
+        // Fonts
+        sf::Font font;
+
         // State
-        float gravity_constant;
+        float record_time {};
+        float gravity_constant {};
         sf::Clock delta_clock;
-        sf::Clock result_clock;
+        sf::Clock elapsed_time_clock;
 
         // Objects
         std::vector<Simulatable_Object*> simulatable_objects;
