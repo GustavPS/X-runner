@@ -24,8 +24,9 @@
 \contentsline {subsubsection}{\numberline {3.2.2}get\_texturated\_objects}{7}{subsubsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.3}ref\_text\_objects}{7}{subsubsection.3.2.3}
 \contentsline {subsection}{\numberline {3.3}Metoder - Arv \& Override}{7}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}}{7}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}preprare\_simulate}{8}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}simulate}{8}{subsubsection.3.3.3}
-\contentsline {section}{\numberline {4}Designbeskrivning}{8}{section.4}
+\contentsline {subsubsection}{\numberline {3.3.1}preprare\_simulate}{7}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}simulate}{8}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}set\_view}{8}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}soft\_reset}{8}{subsubsection.3.3.4}
+\contentsline {section}{\numberline {4}Designbeskrivning}{9}{section.4}
 \contentsline {section}{\numberline {5}Externa filformat}{11}{section.5}

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1482080049 "dspec.tex" "dspec.pdf" "dspec" 1482080050
+["pdflatex"] 1482101166 "dspec.tex" "dspec.pdf" "dspec" 1482101170
   "/etc/texmf/web2c/texmf.cnf" 1471502679 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -148,15 +148,15 @@
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1471502833 3164297 01924100acbc26ee01711c246ca86533 ""
   "TDP003mall.cls" 1481896206 1768 4b2b488c30c911537e0dea0270f2248c ""
   "class_diagram.jpg" 1482075756 206978 74da9e26c12e12ffc1bdd19731b4cd5a ""
-  "dspec.aux" 1482080050 4278 64f0ef03709d8136ea38bec4d599c17e ""
-  "dspec.out" 1482080050 2242 c51e2515ca615bec328e873db4ad369a ""
-  "dspec.tex" 1482080046 18953 9ff615f135398ed211d90c08666c21ce ""
-  "dspec.toc" 1482080050 2678 f8345416c6eba1399566badf0b31b820 ""
+  "dspec.aux" 1482101170 4391 c7f1ee380b572e2209db82303beb9540 ""
+  "dspec.out" 1482101170 2320 b4ac943398901d0790eb4153088a588c ""
+  "dspec.tex" 1482101167 19201 d5af569aa73b559360ed30cbf54c711b ""
+  "dspec.toc" 1482101170 2773 f865f109ce15c5809faa78d4edc25917 ""
   "ida.png" 1481896206 7786 f8e6fdcd3fff5911dca9765ffa4de313 ""
   "lith.png" 1481896206 15882 4db45f42034d096c9aba5be88636d034 ""
   (generated)
-  "dspec.out"
   "dspec.log"
-  "dspec.aux"
   "dspec.pdf"
   "dspec.toc"
+  "dspec.out"
+  "dspec.aux"

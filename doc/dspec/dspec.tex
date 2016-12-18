@@ -148,7 +148,7 @@ Gravitating\_Object::prepare\_simulate räknar ut gravitationspåverkan och appl
 Movable\_Object::prepare\_simulate applicerar distance\_modifier på m\_distance och räknar ut hur många simulationer som behöver göras med restriktionen att ett objekt inte kan förflytta sig mer än 24px (det minsta existerande objektet) åt gången. Detta för att undvika missade kollisioner om ett objekt försöker röra sig över 24px. Om objektet försöker röra sig 30px kommer alltså antal behövda simulationer vara 2.
 \\\\
 Movable\_Object::prepare\_simulate returnerar sedan antalet behövda simulationer till Gravitating\_object::prepare\_simulate, som returnerar vidare till prepare\_simulate som returnerar värdet till sin anropare.
-\\\\
+
  \subsubsection{handle\_moving\_collision}
 Parametrar: \textit{const Object *object, const sf::Vector2f \&steps}
 \\Return: \textit{}
@@ -244,12 +244,6 @@ Game\_State ärver och override:ar följande metoder från sina superklasser:
 \item soft\_reset
 \end{itemize}
 
-\subsubsection{}
-Paramterar: \textit{}
-\\Return: \textit{}
-\\\\
-Metoden \_ returnerar \_
-
 \subsubsection{preprare\_simulate}
 Paramterar: \textit{}
 \\Return: \textit{}
@@ -278,6 +272,18 @@ Efter dessa steg kontrolleras sedan om spelaren m\_oog\_action-variabel=goal, va
 Är inte m\_oog\_action-variabeln=goal kontrolleras om Escape eller R tryckts ned för att isåfall återgå till menyn respektive starta om banan.
 \\\\
 Är inget av ovanstående sant returneras 0, vilket innebär att klassen Engine återigen kommer anropa denna funktion.
+
+\subsubsection{set\_view}
+Paramterar: \textit{sf::View}
+\\Return: \textit{}
+\\\\
+Metoden set\_view centrerar viewen runt spelaren.
+
+\subsubsection{soft\_reset}
+Paramterar: \textit{}
+\\Return: \textit{}
+\\\\
+Metoden soft\_reset nollställer containrar innehållandes objekt för den inladdade banan och frigör minne allokerat till objekten.
 
 \section{Designbeskrivning}
 Designen är implementerat på sådant sätt att en spelmotor, Engine, håller reda på vilket state av Menu\_State och Game\_State som är aktivt och kör det state:ets simulate-metod. Beroende på returnvärdet från denna simulate-metod kan det aktiva state:et ändras. Efter att det aktiva state:et simulerats renderar sedan Engine state:ets renderbara objekt.

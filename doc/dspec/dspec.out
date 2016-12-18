@@ -23,8 +23,9 @@
 \BOOKMARK [3][-]{subsubsection.3.2.2}{get_texturated_objects}{subsection.3.2}% 23
 \BOOKMARK [3][-]{subsubsection.3.2.3}{ref_text_objects}{subsection.3.2}% 24
 \BOOKMARK [2][-]{subsection.3.3}{Metoder\040-\040Arv\040&\040Override}{section.3}% 25
-\BOOKMARK [3][-]{subsubsection.3.3.1}{}{subsection.3.3}% 26
-\BOOKMARK [3][-]{subsubsection.3.3.2}{preprare_simulate}{subsection.3.3}% 27
-\BOOKMARK [3][-]{subsubsection.3.3.3}{simulate}{subsection.3.3}% 28
-\BOOKMARK [1][-]{section.4}{Designbeskrivning}{}% 29
-\BOOKMARK [1][-]{section.5}{Externa\040filformat}{}% 30
+\BOOKMARK [3][-]{subsubsection.3.3.1}{preprare_simulate}{subsection.3.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.3.2}{simulate}{subsection.3.3}% 27
+\BOOKMARK [3][-]{subsubsection.3.3.3}{set_view}{subsection.3.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.3.4}{soft_reset}{subsection.3.3}% 29
+\BOOKMARK [1][-]{section.4}{Designbeskrivning}{}% 30
+\BOOKMARK [1][-]{section.5}{Externa\040filformat}{}% 31
