@@ -28,7 +28,8 @@ Ver. & Revisionsbeskrivning & Datum \\\hline
 0.1 & Ett första utkast & 161110 \\\hline
 1.0 & Komplettering & 161127 \\\hline
 1.1 & Uppflyttning av krav & 161205 \\\hline
-1.2 & Uppflyttning av krav & 1612012 \\\hline
+1.2 & Uppflyttning av krav & 161212 \\\hline
+1.3 & Färdigställt & 161219 \\\hline
 \end{tabularx}
 \end{table}
 
@@ -66,9 +67,10 @@ I menyn kan spelaren starta en bana eller avsluta spelet. Menyval görs genom kl
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Knapptryck} & \textbf{Händelse} \\\hline
-W eller $\uparrow$ & Spelaren hoppar \\\hline
-A eller $\leftarrow$ & Spelaren går åt vänster \\\hline
-D eller $\rightarrow$ & Spelaren går åt höger \\\hline
+$\uparrow$ & Spelaren hoppar \\\hline
+$\leftarrow$ & Spelaren går åt vänster \\\hline
+$\rightarrow$ & Spelaren går åt höger \\\hline
+R & Starta om banan \\\hline
 ESC & Återgå till menyn \\\hline
 \end{tabular}
 
@@ -79,7 +81,8 @@ ESC & Återgå till menyn \\\hline
 \textbf{NPC / Specialblock} & \textbf{Händelse vid kollision med spelare}\\\hline
 Slow Bird & Spelarens hastighet minskar i ett antal sekunder\\\hline
 Boost Bird & Spelarens hastighet ökar i ett antal sekunder\\\hline
-Net from Boost Bird & Spelaren kan inte röra sig i ett antal sekunder, Net from Boost Bird despawnar\\\hline
+Bomb Bird & Spelarens hastighet minskar i ett antal sekunder\\\hline
+Net from Bomb Bird & Spelarens hastighet minskar i ett antal sekunder, Net from Bomb Bird despawnar\\\hline
 Quicksand & Spelarens hastighet minskar och spelaren kan inte hoppa \\\hline
 Goalblock & Banan är avklarad \\\hline
 \end{tabular}
@@ -118,7 +121,7 @@ Den renderade delen av banan ska förflytta sig så att spelaren alltid är cent
 
 \item Spelaren kan röra sig i sidled såvida denna rörelse inte innebär kollision med ett solidt objekt. Spelaren kan röra sig i sidled även om denne faller.
 
-\item Om spelaren står på ett solidt objekt kan denne hoppa. Vid kollision med ett solidt objekt ovanför spelaren avbryts hoppet och spelaren börjar falla till följd av gravitationen.
+\item Om spelaren står på ett solidt objekt kan denne hoppa om inget annat specificerats vid interaktion av det solida blocket. Vid kollision med ett solidt objekt ovanför spelaren avbryts hoppet och spelaren börjar falla till följd av gravitationen.
 
 \item Om spelaren kolliderar med en NPC eller ett specialblock utförs händelserna specificerade under \textbf{Spelmekanik(2.2)}.
 
@@ -150,8 +153,6 @@ Samtliga sätt som spelaren kan förlora bonushastigheten på är:
   \label{Meny}
 \end{figure}
 
-\newpage
-
 \subsection{NPC's}
 Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan NPC's och spelare.
 
@@ -161,7 +162,6 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan NPC's och spel
 \item Slow Birds påverkas inte av gravitation.
 \item Slow Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
 \item När en Slow Bird kolliderar med ett solidt objekt byter den riktning i sidled.
-\item Slow Birds spawnar efter en utsatt tid, beroende på vilken bana spelaren spelar.
 \end{enumerate}
 
 \subsubsection{Boost Bird}
@@ -170,18 +170,25 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan NPC's och spel
 \item Boost Birds påverkas inte av gravitation.
 \item Boost Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
 \item När en Boost Bird kolliderar med ett solidt objekt byter den riktning i sidled.
-\item Boost Birds spawnar efter en utsatt tid, beroende på vilken bana spelaren spelar.
-\item Inom ett utsatt interval spawnar Boost Birds ett nät, Net from Boost Bird.
+\end{enumerate}
+
+\subsubsection{Bomb Bird}
+\begin{enumerate}
+\item Bomb Birds är icke-solida.
+\item Bomb Birds påverkas inte av gravitation.
+\item Bomb Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
+\item När en Bomb Bird kolliderar med ett solidt objekt byter den riktning i sidled.
+\item Inom ett utsatt interval spawnar Bomb Birds ett nät, Net from Bomb Bird.
 \end{enumerate}
 
 \subsection{Block}
 Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock och spelare.
 
-\subsubsection{Net from Boost Bird}
+\subsubsection{Net from Bomb Bird}
 \begin{enumerate}
-\item Net from Boost Bird är icke-solidt.
-\item Net from Boost Bird påverkas av gravitation.
-\item När Net from Boost Bird spawnas av en Boost Bird faller det nedåt till följd av gravitationen. Efter att det kolliderat med ett solidt block ligger det kvar i ett antal sekunder innan det despawnar eller tills dess att en spelare kolliderat med nätet.
+\item Net from Bomb Bird är icke-solidt.
+\item Net from Bomb Bird påverkas av gravitation.
+\item När Net from Bomb Bird spawnas av en Bomb Bird faller det nedåt till följd av gravitationen. Efter att det kolliderat med ett solidt block ligger det kvar i ett antal sekunder innan det despawnar eller tills dess att en spelare kolliderat med nätet.
 \end{enumerate}
 
 \subsubsection{Quicksand}
@@ -192,8 +199,8 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
 
 \subsubsection{Goalblock}
 \begin{enumerate}
-\item Goalblock är icke-solidt.
-\item Goalblock påverkas av gravitation.
+\item Goalblock är solidt.
+\item Goalblock påverkas inte av gravitation.
 \end{enumerate}
 
 \subsubsection{Terrain}
@@ -201,7 +208,7 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
 \item Terrain är solidt.
 \item Terrain påverkas inte av gravitation.
 \end{enumerate}
-
+\newpage
 \section{Visualisering}
 \begin{figure}[!h]
   \centering
@@ -218,7 +225,7 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
   \caption{Spelplan}
   \label{Spelplan}
 \end{figure}
-
+\newpage
 \section{Kravformulering}
 \subsection{Ska-krav}
 \begin{description}
@@ -231,15 +238,15 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock o
 \item[15] Spelaren ska kunna interagera med menyn (\textbf{Spelmekanik(1)})
 \item[6] Det ska kunna finnas flera NPC's och specialblock på den aktiva banan.
 \item[17] Det ska finnas minst en bana med flera NPC's och specialblock.
-\item[7] NPC's och specialblock ska kunna spawnas dynamiskt (\textbf{Regler(5.1)[5]}, \textbf{Regler(5.2)[5,6]})
-\item[8] NPC's ska röra sig enligt specificerade restriktioner (\textbf{Regler(5.1)[3]}, \textbf{Regler(5.2)[3]})
+\item[7] NPC's och specialblock ska kunna spawnas dynamiskt (\textbf{Regler(5.3)[5]}, \textbf{Regler(6.1)[3]})
+\item[8] NPC's ska röra sig enligt specificerade restriktioner (\textbf{Regler(5.1)[3]}, \textbf{Regler(5.2)[3]}, \textbf{Regler(5.3)[3]})
 \item[13] När spelaren kolliderar med en NPC eller ett specialblock utförs de specificerade kollisionshändelserna (\textbf{Spelmekanik(2.2)})
+\item[9] Rekordtiden för varje bana ska sparas (\textbf{Regler(1)[2]})
+\item[10] Rekordtiden för den aktiva bana ska renderas på skärmen.
 \end{description}
 
 \subsection{Bör-krav}
 \begin{itemize}
-\item[9] Rekordtiden för varje bana ska sparas (\textbf{Regler(1)[2]})
-\item[10] Rekordtiden för den aktiva bana ska renderas på skärmen.
 \item[11] Spelaren ska kunna walljumpa (\textbf{Regler(4)[6]})
 \item[12] Spelarens ska kunna hoppa för hastighet (\textbf{Regler(4)[6]})
 \item[16] Det ska vara möjligt att spela online multiplayer (\textbf{Spelmekanik(2.1)}, \textbf{Spelmekanik(2.3)}, \textbf{Regler(1)[1]})

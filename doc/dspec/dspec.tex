@@ -217,19 +217,19 @@ Game\_State ärver följande metoder från sina superklasser:
 \item ref\_text\_objects
 \end{itemize}
 
-\subsubsection{get\_background}
+\subsubsection{get\_background (public)}
 Parametrar: \textit{}
 \\Return: \textit{const sf::Sprite\&}
 \\\\
 Metoden get\_background returnerar background-variabeln.
 
-\subsubsection{get\_texturated\_objects}
+\subsubsection{get\_texturated\ (public)}
 Parametrar: \textit{}
 \\Return: \textit{const std::vector<const Object*>\&}
 \\\\
 Metoden get\_texturated\_objects returnerar texturated\_objects-variabeln.
 
-\subsubsection{ref\_text\_objects}
+\subsubsection{ref\_text\_objects (public)}
 Parameterar: \textit{}
 \\Return \textit{std::unordered\_map<std::string, sf::Text>&}
 \\\\
@@ -244,14 +244,14 @@ Game\_State ärver och override:ar följande metoder från sina superklasser:
 \item soft\_reset
 \end{itemize}
 
-\subsubsection{preprare\_simulate}
+\subsubsection{preprare\_simulate (public)}
 Paramterar: \textit{}
 \\Return: \textit{}
 \\\\
 Metoden prepare\_simulate returnerar förbereder Game\_State för simulation genom att återställa statet för att sedan läsa in en ny level (med hjälp av klassen Level\_Parser) och sätta nödvändiga variabler (gravity\_constant, background, record\_time objects, texturated\_objects, simulatable\_objects, player). Klockorna delta\_clock och elapsed\_time återställs även.
 \\\\
 
-\subsubsection{simulate}
+\subsubsection{simulate (public)}
 Paramterar: \textit{}
 \\Return: \textit{}
 \\\\
@@ -273,7 +273,7 @@ Efter dessa steg kontrolleras sedan om spelaren m\_oog\_action-variabel=goal, va
 \\\\
 Är inget av ovanstående sant returneras 0, vilket innebär att klassen Engine återigen kommer anropa denna funktion.
 
-\subsubsection{set\_view}
+\subsubsection{set\_view (public)}
 Paramterar: \textit{sf::View}
 \\Return: \textit{}
 \\\\
@@ -318,7 +318,7 @@ På nästa sida följer det fullständiga klassdiagramet:
 \end{figure}
 \newpage
 \section{Externa filformat}
-De externa filformat som används är vanliga textfiler (.txt) för in- och utläsning av rekord (ett rekord per fil), samt XML-filer genererade av Tiled Map Editor (.tmx) för inläsning av levels. XML-filerna innehåller även inbäddat csv-struktur.
+De externa filformat som används är vanliga textfiler (.txt) för in- och utläsning av rekord (ett rekord per fil), samt XML-filer genererade av Tiled Map Editor (.tmx) för inläsning av levels. XML-filerna innehåller även inbäddade csv-strukturer.
 \\\\
 Användning av Tiled Map Editor har varit mycket hjälpsamt för att kunna konstruera banor.
 

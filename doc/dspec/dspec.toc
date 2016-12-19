@@ -1,4 +1,3 @@
-\select@language {swedish}
 \contentsline {section}{\numberline {1}Revisionshistorik}{2}{section.1}
 \contentsline {section}{\numberline {2}Detaljbeskrivning av Player}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Variabler}{2}{subsection.2.1}
@@ -20,13 +19,13 @@
 \contentsline {section}{\numberline {3}Detaljbeskrivning av Game\_State}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Variabler}{6}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Metoder - Arv}{7}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}get\_background}{7}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}get\_texturated\_objects}{7}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}ref\_text\_objects}{7}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.1}get\_background (public)}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}get\_texturated\ (public)}{7}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}ref\_text\_objects (public)}{7}{subsubsection.3.2.3}
 \contentsline {subsection}{\numberline {3.3}Metoder - Arv \& Override}{7}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}preprare\_simulate}{7}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}simulate}{8}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}set\_view}{8}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}preprare\_simulate (public)}{7}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}simulate (public)}{8}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}set\_view (public)}{8}{subsubsection.3.3.3}
 \contentsline {subsubsection}{\numberline {3.3.4}soft\_reset}{8}{subsubsection.3.3.4}
 \contentsline {section}{\numberline {4}Designbeskrivning}{9}{section.4}
 \contentsline {section}{\numberline {5}Externa filformat}{11}{section.5}

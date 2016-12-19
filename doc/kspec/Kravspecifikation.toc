@@ -15,14 +15,15 @@
 \contentsline {subsection}{\numberline {7.2}Soliditet}{4}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Gravitation}{4}{subsection.7.3}
 \contentsline {subsection}{\numberline {7.4}Spelare}{4}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}NPC's}{6}{subsection.7.5}
-\contentsline {subsubsection}{\numberline {7.5.1}Slow Bird}{6}{subsubsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5}NPC's}{5}{subsection.7.5}
+\contentsline {subsubsection}{\numberline {7.5.1}Slow Bird}{5}{subsubsection.7.5.1}
 \contentsline {subsubsection}{\numberline {7.5.2}Boost Bird}{6}{subsubsection.7.5.2}
+\contentsline {subsubsection}{\numberline {7.5.3}Bomb Bird}{6}{subsubsection.7.5.3}
 \contentsline {subsection}{\numberline {7.6}Block}{6}{subsection.7.6}
-\contentsline {subsubsection}{\numberline {7.6.1}Net from Boost Bird}{6}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.1}Net from Bomb Bird}{6}{subsubsection.7.6.1}
 \contentsline {subsubsection}{\numberline {7.6.2}Quicksand}{6}{subsubsection.7.6.2}
 \contentsline {subsubsection}{\numberline {7.6.3}Goalblock}{6}{subsubsection.7.6.3}
-\contentsline {subsubsection}{\numberline {7.6.4}Terrain}{7}{subsubsection.7.6.4}
+\contentsline {subsubsection}{\numberline {7.6.4}Terrain}{6}{subsubsection.7.6.4}
 \contentsline {section}{\numberline {8}Visualisering}{7}{section.8}
 \contentsline {section}{\numberline {9}Kravformulering}{8}{section.9}
 \contentsline {subsection}{\numberline {9.1}Ska-krav}{8}{subsection.9.1}

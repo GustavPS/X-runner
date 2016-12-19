@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.12.12)  12 DEC 2016 15:30
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.12.12)  19 DEC 2016 02:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,7 +996,7 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 \openout5 = `Kravspecifikation.toc'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 51--54
+Underfull \hbox (badness 10000) in paragraph at lines 52--55
 
  []
 
@@ -1008,7 +1008,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.76 \\\\
+l.78 \\\\
          
 ? 
 
@@ -1018,48 +1018,55 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.77 \begin
+l.79 \begin
            {tabular}{|l|l|}
 ? 
 
-Overfull \hbox (3.62502pt too wide) in paragraph at lines 77--86
+Overfull \hbox (14.485pt too wide) in paragraph at lines 79--89
 [] 
  []
 
 [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 129--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--142
 
  []
 
 File: bilder/speed_jump.png Graphic file (type QTm)
-<use  "bilder/speed_jump.png" > [5]
+<use  "bilder/speed_jump.png" > [5] [6]
 File: bilder/startmeny.png Graphic file (type QTm)
- <use  "bilder/startmeny.png" > [6]
+ <use  "bilder/startmeny.png" >
 File: bilder/spelplan.png Graphic file (type QTm)
 
-<use  "bilder/spelplan.png" > [7] [8] 
+<use  "bilder/spelplan.png" > [7]
+Overfull \hbox (0.62898pt too wide) in paragraph at lines 242--243
+[]\EU1/lmr/m/n/10 NPC’s ska röra sig enligt specificerade restriktioner (\EU1/l
+mr/bx/n/10 Regler(5.1)[3]\EU1/lmr/m/n/10 , \EU1/lmr/bx/n/10 Regler(5.2)[3]\EU1/
+lmr/m/n/10 , \EU1/lmr/bx/n/10 Regler(5.3)[3]\EU1/lmr/m/n/10 ) 
+ []
+
+[8] 
 AED: lastpage setting LastPage
 [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 307.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 307.
  (./Kravspecifikation.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 300.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 300.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 307.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 307.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1071,12 +1078,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 300.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 307.
  ) 
 Here is how much of TeX's memory you used:
  31354 strings out of 495579
  598057 string characters out of 6187321
- 592218 words of memory out of 5000000
+ 592294 words of memory out of 5000000
  34278 multiletter control sequences out of 15000+600000
  5647 words of font info for 31 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
