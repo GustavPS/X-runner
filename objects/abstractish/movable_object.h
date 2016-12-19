@@ -63,8 +63,8 @@ class Movable_Object : public Simulatable_Object
         */
         virtual void collision_state_cleanup();
         /*!
-           \brief "Handles collision while the object does not have movement"
-           \param object "Colliding object"
+           \brief "Clears collision state variables such as m_ground_collision
+                   to prepare for new collision-detection cycles"
         */
         virtual void handle_static_collision(const Object*) {};
         /*
