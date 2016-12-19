@@ -52,6 +52,9 @@ class State
         std::unordered_map<std::string, sf::Text> text_objects;
 
         // Reset : defined
+        /*!
+           \brief "Resetar statet, kan skrivas över av ärvande klasser"
+        */
         virtual void soft_reset();
 };
 

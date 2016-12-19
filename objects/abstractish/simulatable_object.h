@@ -45,7 +45,11 @@ class Simulatable_Object : public Object
 
     protected:
         // Collision detection
-        // : defined
+        /*!
+           \brief "Get the collidion objects"
+           \param std::vector<const Object*> "A vector with the objects to check collision with."
+           \return "A vector with the colliding objects"
+        */
         virtual const std::vector<const Object*> get_colliding_objects(
             const std::vector<const Object*>&) const;
 };

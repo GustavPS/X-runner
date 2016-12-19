@@ -34,7 +34,12 @@ class Gravitating_Object : public Movable_Object
         // State : general
         sf::Clock m_gravity_clock;
 
-        // Collision handling : overriding defined
+        // Collision handling : overriding defined : final
+        /*!
+           \brief "Handles collision while the object have movement"
+           \param object "Colliding object"
+           \param steps "Steps taken in this movement"
+        */
         virtual void handle_moving_collision(const Object*,
                                       const sf::Vector2f&) override;
 };

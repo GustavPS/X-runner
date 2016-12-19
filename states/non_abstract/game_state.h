@@ -46,6 +46,9 @@ class Game_State : public State
         const Player *player;
 
         // Reset : overriding defined
+        /*!
+           \brief "Reset the game state."
+        */
         void soft_reset() override;
 };
 

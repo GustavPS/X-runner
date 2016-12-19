@@ -77,7 +77,7 @@ ESC & Återgå till menyn \\\hline
 \textbf{NPC / Specialblock} & \textbf{Händelse vid kollision med spelare}\\\hline
 Slow Bird & Spelarens hastighet minskar i ett antal sekunder\\\hline
 Boost Bird & Spelarens hastighet ökar i ett antal sekunder\\\hline
-Net from Boost Bird & Spelaren kan inte röra sig i ett antal sekunder, Net from Boost Bird despawnar\\\hline
+Bomb from Bomb bird Bird & Spelaren kan inte röra sig i ett antal sekunder, Bomb from Bomb bird de-spawnar\\\hline
 Quicksand & Spelarens hastighet minskar och spelaren kan inte hoppa \\\hline
 Goalblock & Banan är avklarad \\\hline
 \end{tabular}
@@ -153,13 +153,14 @@ Samtliga sätt som spelaren kan förlora bonushastigheten på är:
 \subsection{NPC's}
 Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan NPC's och spelare.
 
-\subsubsection{Slow Bird}
+\subsubsection{Bomb Bird}
 \begin{enumerate}
-\item Slow Birds är icke-solida.
-\item Slow Birds påverkas inte av gravitation.
-\item Slow Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
-\item När en Slow Bird kolliderar med ett solidt objekt byter den riktning i sidled.
-\item Slow Birds spawnar efter en utsatt tid, beroende på vilken bana spelaren spelar.
+\item Bomb Birds är icke-solida.
+\item Bomb Birds påverkas inte av gravitation.
+\item Bomb Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
+\item När en Bomb Bird kolliderar med ett solidt objekt byter den riktning i sidled.
+\item Bomb Birds spawnar efter en utsatt tid, beroende på vilken bana spelaren spelar.
+\item Inom ett utsatt interval spawnar Bomb birds en bomb, Bomb from Bomb bird.
 \end{enumerate}
 
 \subsubsection{Boost Bird}
@@ -169,17 +170,16 @@ Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan NPC's och spel
 \item Boost Birds kan endast röra sig i sidled \textit{(i mån av tid: kan endast röra sig i sidled utefter en sinuskurva)}.
 \item När en Boost Bird kolliderar med ett solidt objekt byter den riktning i sidled.
 \item Boost Birds spawnar efter en utsatt tid, beroende på vilken bana spelaren spelar.
-\item Inom ett utsatt interval spawnar Boost Birds ett nät, Net from Boost Bird.
 \end{enumerate}
 
 \subsection{Block}
 Se \textbf{Spelmekanik(2.2)} för händelser vid kollision mellan specialblock och spelare.
 
-\subsubsection{Net from Boost Bird}
+\subsubsection{Bomb from Bomb Bird}
 \begin{enumerate}
-\item Net from Boost Bird är icke-solidt.
-\item Net from Boost Bird påverkas av gravitation.
-\item När Net from Boost Bird spawnas av en Boost Bird faller det nedåt till följd av gravitationen. Efter att det kolliderat med ett solidt block ligger det kvar i ett antal sekunder innan det despawnar eller tills dess att en spelare kolliderat med nätet.
+\item Bomb from Bomb Bird är icke-solidt.
+\item Bomb from Bomb Bird påverkas av gravitation.
+\item När Bomb from Bomb Bird spawnas av en Bomb Bird faller det nedåt till följd av gravitationen. Efter att det kolliderat med ett solidt block ligger det kvar i ett antal sekunder innan det despawnar eller tills dess att en spelare kolliderat med bomben.
 \end{enumerate}
 
 \subsubsection{Quicksand}

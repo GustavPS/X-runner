@@ -50,9 +50,18 @@ class Bird : public Movable_Object
         bool m_player_debuff {};
 
         // Collision handling : overriding defined : final
+        /*!
+           \brief "Handles collision while the object have movement"
+           \param object "Colliding object"
+           \param steps "Steps taken in this movement"
+        */
         virtual void handle_moving_collision(const Object*,
                                       const sf::Vector2f&) override final;
 
+        /*!
+           \brief "Handles collision while the object does not have movement"
+           \param object "Colliding object"
+        */
         virtual void handle_static_collision(const Object*);
 };
 

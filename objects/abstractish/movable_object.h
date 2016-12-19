@@ -52,11 +52,25 @@ class Movable_Object : public Simulatable_Object
         bool m_wall_collision {};
 
         // Collision handling
-        // : defined
+        /*!
+           \brief "Handles collision while the object have movement"
+           \param object "Colliding object"
+           \param steps "Steps taken in this movement"
+        */
         virtual void handle_moving_collision(const Object*, const sf::Vector2f&);
+        /*!
+           \brief "Resets collision variables"
+        */
         virtual void collision_state_cleanup();
-        // : null-defined
+        /*!
+           \brief "Handles collision while the object does not have movement"
+           \param object "Colliding object"
+        */
         virtual void handle_static_collision(const Object*) {};
+        /*
+           \brief "Execute end-of-collision actions based on what have or havn't been collided
+                   with in the previous collision-handlings"
+        */
         virtual void handle_end_collision() {}
 
 };
