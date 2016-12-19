@@ -44,7 +44,7 @@ std::vector<Object*> Level_Parser::get_xml_objects(
     for (pugi::xml_node xml_objectgroup
             { m_xml_doc.child("map").child("objectgroup") }
          ; xml_objectgroup
-         ; xml_objectgroup = xml_objectgroup.n// vector to store created objects inext_sibling("objectgroup"))
+         ; xml_objectgroup = xml_objectgroup.next_sibling("objectgroup"))
     {
         // check if the objectgroup is to be ignored, if so, continue to the next iteration
         bool ignore { false };
