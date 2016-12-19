@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ac1e8138a19ac3d284010c693e5ca446c"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Constructor"  <a href="#ac1e8138a19ac3d284010c693e5ca446c">More...</a><br /></td></tr>
 <tr class="separator:ac1e8138a19ac3d284010c693e5ca446c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3206216900aae52b79289c3f75c1e32"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classObject.html">Object</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevel__Parser.html#af3206216900aae52b79289c3f75c1e32">get_objects</a> (const std::unordered_map&lt; std::string, sf::Texture * &gt; &amp;) const </td></tr>
-<tr class="memdesc:af3206216900aae52b79289c3f75c1e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Creates and returns all objects in loaded xml-file"  <a href="#af3206216900aae52b79289c3f75c1e32">More...</a><br /></td></tr>
+<tr class="memdesc:af3206216900aae52b79289c3f75c1e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Creates and returns all objects in loaded file"  <a href="#af3206216900aae52b79289c3f75c1e32">More...</a><br /></td></tr>
 <tr class="separator:af3206216900aae52b79289c3f75c1e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -138,14 +139,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>"Creates and returns all objects in loaded xml-file" </p>
+<p>"Creates and returns all objects in loaded file" </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">textures</td><td>"Textures to create objects with" </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>"All objects in loaded xml-file" </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>"All objects in loaded file" </dd></dl>
 
 </div>
 </div>
@@ -156,7 +157,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

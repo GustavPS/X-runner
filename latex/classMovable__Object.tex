@@ -33,15 +33,15 @@ virtual void \hyperlink{classMovable__Object_ac9111a729082cd46a913e1877a57a930}{
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classMovable__Object_a909989f83255795f755742be6db62713}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&)}\label{classMovable__Object_a909989f83255795f755742be6db62713}
+virtual void \hyperlink{classMovable__Object_a909989f83255795f755742be6db62713}{handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Handles collision while the object have movement\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}{virtual void \hyperlink{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}{collision\+\_\+state\+\_\+cleanup} ()}\label{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}
 
-\item 
-\hypertarget{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}{virtual void {\bfseries collision\+\_\+state\+\_\+cleanup} ()}\label{classMovable__Object_a7091c50aa4cd1438424737441e9ff72a}
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Resets collision variables\char`\"{} \end{DoxyCompactList}\item 
+\hypertarget{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}{virtual void \hyperlink{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}{handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)}\label{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}
 
-\item 
-\hypertarget{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}{virtual void {\bfseries handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)}\label{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}
-
-\item 
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Clears collision state variables such as m\+\_\+ground\+\_\+collision
+        to prepare for new collision-\/detection cycles\char`\"{} \end{DoxyCompactList}\item 
 \hypertarget{classMovable__Object_a71916586f5f73c836568503dcd7b0eb7}{virtual void {\bfseries handle\+\_\+end\+\_\+collision} ()}\label{classMovable__Object_a71916586f5f73c836568503dcd7b0eb7}
 
 \end{DoxyCompactItemize}
@@ -113,6 +113,29 @@ virtual void \hyperlink{classMovable__Object_ac9111a729082cd46a913e1877a57a930}{
 
 
 Reimplemented from \hyperlink{classSimulatable__Object_a1c542c4d9cb7ba923ea9f974e5f03e84}{Simulatable\+\_\+\+Object}.
+
+\hypertarget{classMovable__Object_a909989f83255795f755742be6db62713}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}}
+\index{handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}
+\subsubsection[{handle\+\_\+moving\+\_\+collision}]{\setlength{\rightskip}{0pt plus 5cm}void Movable\+\_\+\+Object\+::handle\+\_\+moving\+\_\+collision (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object} $\ast$}]{object, }
+\item[{const sf\+::\+Vector2f \&}]{steps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classMovable__Object_a909989f83255795f755742be6db62713}
+
+
+\char`\"{}\+Handles collision while the object have movement\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \char`\"{}\+Colliding object\char`\"{} \\
+\hline
+{\em steps} & \char`\"{}\+Steps taken in this movement\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}{Bird}, and \hyperlink{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}{Gravitating\+\_\+\+Object}.
 
 \hypertarget{classMovable__Object_aed1d50e30dc96faea3250bee8b4af227}{\index{Movable\+\_\+\+Object@{Movable\+\_\+\+Object}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
 \index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Movable\+\_\+\+Object@{Movable\+\_\+\+Object}}

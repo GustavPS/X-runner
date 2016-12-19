@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,27 +118,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">bool</span> m_wall_collision {};</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">// Collision handling</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// : defined</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_moving_collision(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*, <span class="keyword">const</span> sf::Vector2f&amp;);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> collision_state_cleanup();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// : null-defined</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_static_collision(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*) {};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_end_collision() {}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMovable__Object.html#a909989f83255795f755742be6db62713">handle_moving_collision</a>(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*, <span class="keyword">const</span> sf::Vector2f&amp;);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMovable__Object.html#a7091c50aa4cd1438424737441e9ff72a">collision_state_cleanup</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classMovable__Object.html#a1d92a4bbc7c741bf3d1c65004eab2adb">   69</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMovable__Object.html#a1d92a4bbc7c741bf3d1c65004eab2adb">handle_static_collision</a>(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*) {};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">           \brief &quot;Execute end-of-collision actions based on what have or havn&#39;t been collided</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">                   with in the previous collision-handlings&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_end_collision() {}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classObject_html"><div class="ttname"><a href="classObject.html">Object</a></div><div class="ttdef"><b>Definition:</b> object.h:8</div></div>
 <div class="ttc" id="classMovable__Object_html_ac9111a729082cd46a913e1877a57a930"><div class="ttname"><a href="classMovable__Object.html#ac9111a729082cd46a913e1877a57a930">Movable_Object::end_simulate</a></div><div class="ttdeci">virtual void end_simulate(const std::vector&lt; const Object * &gt; &amp;objects) override</div><div class="ttdoc">"Executes end-of-simulation logic of object" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:76</div></div>
+<div class="ttc" id="classMovable__Object_html_a7091c50aa4cd1438424737441e9ff72a"><div class="ttname"><a href="classMovable__Object.html#a7091c50aa4cd1438424737441e9ff72a">Movable_Object::collision_state_cleanup</a></div><div class="ttdeci">virtual void collision_state_cleanup()</div><div class="ttdoc">"Resets collision variables" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:117</div></div>
 <div class="ttc" id="classMovable__Object_html"><div class="ttname"><a href="classMovable__Object.html">Movable_Object</a></div><div class="ttdef"><b>Definition:</b> movable_object.h:6</div></div>
 <div class="ttc" id="classMovable__Object_html_a7ef80ffc751a380e9c0beb7d4f0da9ce"><div class="ttname"><a href="classMovable__Object.html#a7ef80ffc751a380e9c0beb7d4f0da9ce">Movable_Object::Movable_Object</a></div><div class="ttdeci">Movable_Object(const sf::Vector2f &amp;, const sf::Vector2f &amp;, const std::string &amp;, const bool=false, const sf::Texture *=nullptr)</div><div class="ttdoc">"Constructor" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:5</div></div>
+<div class="ttc" id="classMovable__Object_html_a909989f83255795f755742be6db62713"><div class="ttname"><a href="classMovable__Object.html#a909989f83255795f755742be6db62713">Movable_Object::handle_moving_collision</a></div><div class="ttdeci">virtual void handle_moving_collision(const Object *, const sf::Vector2f &amp;)</div><div class="ttdoc">"Handles collision while the object have movement" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:84</div></div>
 <div class="ttc" id="classMovable__Object_html_ac267e0c945b558b0cf533d7fbe5ee7c3"><div class="ttname"><a href="classMovable__Object.html#ac267e0c945b558b0cf533d7fbe5ee7c3">Movable_Object::simulate</a></div><div class="ttdeci">virtual std::vector&lt; Object * &gt; simulate(const int, const std::vector&lt; const Object * &gt; &amp;) override</div><div class="ttdoc">"Executes simulation of object" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:37</div></div>
+<div class="ttc" id="classMovable__Object_html_a1d92a4bbc7c741bf3d1c65004eab2adb"><div class="ttname"><a href="classMovable__Object.html#a1d92a4bbc7c741bf3d1c65004eab2adb">Movable_Object::handle_static_collision</a></div><div class="ttdeci">virtual void handle_static_collision(const Object *)</div><div class="ttdoc">"Clears collision state variables such as m_ground_collision         to prepare for new collision-det...</div><div class="ttdef"><b>Definition:</b> movable_object.h:69</div></div>
 <div class="ttc" id="classMovable__Object_html_aed1d50e30dc96faea3250bee8b4af227"><div class="ttname"><a href="classMovable__Object.html#aed1d50e30dc96faea3250bee8b4af227">Movable_Object::prepare_simulate</a></div><div class="ttdeci">int prepare_simulate(const float)</div><div class="ttdoc">"Prepares simulation of object" </div><div class="ttdef"><b>Definition:</b> movable_object.cc:13</div></div>
 <div class="ttc" id="classSimulatable__Object_html"><div class="ttname"><a href="classSimulatable__Object.html">Simulatable_Object</a></div><div class="ttdef"><b>Definition:</b> simulatable_object.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

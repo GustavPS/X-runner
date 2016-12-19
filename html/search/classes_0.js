@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['bird',['Bird',['../classBird.html',1,'']]],
-  ['bomb_5fbird',['Bomb_Bird',['../classBomb__Bird.html',1,'']]],
-  ['boost_5fbird',['Boost_Bird',['../classBoost__Bird.html',1,'']]]
+  ['allow_5fremote_5fpredicate',['allow_remote_predicate',['../structallow__remote__predicate.html',1,'']]],
+  ['auto_5fdeleter',['auto_deleter',['../structauto__deleter.html',1,'']]],
+  ['axis_5fto_5ftype',['axis_to_type',['../structaxis__to__type.html',1,'']]]
 ];

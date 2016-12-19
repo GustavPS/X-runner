@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['object',['Object',['../classObject.html',1,'Object'],['../classObject.html#a2df3d89d7e56659a1a0bc22d5019d587',1,'Object::Object()']]]
+  ['is_5fsolid',['is_solid',['../classObject.html#ae132d029eeaaa8e3d4660951e0a35ad8',1,'Object']]],
+  ['install_20instructions',['INSTALL INSTRUCTIONS',['../md_README.html',1,'']]]
 ];

@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -154,17 +155,18 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classGravitating__Object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classGravitating__Object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classGravitating__Object.html">Gravitating_Object</a></td></tr>
-<tr class="memitem:ad059f059b3699edb3edff11fdd7fba29 inherit pro_methods_classGravitating__Object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad059f059b3699edb3edff11fdd7fba29"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handle_moving_collision</b> (const <a class="el" href="classObject.html">Object</a> *, const sf::Vector2f &amp;) override</td></tr>
+<tr class="memitem:ad059f059b3699edb3edff11fdd7fba29 inherit pro_methods_classGravitating__Object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGravitating__Object.html#ad059f059b3699edb3edff11fdd7fba29">handle_moving_collision</a> (const <a class="el" href="classObject.html">Object</a> *, const sf::Vector2f &amp;) override</td></tr>
+<tr class="memdesc:ad059f059b3699edb3edff11fdd7fba29 inherit pro_methods_classGravitating__Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Handles collision while the object have movement"  <a href="#ad059f059b3699edb3edff11fdd7fba29">More...</a><br /></td></tr>
 <tr class="separator:ad059f059b3699edb3edff11fdd7fba29 inherit pro_methods_classGravitating__Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classMovable__Object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMovable__Object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMovable__Object.html">Movable_Object</a></td></tr>
 <tr class="memitem:a7091c50aa4cd1438424737441e9ff72a inherit pro_methods_classMovable__Object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7091c50aa4cd1438424737441e9ff72a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>collision_state_cleanup</b> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMovable__Object.html#a7091c50aa4cd1438424737441e9ff72a">collision_state_cleanup</a> ()</td></tr>
+<tr class="memdesc:a7091c50aa4cd1438424737441e9ff72a inherit pro_methods_classMovable__Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Resets collision variables" <br /></td></tr>
 <tr class="separator:a7091c50aa4cd1438424737441e9ff72a inherit pro_methods_classMovable__Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classSimulatable__Object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classSimulatable__Object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classSimulatable__Object.html">Simulatable_Object</a></td></tr>
-<tr class="memitem:a2d7252861e8dea6b3bb9909421b88766 inherit pro_methods_classSimulatable__Object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d7252861e8dea6b3bb9909421b88766"></a>
-virtual const std::vector<br class="typebreak" />
-&lt; const <a class="el" href="classObject.html">Object</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_colliding_objects</b> (const std::vector&lt; const <a class="el" href="classObject.html">Object</a> * &gt; &amp;) const </td></tr>
+<tr class="memitem:a2d7252861e8dea6b3bb9909421b88766 inherit pro_methods_classSimulatable__Object"><td class="memItemLeft" align="right" valign="top">virtual const std::vector<br class="typebreak" />
+&lt; const <a class="el" href="classObject.html">Object</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulatable__Object.html#a2d7252861e8dea6b3bb9909421b88766">get_colliding_objects</a> (const std::vector&lt; const <a class="el" href="classObject.html">Object</a> * &gt; &amp;) const </td></tr>
+<tr class="memdesc:a2d7252861e8dea6b3bb9909421b88766 inherit pro_methods_classSimulatable__Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Get the collidion objects"  <a href="#a2d7252861e8dea6b3bb9909421b88766">More...</a><br /></td></tr>
 <tr class="separator:a2d7252861e8dea6b3bb9909421b88766 inherit pro_methods_classSimulatable__Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classGravitating__Object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classGravitating__Object')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classGravitating__Object.html">Gravitating_Object</a></td></tr>
 <tr class="memitem:abda4e488702c931d99b47785db6be33b inherit pro_attribs_classGravitating__Object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abda4e488702c931d99b47785db6be33b"></a>
@@ -304,7 +306,7 @@ sf::RectangleShape&#160;</td><td class="memItemRight" valign="bottom"><b>m_shape
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

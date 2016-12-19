@@ -29,12 +29,10 @@ virtual int \hyperlink{classBird_af2882ba302f03c5bdf5950cc21a39f66}{prepare\+\_\
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) overridefinal}\label{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}
-
-\item 
-\hypertarget{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}{virtual void {\bfseries handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)}\label{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}
-
-\end{DoxyCompactItemize}
+virtual void \hyperlink{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}{handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) overridefinal
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Handles collision while the object have movement\char`\"{} \end{DoxyCompactList}\item 
+virtual void \hyperlink{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}{handle\+\_\+static\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Handles collision while the object does not have movement\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -96,6 +94,49 @@ virtual int \hyperlink{classBird_af2882ba302f03c5bdf5950cc21a39f66}{prepare\+\_\
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}{\index{Bird@{Bird}!handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}}
+\index{handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}!Bird@{Bird}}
+\subsubsection[{handle\+\_\+moving\+\_\+collision}]{\setlength{\rightskip}{0pt plus 5cm}void Bird\+::handle\+\_\+moving\+\_\+collision (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object} $\ast$}]{object, }
+\item[{const sf\+::\+Vector2f \&}]{steps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBird_a3802ec1a4d2886ef8c95dd6d76038ab6}
+
+
+\char`\"{}\+Handles collision while the object have movement\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \char`\"{}\+Colliding object\char`\"{} \\
+\hline
+{\em steps} & \char`\"{}\+Steps taken in this movement\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classMovable__Object_a909989f83255795f755742be6db62713}{Movable\+\_\+\+Object}.
+
+\hypertarget{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}{\index{Bird@{Bird}!handle\+\_\+static\+\_\+collision@{handle\+\_\+static\+\_\+collision}}
+\index{handle\+\_\+static\+\_\+collision@{handle\+\_\+static\+\_\+collision}!Bird@{Bird}}
+\subsubsection[{handle\+\_\+static\+\_\+collision}]{\setlength{\rightskip}{0pt plus 5cm}void Bird\+::handle\+\_\+static\+\_\+collision (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object} $\ast$}]{object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classBird_adbcfe9b09d3b828ce00982ec1aab9c6e}
+
+
+\char`\"{}\+Handles collision while the object does not have movement\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \char`\"{}\+Colliding object\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classMovable__Object_a1d92a4bbc7c741bf3d1c65004eab2adb}{Movable\+\_\+\+Object}.
+
 \hypertarget{classBird_af2882ba302f03c5bdf5950cc21a39f66}{\index{Bird@{Bird}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
 \index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Bird@{Bird}}
 \subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Bird\+::prepare\+\_\+simulate (

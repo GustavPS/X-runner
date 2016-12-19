@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['is_5fsolid',['is_solid',['../classObject.html#ae132d029eeaaa8e3d4660951e0a35ad8',1,'Object']]]
+  ['document_5forder_5fcomparator',['document_order_comparator',['../structdocument__order__comparator.html',1,'']]],
+  ['duplicate_5fcomparator',['duplicate_comparator',['../structduplicate__comparator.html',1,'']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7eengine',['~Engine',['../classEngine.html#a8ef7030a089ecb30bbfcb9e43094717a',1,'Engine']]],
-  ['_7eobject',['~Object',['../classObject.html#ad405a082a0ef9a641cd5b83ff6dd33c0',1,'Object']]],
-  ['_7estate',['~State',['../classState.html#a591f523d68d09675b3bd6f8e1084e642',1,'State']]]
+  ['ref_5ftext_5fobjects',['ref_text_objects',['../classState.html#a38fe48726722d318d346608f4f947121',1,'State']]],
+  ['render',['render',['../classEngine.html#a4d9a19bdf6a13b84570e400acab6de6c',1,'Engine']]]
 ];

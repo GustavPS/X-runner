@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classpugi_1_1xml__writer.html" title="pugi::xml_writer" alt="" coords="5,81,120,108"/>
+<area shape="rect" id="node2" href="$classpugi_1_1xml__writer__file.html" title="pugi::xml_writer_file" alt="" coords="180,5,319,32"/>
+<area shape="rect" id="node3" href="$classpugi_1_1xml__writer__stream.html" title="pugi::xml_writer_stream" alt="" coords="169,56,330,83"/>
+<area shape="rect" id="node4" href="$structxml__memory__writer.html" title="xml_memory_writer" alt="" coords="181,107,317,133"/>
+<area shape="rect" id="node5" href="$structxml__string__writer.html" title="xml_string_writer" alt="" coords="189,157,310,184"/>
+</map>

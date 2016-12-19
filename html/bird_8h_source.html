@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,23 +121,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        sf::Clock m_player_clock;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">bool</span> m_player_debuff {};</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// Collision handling : overriding defined : final</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_moving_collision(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                      <span class="keyword">const</span> sf::Vector2f&amp;) <span class="keyword">override</span> <span class="keyword">final</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle_static_collision(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// Collision handling</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classBird.html#a3802ec1a4d2886ef8c95dd6d76038ab6">handle_moving_collision</a>(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                      <span class="keyword">const</span> sf::Vector2f&amp;) <span class="keyword">override</span> <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classBird.html#adbcfe9b09d3b828ce00982ec1aab9c6e">handle_static_collision</a>(<span class="keyword">const</span> <a class="code" href="classObject.html">Object</a>*);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classObject_html"><div class="ttname"><a href="classObject.html">Object</a></div><div class="ttdef"><b>Definition:</b> object.h:8</div></div>
 <div class="ttc" id="classBird_html_af2882ba302f03c5bdf5950cc21a39f66"><div class="ttname"><a href="classBird.html#af2882ba302f03c5bdf5950cc21a39f66">Bird::prepare_simulate</a></div><div class="ttdeci">virtual int prepare_simulate(const float, const float) overridefinal</div><div class="ttdoc">"Prepares simulation of object" </div><div class="ttdef"><b>Definition:</b> bird.cc:17</div></div>
+<div class="ttc" id="classBird_html_adbcfe9b09d3b828ce00982ec1aab9c6e"><div class="ttname"><a href="classBird.html#adbcfe9b09d3b828ce00982ec1aab9c6e">Bird::handle_static_collision</a></div><div class="ttdeci">virtual void handle_static_collision(const Object *)</div><div class="ttdoc">"Handles collision while the object does not have movement" </div><div class="ttdef"><b>Definition:</b> bird.cc:59</div></div>
 <div class="ttc" id="classMovable__Object_html"><div class="ttname"><a href="classMovable__Object.html">Movable_Object</a></div><div class="ttdef"><b>Definition:</b> movable_object.h:6</div></div>
+<div class="ttc" id="classBird_html_a3802ec1a4d2886ef8c95dd6d76038ab6"><div class="ttname"><a href="classBird.html#a3802ec1a4d2886ef8c95dd6d76038ab6">Bird::handle_moving_collision</a></div><div class="ttdeci">virtual void handle_moving_collision(const Object *, const sf::Vector2f &amp;) overridefinal</div><div class="ttdoc">"Handles collision while the object have movement" </div><div class="ttdef"><b>Definition:</b> bird.cc:43</div></div>
 <div class="ttc" id="classBird_html"><div class="ttname"><a href="classBird.html">Bird</a></div><div class="ttdef"><b>Definition:</b> bird.h:6</div></div>
 <div class="ttc" id="classBird_html_afe65295d7e648178245a1cd784924ecd"><div class="ttname"><a href="classBird.html#afe65295d7e648178245a1cd784924ecd">Bird::Bird</a></div><div class="ttdeci">Bird(const sf::Vector2f &amp;, const sf::Vector2f &amp;, const std::string &amp;, const sf::Texture *, const float, const int, const float, const bool=false)</div><div class="ttdoc">"Constructor" </div><div class="ttdef"><b>Definition:</b> bird.cc:3</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

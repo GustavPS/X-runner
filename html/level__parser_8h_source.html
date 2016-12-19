@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,21 +109,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        pugi::xml_document m_xml_doc;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classpugi_1_1xml__document.html">pugi::xml_document</a> m_xml_doc;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::vector&lt;Object*&gt; get_xml_objects(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">const</span> std::unordered_map&lt;std::string, sf::Texture*&gt;&amp;) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::vector&lt;Object*&gt; get_csv_objects() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::vector&lt;Object*&gt; get_xml_objects(</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">const</span> std::unordered_map&lt;std::string, sf::Texture*&gt;&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::vector&lt;Object*&gt; get_csv_objects() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classLevel__Parser_html_ac1e8138a19ac3d284010c693e5ca446c"><div class="ttname"><a href="classLevel__Parser.html#ac1e8138a19ac3d284010c693e5ca446c">Level_Parser::Level_Parser</a></div><div class="ttdeci">Level_Parser(const std::string &amp;)</div><div class="ttdoc">"Constructor" </div><div class="ttdef"><b>Definition:</b> level_parser.cc:11</div></div>
-<div class="ttc" id="classLevel__Parser_html_af3206216900aae52b79289c3f75c1e32"><div class="ttname"><a href="classLevel__Parser.html#af3206216900aae52b79289c3f75c1e32">Level_Parser::get_objects</a></div><div class="ttdeci">std::vector&lt; Object * &gt; get_objects(const std::unordered_map&lt; std::string, sf::Texture * &gt; &amp;) const </div><div class="ttdoc">"Creates and returns all objects in loaded xml-file" </div><div class="ttdef"><b>Definition:</b> level_parser.cc:21</div></div>
+<div class="ttc" id="classpugi_1_1xml__document_html"><div class="ttname"><a href="classpugi_1_1xml__document.html">pugi::xml_document</a></div><div class="ttdef"><b>Definition:</b> pugixml.hpp:973</div></div>
+<div class="ttc" id="classLevel__Parser_html_af3206216900aae52b79289c3f75c1e32"><div class="ttname"><a href="classLevel__Parser.html#af3206216900aae52b79289c3f75c1e32">Level_Parser::get_objects</a></div><div class="ttdeci">std::vector&lt; Object * &gt; get_objects(const std::unordered_map&lt; std::string, sf::Texture * &gt; &amp;) const </div><div class="ttdoc">"Creates and returns all objects in loaded file" </div><div class="ttdef"><b>Definition:</b> level_parser.cc:21</div></div>
 <div class="ttc" id="classLevel__Parser_html"><div class="ttname"><a href="classLevel__Parser.html">Level_Parser</a></div><div class="ttdef"><b>Definition:</b> level_parser.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

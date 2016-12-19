@@ -29,9 +29,8 @@ int \hyperlink{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{prepa
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}{virtual void {\bfseries handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) override}\label{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}
-
-\end{DoxyCompactItemize}
+virtual void \hyperlink{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}{handle\+\_\+moving\+\_\+collision} (const \hyperlink{classObject}{Object} $\ast$, const sf\+::\+Vector2f \&) override
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Handles collision while the object have movement\char`\"{} \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -72,6 +71,29 @@ int \hyperlink{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{prepa
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}{\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}!handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}}
+\index{handle\+\_\+moving\+\_\+collision@{handle\+\_\+moving\+\_\+collision}!Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
+\subsubsection[{handle\+\_\+moving\+\_\+collision}]{\setlength{\rightskip}{0pt plus 5cm}void Gravitating\+\_\+\+Object\+::handle\+\_\+moving\+\_\+collision (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object} $\ast$}]{object, }
+\item[{const sf\+::\+Vector2f \&}]{steps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classGravitating__Object_ad059f059b3699edb3edff11fdd7fba29}
+
+
+\char`\"{}\+Handles collision while the object have movement\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \char`\"{}\+Colliding object\char`\"{} \\
+\hline
+{\em steps} & \char`\"{}\+Steps taken in this movement\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classMovable__Object_a909989f83255795f755742be6db62713}{Movable\+\_\+\+Object}.
+
 \hypertarget{classGravitating__Object_a187404d6df6ff16a86a33a3f4a8aab85}{\index{Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}!prepare\+\_\+simulate@{prepare\+\_\+simulate}}
 \index{prepare\+\_\+simulate@{prepare\+\_\+simulate}!Gravitating\+\_\+\+Object@{Gravitating\+\_\+\+Object}}
 \subsubsection[{prepare\+\_\+simulate}]{\setlength{\rightskip}{0pt plus 5cm}int Gravitating\+\_\+\+Object\+::prepare\+\_\+simulate (

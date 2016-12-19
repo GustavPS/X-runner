@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -110,22 +111,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// Collision detection</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// : defined</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> std::vector&lt;const Object*&gt; get_colliding_objects(</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">const</span> std::vector&lt;const Object*&gt;&amp;) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span>        <span class="keyword">virtual</span> <span class="keyword">const</span> std::vector&lt;const Object*&gt; <a class="code" href="classSimulatable__Object.html#a2d7252861e8dea6b3bb9909421b88766">get_colliding_objects</a>(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">const</span> std::vector&lt;const Object*&gt;&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classObject_html"><div class="ttname"><a href="classObject.html">Object</a></div><div class="ttdef"><b>Definition:</b> object.h:8</div></div>
 <div class="ttc" id="classSimulatable__Object_html_a0ca1611db5809ac78440a862ba986af7"><div class="ttname"><a href="classSimulatable__Object.html#a0ca1611db5809ac78440a862ba986af7">Simulatable_Object::Simulatable_Object</a></div><div class="ttdeci">Simulatable_Object(const sf::Vector2f &amp;, const sf::Vector2f &amp;, const std::string &amp;, const bool=false, const sf::Texture *=nullptr)</div><div class="ttdoc">"Constructor" </div><div class="ttdef"><b>Definition:</b> simulatable_object.cc:3</div></div>
 <div class="ttc" id="classSimulatable__Object_html_a60fb2da770367330360a90afc7b724f1"><div class="ttname"><a href="classSimulatable__Object.html#a60fb2da770367330360a90afc7b724f1">Simulatable_Object::simulate</a></div><div class="ttdeci">virtual std::vector&lt; Object * &gt; simulate(const int, const std::vector&lt; const Object * &gt; &amp;)=0</div><div class="ttdoc">"Executes simulation of object" </div></div>
+<div class="ttc" id="classSimulatable__Object_html_a2d7252861e8dea6b3bb9909421b88766"><div class="ttname"><a href="classSimulatable__Object.html#a2d7252861e8dea6b3bb9909421b88766">Simulatable_Object::get_colliding_objects</a></div><div class="ttdeci">virtual const std::vector&lt; const Object * &gt; get_colliding_objects(const std::vector&lt; const Object * &gt; &amp;) const </div><div class="ttdoc">"Get the collidion objects" </div><div class="ttdef"><b>Definition:</b> simulatable_object.cc:11</div></div>
 <div class="ttc" id="classSimulatable__Object_html_a1c542c4d9cb7ba923ea9f974e5f03e84"><div class="ttname"><a href="classSimulatable__Object.html#a1c542c4d9cb7ba923ea9f974e5f03e84">Simulatable_Object::end_simulate</a></div><div class="ttdeci">virtual void end_simulate(const std::vector&lt; const Object * &gt; &amp;objects)</div><div class="ttdoc">"Executes end-of-simulation logic of object" </div><div class="ttdef"><b>Definition:</b> simulatable_object.h:44</div></div>
 <div class="ttc" id="classSimulatable__Object_html_abe7c02fe250ef5be42011890d8a7b37b"><div class="ttname"><a href="classSimulatable__Object.html#abe7c02fe250ef5be42011890d8a7b37b">Simulatable_Object::prepare_simulate</a></div><div class="ttdeci">virtual int prepare_simulate(const float, const float)=0</div><div class="ttdoc">"Prepares simulation of object" </div></div>
 <div class="ttc" id="classSimulatable__Object_html"><div class="ttname"><a href="classSimulatable__Object.html">Simulatable_Object</a></div><div class="ttdef"><b>Definition:</b> simulatable_object.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

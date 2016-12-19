@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,8 +75,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
       <li><a href="#index_b"><span>b</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
@@ -93,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,6 +121,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>collision_state_cleanup()
+: <a class="el" href="classMovable__Object.html#a7091c50aa4cd1438424737441e9ff72a">Movable_Object</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
 <li>end_simulate()
 : <a class="el" href="classMovable__Object.html#ac9111a729082cd46a913e1877a57a930">Movable_Object</a>
@@ -135,6 +145,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>get_background()
 : <a class="el" href="classState.html#a9e132079dc08365e3c30633dd002ab8c">State</a>
+</li>
+<li>get_colliding_objects()
+: <a class="el" href="classSimulatable__Object.html#a2d7252861e8dea6b3bb9909421b88766">Simulatable_Object</a>
 </li>
 <li>get_delete_status()
 : <a class="el" href="classObject.html#a98541d2f7380e4b5d6c805bbd7aaab01">Object</a>
@@ -156,6 +169,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Gravitating_Object()
 : <a class="el" href="classGravitating__Object.html#a7319a97eb2d84afbe66c5e0040bd3973">Gravitating_Object</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>handle_moving_collision()
+: <a class="el" href="classBird.html#a3802ec1a4d2886ef8c95dd6d76038ab6">Bird</a>
+, <a class="el" href="classGravitating__Object.html#ad059f059b3699edb3edff11fdd7fba29">Gravitating_Object</a>
+, <a class="el" href="classMovable__Object.html#a909989f83255795f755742be6db62713">Movable_Object</a>
+</li>
+<li>handle_static_collision()
+: <a class="el" href="classBird.html#adbcfe9b09d3b828ce00982ec1aab9c6e">Bird</a>
+, <a class="el" href="classMovable__Object.html#a1d92a4bbc7c741bf3d1c65004eab2adb">Movable_Object</a>
 </li>
 </ul>
 
@@ -244,6 +270,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Slow_Bird()
 : <a class="el" href="classSlow__Bird.html#a52df2736474b4fe540181a43231a3f8c">Slow_Bird</a>
 </li>
+<li>soft_reset()
+: <a class="el" href="classState.html#a2ebdd6e26d78ad2d34a8bf14ddb7ccf3">State</a>
+</li>
 </ul>
 
 
@@ -261,7 +290,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 18 2016 19:50:52 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 19 2016 13:22:34 for X Runner by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

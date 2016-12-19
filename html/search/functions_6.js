@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nfbb',['NFBB',['../classNFBB.html#a87d7681f930eb71fd22daa8b41c8f624',1,'NFBB']]]
+  ['level_5fparser',['Level_Parser',['../classLevel__Parser.html#ac1e8138a19ac3d284010c693e5ca446c',1,'Level_Parser']]]
 ];
