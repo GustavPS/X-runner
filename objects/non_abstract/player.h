@@ -69,14 +69,27 @@ class Player final : public Gravitating_Object
         // State : out-of-game actions
         std::string m_oog_action;
 
-        // Collision handling : overriding defined : final
+        // Collision handling
+        /*!
+           \brief "Handles collision while the object have movement"
+           \param object "Colliding object"
+           \param steps "Steps taken in this movement"
+        */
         virtual void handle_moving_collision(const Object*, const sf::Vector2f&) override final;
-
+        /*!
+           \brief "Handles collision while the object does not have movement"
+           \param object "Colliding object"
+        */
         virtual void handle_static_collision(const Object*) override final;
-
+         /*!
+           \brief "Clears collision state variables such as m_ground_collision
+                   to prepare for new collision-detection cycles
+        */        
         virtual void collision_state_cleanup() override final;
-
-        // Collision handling : overriding null-defined : final
+        /*!
+           \brief "Execute end-of-collision actions based on what have or havn't been collided
+                   with in the previous collision-handlings"
+        */
         virtual void handle_end_collision() override final;
 };
 

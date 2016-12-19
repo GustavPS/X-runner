@@ -34,10 +34,16 @@ class NFBB final : public Gravitating_Object
         bool m_on_ground {};
         sf::Clock m_despawn_clock;
 
-        // Collision handling : overriding defined : final
+        // Collision handling
+        /*!
+           \brief "Handles collision while the object does not have movement"
+           \param object "Colliding object"
+        */
         virtual void handle_static_collision(const Object*) override final;
-
-        // Collision handling : overriding null-defined : final
+        /*!
+           \brief "Execute end-of-collision actions based on what have or havn't been collided
+                   with in the previous collision-handlings"
+        */
         virtual void handle_end_collision() override final;
 };
 

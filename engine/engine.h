@@ -34,7 +34,6 @@ class Engine
         State* game_state;
         State* active_state;
         sf::View view;
-        //Record_Tracker record_tracker;
 };
 
 #endif
