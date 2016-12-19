@@ -49,7 +49,7 @@ class Bird : public Movable_Object
         sf::Clock m_player_clock;
         bool m_player_debuff {};
 
-        // Collision handling : overriding defined : final
+        // Collision handling
         /*!
            \brief "Handles collision while the object have movement"
            \param object "Colliding object"
@@ -57,7 +57,6 @@ class Bird : public Movable_Object
         */
         virtual void handle_moving_collision(const Object*,
                                       const sf::Vector2f&) override final;
-
         /*!
            \brief "Handles collision while the object does not have movement"
            \param object "Colliding object"
