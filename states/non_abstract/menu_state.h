@@ -42,6 +42,9 @@ class Menu_State : public State
         Player *player;
 
         // Reset : overriding defined
+        /*!
+           \brief "Reset the game state."
+        */
         void soft_reset() override;
 };
 
