@@ -5,7 +5,7 @@
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent,after=\vspace{\baselineskip}}
 \usepackage{float}
 
-\newcommand{\version}{Version 1.0}
+\newcommand{\version}{Version 1.1}
 \author{Love Bäckman, \url{lovba497@student.liu.se} \\
     Gustav P Svensson, \url{gussv375@student.liu.se}}
 \title{Designspecifikation}
@@ -27,6 +27,7 @@ Ver. & Revisionsbeskrivning & Datum \\\hline
 0.1 & Påbörjat utkast & 161123 \\\hline
 0.2 & Första utkast klart & 161125 \\\hline
 1.0 & Designspec. klar & 161218 \\\hline
+1.1 & Designspec. imp. & 161219 \\\hline
 \end{tabularx}
 \end{table}
 
@@ -288,7 +289,7 @@ Metoden soft\_reset nollställer containrar innehållandes objekt för den inlad
 \section{Designbeskrivning}
 Designen är implementerat på sådant sätt att en spelmotor, Engine, håller reda på vilket state av Menu\_State och Game\_State som är aktivt och kör det state:ets simulate-metod. Beroende på returnvärdet från denna simulate-metod kan det aktiva state:et ändras. Efter att det aktiva state:et simulerats renderar sedan Engine state:ets renderbara objekt.
 \\\\
-I nuläget är Menu\_State enbart en nedskalad version av Game\_State som möjliggör att använda en level som meny. Detta fungerar för den nuvarande meny-funktionaliteten, men vi skulle implementera ytterligare funktionalitetet såsom en level-meny medför det vissa design-svårigheter.
+I nuläget är Menu\_State enbart en nedskalad version av Game\_State som möjliggör att använda en level som meny. Detta fungerar för den nuvarande meny-funktionaliteten, men skulle vi implementera ytterligare funktionalitetet såsom en level-meny medföra det vissa design-svårigheter.
 \\\\
 När simulate-metoden för det aktiva state:et anropas kommer det state:et sedan fortsätta simulationskedjan genom att kalla på simulerings-metoder för alla simulerbara objekt i state:et.
 \\\\
