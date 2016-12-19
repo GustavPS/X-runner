@@ -20,6 +20,7 @@ int Bird::prepare_simulate(const float distance_modifier,
     // Set distance to direction
     m_distance.x = m_direction;
 
+    // Set opacity to after collision with player during the duration <m_cooldown>
     if (m_player_debuff)
     {
         if (m_player_clock.getElapsedTime().asSeconds() < m_cooldown)
