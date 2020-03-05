@@ -1,0 +1,7 @@
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/install/strip.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/pugixml.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/list_install_components.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/install/local.dir
+/mnt/c/Users/Gustav/Documents/X-runner/resources/pugixml-1.8/CMakeFiles/install.dir
